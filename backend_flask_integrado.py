@@ -226,6 +226,36 @@ def upload():
         if len(ano) != 2 or not ano.isdigit():
             return "Ano inválido", 400
 
+        # Verificar se já existe processo com mesmo número, mas com ano, referência ou serviço diferentes
+        processos_existentes = obter_info_processos()
+        for proc in processos_existentes.values():
+            mesmo_processo = (
+                proc['cliente'].upper() == cliente and
+                proc['area'].upper() == area and
+                proc['numero'] == numero_processo
+            )
+            if mesmo_processo:
+                if proc['ano'] != ano:
+                    return (
+                        f"Já existe um processo com o número {numero_processo}, mas com o ano '{proc['ano']}'. "
+                        f"Use o mesmo ano para continuar.",
+                        400
+                    )
+                if proc['servico'].capitalize() != servico:
+                    return (
+                        f"Já existe um processo com o número {numero_processo} e ano {ano}, "
+                        f"mas com o serviço '{proc['servico']}'. "
+                        f"Use o mesmo serviço para continuar.",
+                        400
+                    )
+                if proc['referencia'].upper() != referencia.upper():
+                    return (
+                        f"Já existe um processo com o número {numero_processo} e ano {ano} "
+                        f"para esse cliente/área/serviço, com referência '{proc['referencia']}'. "
+                        f"Use a mesma referência para evitar duplicação.",
+                        400
+                    )
+
         arquivos = request.files.getlist("files")
         arquivos_para_upload = []
 

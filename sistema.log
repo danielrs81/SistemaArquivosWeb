@@ -114,3 +114,76 @@ WARNING:werkzeug: * Debugger is active!
 INFO:werkzeug: * Debugger PIN: 119-258-205
 WARNING:werkzeug: * Debugger is active!
 INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug: * Detected change in 'C:\\Users\\ACEXCBN\\meu_sistema_upload\\backend_flask_integrado.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Detected change in 'C:\\Users\\ACEXCBN\\meu_sistema_upload\\backend_flask_integrado.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug: * Detected change in 'C:\\Users\\ACEXCBN\\meu_sistema_upload\\backend_flask_integrado.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Detected change in 'C:\\Users\\ACEXCBN\\meu_sistema_upload\\backend_flask_integrado.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug: * Detected change in 'C:\\Users\\ACEXCBN\\meu_sistema_upload\\backend_flask_integrado.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Detected change in 'C:\\Users\\ACEXCBN\\meu_sistema_upload\\backend_flask_integrado.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5001
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug:127.0.0.1 - - [14/Jul/2025 17:59:45] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Jul/2025 18:00:04] "[32mPOST /cliente HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [14/Jul/2025 18:00:04] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Jul/2025 18:01:15] "POST /upload HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Jul/2025 18:01:35] "[31m[1mPOST /upload HTTP/1.1[0m" 400 -
+INFO:werkzeug:127.0.0.1 - - [14/Jul/2025 18:01:54] "POST /upload HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Jul/2025 18:02:01] "[31m[1mPOST /upload HTTP/1.1[0m" 400 -
+INFO:werkzeug:127.0.0.1 - - [14/Jul/2025 18:02:05] "[31m[1mPOST /upload HTTP/1.1[0m" 400 -
+INFO:werkzeug:127.0.0.1 - - [14/Jul/2025 18:02:13] "POST /upload HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Jul/2025 18:03:18] "POST /upload HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Jul/2025 18:03:27] "[31m[1mPOST /upload HTTP/1.1[0m" 400 -
+INFO:werkzeug:127.0.0.1 - - [14/Jul/2025 18:04:20] "POST /upload HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Jul/2025 18:04:22] "[35m[1mPOST /upload HTTP/1.1[0m" 500 -
+INFO:werkzeug: * Detected change in 'C:\\Users\\ACEXCBN\\meu_sistema_upload\\backend_flask_integrado.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5001
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug:127.0.0.1 - - [14/Jul/2025 18:07:34] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Jul/2025 18:07:48] "[32mPOST /cliente HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [14/Jul/2025 18:07:48] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Jul/2025 18:08:40] "POST /upload HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Jul/2025 18:09:06] "[31m[1mPOST /upload HTTP/1.1[0m" 400 -
+INFO:werkzeug:127.0.0.1 - - [14/Jul/2025 18:09:15] "POST /upload HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Jul/2025 18:09:22] "[31m[1mPOST /upload HTTP/1.1[0m" 400 -
+INFO:werkzeug:127.0.0.1 - - [14/Jul/2025 18:09:32] "[31m[1mPOST /upload HTTP/1.1[0m" 400 -
+INFO:werkzeug:127.0.0.1 - - [14/Jul/2025 18:09:43] "POST /upload HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Jul/2025 18:09:50] "POST /upload HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'C:\\Users\\ACEXCBN\\meu_sistema_upload\\backend_flask_integrado.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5001
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug:127.0.0.1 - - [14/Jul/2025 18:12:51] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Jul/2025 18:12:54] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Jul/2025 18:13:29] "POST /upload HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Jul/2025 18:13:37] "[31m[1mPOST /upload HTTP/1.1[0m" 400 -
+INFO:werkzeug:127.0.0.1 - - [14/Jul/2025 18:13:45] "[31m[1mPOST /upload HTTP/1.1[0m" 400 -
+INFO:werkzeug:127.0.0.1 - - [14/Jul/2025 18:13:55] "[31m[1mPOST /upload HTTP/1.1[0m" 400 -
+INFO:werkzeug:127.0.0.1 - - [14/Jul/2025 18:14:06] "[31m[1mPOST /upload HTTP/1.1[0m" 400 -
+INFO:werkzeug:127.0.0.1 - - [14/Jul/2025 18:14:14] "POST /upload HTTP/1.1" 200 -
