@@ -12,7 +12,7 @@ config.read('config.ini')
 UPLOAD_FOLDER = os.path.join(os.getcwd(), 'uploads')
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
-HTML_TEMPLATE = """
+HTML_TEMPLATE = r"""
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -77,10 +77,11 @@ HTML_TEMPLATE = """
         <input type="text" name="ano" maxlength="2" required pattern="\d{2}">
 
         <label>Referência:</label>
-        <input type="text" name="referencia" required pattern="^[^\\/:*?\"<>|]+$" title="Sem caracteres especiais como / \ : * ? &quot; < > |">
+        <input type="text" name="referencia" required pattern="^[A-Za-z0-9.-]+$" title="Apenas letras, números, hífen e ponto são permitidos">
 
         <label>Arquivos:</label>
         <input type="file" name="files" multiple>
+        <div id="fileList" class="file-list"></div>
 
         <div class="drag-area" ondrop="dropHandler(event);" ondragover="dragOverHandler(event);">
             Arraste e solte arquivos aqui
@@ -88,6 +89,7 @@ HTML_TEMPLATE = """
 
         <button type="submit">Enviar</button>
     </form>
+        <button type="button" onclick="limparCampos()">Limpar Campos</button>
 
     <form method="get" action="/busca">
         <button type="submit">Busca Avançada</button>
@@ -111,6 +113,77 @@ HTML_TEMPLATE = """
             ev.preventDefault();
         }
     </script>
+    <script>
+const inputFile = document.querySelector('input[type=file]');
+const fileListDiv = document.getElementById('fileList');
+
+inputFile.addEventListener('change', updateFileList);
+
+function updateFileList() {
+    fileListDiv.innerHTML = '';
+    const dt = new DataTransfer();
+
+    for (let i = 0; i < inputFile.files.length; i++) {
+        const file = inputFile.files[i];
+        const item = document.createElement('div');
+        item.className = 'file-item';
+        item.innerHTML = `
+            ${file.name}
+            <button type="button" onclick="removeFile(${i})">X</button>
+        `;
+        fileListDiv.appendChild(item);
+        dt.items.add(file);
+    }
+
+    inputFile.files = dt.files;
+}
+
+function removeFile(index) {
+    const dt = new DataTransfer();
+    const { files } = inputFile;
+
+    for (let i = 0; i < files.length; i++) {
+        if (i !== index) dt.items.add(files[i]);
+    }
+
+    inputFile.files = dt.files;
+    updateFileList();
+}
+</script>
+
+<script>
+document.getElementById("uploadForm").addEventListener("submit", async function(event) {
+    event.preventDefault();
+
+    const formData = new FormData(this);
+
+    try {
+        const response = await fetch('/upload', {
+            method: 'POST',
+            body: formData
+        });
+
+        const text = await response.text();
+        alert(text);  // Exibe a quantidade de arquivos enviados com sucesso
+    } catch (error) {
+        alert("Erro ao enviar os arquivos.");
+    }
+});
+</script>
+
+<script>
+function limparCampos() {
+    document.querySelector('select[name=cliente]').value = "";
+    document.querySelector('select[name=area]').value = "";
+    document.querySelector('select[name=servico]').value = "";
+    document.querySelector('input[name=numero_processo]').value = "";
+    document.querySelector('input[name=ano]').value = "";
+    document.querySelector('input[name=referencia]').value = "";
+    document.querySelector('input[type=file]').value = "";
+    document.getElementById('fileList').innerHTML = "";
+}
+</script>
+
 </body>
 </html>
 """
