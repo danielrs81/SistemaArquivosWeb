@@ -199,3 +199,98 @@ INFO:werkzeug: * Detected change in 'C:\\Users\\ACEXCBN\\meu_sistema_upload\\bac
 INFO:werkzeug: * Restarting with stat
 WARNING:werkzeug: * Debugger is active!
 INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5001
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug:127.0.0.1 - - [16/Jul/2025 11:19:09] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Jul/2025 11:19:10] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Jul/2025 11:19:37] "[32mPOST /cliente HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [16/Jul/2025 11:19:37] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Jul/2025 11:20:04] "GET /static/c_redX.png HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Jul/2025 11:22:09] "POST /upload HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Jul/2025 11:25:07] "[31m[1mPOST /upload HTTP/1.1[0m" 400 -
+INFO:werkzeug:127.0.0.1 - - [16/Jul/2025 11:25:19] "[31m[1mPOST /upload HTTP/1.1[0m" 400 -
+INFO:werkzeug:127.0.0.1 - - [16/Jul/2025 11:30:14] "POST /upload HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Jul/2025 11:30:16] "[35m[1mPOST /upload HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [16/Jul/2025 11:32:54] "[36mGET /static/c_redX.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [16/Jul/2025 11:32:55] "[35m[1mPOST /upload HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [16/Jul/2025 11:33:17] "[35m[1mPOST /upload HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [16/Jul/2025 11:33:29] "[35m[1mPOST /upload HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [16/Jul/2025 11:33:43] "POST /upload HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Jul/2025 11:33:46] "[35m[1mPOST /upload HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [16/Jul/2025 11:33:58] "[35m[1mPOST /upload HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [16/Jul/2025 11:39:06] "[35m[1mPOST /upload HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [16/Jul/2025 11:39:27] "POST /upload HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Jul/2025 11:39:49] "POST /upload HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Jul/2025 11:39:50] "[35m[1mPOST /upload HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [16/Jul/2025 11:42:44] "[35m[1mPOST /upload HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [16/Jul/2025 11:43:05] "POST /upload HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Jul/2025 11:44:15] "GET /busca HTTP/1.1" 200 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5001
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug:127.0.0.1 - - [16/Jul/2025 12:16:05] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Jul/2025 12:18:12] "[32mPOST /cliente HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [16/Jul/2025 12:18:12] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Jul/2025 12:19:01] "[36mGET /static/c_redX.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [16/Jul/2025 12:19:18] "[31m[1mPOST /upload HTTP/1.1[0m" 400 -
+INFO:werkzeug:127.0.0.1 - - [16/Jul/2025 12:19:43] "[35m[1mPOST /upload HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [16/Jul/2025 12:20:03] "POST /upload HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Jul/2025 12:20:11] "[35m[1mPOST /upload HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [16/Jul/2025 12:20:34] "[35m[1mPOST /upload HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [16/Jul/2025 12:20:38] "POST /upload HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Jul/2025 12:20:58] "[35m[1mPOST /upload HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [16/Jul/2025 12:21:08] "[35m[1mPOST /upload HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [16/Jul/2025 12:21:37] "[35m[1mPOST /upload HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [16/Jul/2025 12:22:54] "POST /upload HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Jul/2025 12:23:05] "[35m[1mPOST /upload HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [16/Jul/2025 12:25:12] "[31m[1mPOST /upload HTTP/1.1[0m" 400 -
+INFO:werkzeug:127.0.0.1 - - [16/Jul/2025 12:25:31] "[35m[1mPOST /upload HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [16/Jul/2025 12:25:40] "[36mGET /static/c_redX.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [16/Jul/2025 12:25:43] "POST /upload HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Jul/2025 12:27:07] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Jul/2025 12:27:07] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [16/Jul/2025 12:27:36] "GET /static/c_redX.png HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Jul/2025 12:27:38] "[35m[1mPOST /upload HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [16/Jul/2025 12:27:48] "POST /upload HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'C:\\Users\\ACEXCBN\\meu_sistema_upload\\backend_flask_integrado.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5001
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug:127.0.0.1 - - [16/Jul/2025 12:38:05] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Jul/2025 12:38:29] "[35m[1mPOST /upload HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [16/Jul/2025 12:38:39] "[35m[1mPOST /upload HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [16/Jul/2025 12:38:49] "[36mGET /static/c_redX.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [16/Jul/2025 12:38:50] "[35m[1mPOST /upload HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [16/Jul/2025 12:39:06] "POST /upload HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Jul/2025 12:39:37] "POST /upload HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Jul/2025 13:22:50] "[36mGET /static/c_redX.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [16/Jul/2025 13:22:55] "POST /upload HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Jul/2025 13:23:33] "[31m[1mPOST /upload HTTP/1.1[0m" 400 -
+INFO:werkzeug:127.0.0.1 - - [16/Jul/2025 13:23:53] "[31m[1mPOST /upload HTTP/1.1[0m" 400 -
+INFO:werkzeug:127.0.0.1 - - [16/Jul/2025 13:24:03] "POST /upload HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Jul/2025 13:24:18] "[35m[1mPOST /upload HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [16/Jul/2025 13:26:29] "[35m[1mPOST /upload HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [16/Jul/2025 13:26:41] "[35m[1mPOST /upload HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [16/Jul/2025 13:26:47] "[36mGET /static/c_redX.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [16/Jul/2025 13:26:48] "POST /upload HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'C:\\Users\\ACEXCBN\\meu_sistema_upload\\logica.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug: * Detected change in 'C:\\Users\\ACEXCBN\\meu_sistema_upload\\logica.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205

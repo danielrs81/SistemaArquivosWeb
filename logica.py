@@ -2,13 +2,21 @@ import os
 import shutil
 import re
 from tkinter import messagebox
+import tkinter as tk
 import subprocess
 import sys
 import configparser
 
+# Inicializar root invisível para messagebox funcionar corretamente
+root = tk.Tk()
+root.withdraw()
+root.lift()
+root.attributes('-topmost', True)
+
 # Carregar configurações
 config = configparser.ConfigParser()
 config.read('config.ini')
+
 
 BASE_DIR = config.get('PATHS', 'BASE_DIR', fallback="D:/Arquivo Digital")
 EXTENSOES_BLOQUEADAS = {'.exe', '.bat', '.cmd', '.ps1', '.vbs', '.js', '.jar', '.msi', '.dll'}
