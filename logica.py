@@ -77,23 +77,20 @@ def copiar_arquivos(pasta_destino, arquivos):
                 
             # Processamento normal para outros arquivos
             if not validar_arquivo(arquivo['path']):
-                messagebox.showerror("Erro", f"Tipo de arquivo não permitido: {os.path.splitext(arquivo['path'])[1]}")
-                return False
+                return False, "Tipo de arquivo não permitido"
                 
             os.makedirs(os.path.dirname(destino), exist_ok=True)
             
             if os.path.exists(destino):
-                resposta = messagebox.askyesno("Arquivo Existente", f"Substituir {arquivo['name']}?")
-                if not resposta:
-                    return False
+                # Retorna uma flag indicando que precisa de confirmação
+                return False, "arquivo_existente"
             
             shutil.copy2(arquivo['path'], destino)
             
         except Exception as e:
-            messagebox.showerror("Erro", f"Falha ao copiar {arquivo['name']}: {str(e)}")
-            return False
+            return False, str(e)
     
-    return True
+    return True,
 
 def abrir_pasta_processo(caminho_pasta):
     """Abre a pasta do processo no explorador de arquivos"""

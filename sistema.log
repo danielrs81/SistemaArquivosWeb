@@ -587,3 +587,90 @@ INFO:werkzeug:127.0.0.1 - - [16/Jul/2025 17:21:18] "POST /upload HTTP/1.1" 200 -
 INFO:werkzeug:127.0.0.1 - - [16/Jul/2025 17:21:22] "POST /upload HTTP/1.1" 200 -
 ERROR:root:Erro no upload: main thread is not in main loop
 INFO:werkzeug:127.0.0.1 - - [16/Jul/2025 17:21:31] "[35m[1mPOST /upload HTTP/1.1[0m" 500 -
+INFO:werkzeug: * Detected change in 'C:\\Users\\ACEXCBN\\meu_sistema_upload\\logica.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Detected change in 'C:\\Users\\ACEXCBN\\meu_sistema_upload\\logica.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug: * Detected change in 'C:\\Users\\ACEXCBN\\meu_sistema_upload\\backend_flask_integrado.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Detected change in 'C:\\Users\\ACEXCBN\\meu_sistema_upload\\backend_flask_integrado.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug: * Detected change in 'C:\\Users\\ACEXCBN\\meu_sistema_upload\\backend_flask_integrado.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Detected change in 'C:\\Users\\ACEXCBN\\meu_sistema_upload\\backend_flask_integrado.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug:127.0.0.1 - - [16/Jul/2025 17:32:43] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5001
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug:127.0.0.1 - - [16/Jul/2025 17:32:52] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Jul/2025 17:33:15] "[36mGET /static/c_redX.png HTTP/1.1[0m" 304 -
+ERROR:root:Erro no upload: not enough values to unpack (expected 2, got 1)
+INFO:werkzeug:127.0.0.1 - - [16/Jul/2025 17:33:18] "[35m[1mPOST /upload HTTP/1.1[0m" 500 -
+ERROR:root:Erro no upload: not enough values to unpack (expected 2, got 1)
+INFO:werkzeug:127.0.0.1 - - [16/Jul/2025 17:33:42] "[35m[1mPOST /upload HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [16/Jul/2025 17:34:03] "POST /upload HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Jul/2025 17:36:11] "[36mGET /static/c_redX.png HTTP/1.1[0m" 304 -
+ERROR:root:Erro no upload: not enough values to unpack (expected 2, got 1)
+INFO:werkzeug:127.0.0.1 - - [16/Jul/2025 17:36:12] "[35m[1mPOST /upload HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [16/Jul/2025 17:37:37] "POST /upload HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Jul/2025 17:37:42] "POST /confirmar_upload HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Jul/2025 17:38:03] "POST /upload HTTP/1.1" 200 -
+ERROR:root:Erro no upload: not enough values to unpack (expected 2, got 1)
+INFO:werkzeug:127.0.0.1 - - [16/Jul/2025 17:38:15] "[35m[1mPOST /upload HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [16/Jul/2025 17:39:09] "POST /upload HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Jul/2025 17:43:29] "POST /confirmar_upload HTTP/1.1" 200 -
+ERROR:root:Erro no upload: not enough values to unpack (expected 2, got 1)
+INFO:werkzeug:127.0.0.1 - - [16/Jul/2025 17:43:38] "[35m[1mPOST /upload HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [16/Jul/2025 17:43:44] "POST /upload HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Jul/2025 17:43:50] "POST /confirmar_upload HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'C:\\Users\\ACEXCBN\\meu_sistema_upload\\backend_flask_integrado.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Detected change in 'C:\\Users\\ACEXCBN\\meu_sistema_upload\\backend_flask_integrado.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5001
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug:127.0.0.1 - - [16/Jul/2025 18:10:48] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Jul/2025 18:11:00] "[32mPOST /cliente HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [16/Jul/2025 18:11:00] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Jul/2025 18:11:25] "POST /upload HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Jul/2025 18:11:54] "[36mGET /static/c_redX.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [16/Jul/2025 18:11:56] "POST /upload HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Jul/2025 18:12:04] "POST /upload HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Jul/2025 18:12:06] "POST /confirmar_upload HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Jul/2025 18:12:22] "POST /upload HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Jul/2025 18:12:34] "POST /upload HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Jul/2025 18:12:35] "POST /confirmar_upload HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Jul/2025 18:12:57] "POST /upload HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Jul/2025 18:13:06] "POST /upload HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Jul/2025 18:13:23] "[31m[1mPOST /upload HTTP/1.1[0m" 400 -
+INFO:werkzeug:127.0.0.1 - - [16/Jul/2025 18:13:32] "[31m[1mPOST /upload HTTP/1.1[0m" 400 -
+INFO:werkzeug:127.0.0.1 - - [16/Jul/2025 18:13:46] "POST /upload HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Jul/2025 18:14:18] "[36mGET /static/c_redX.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [16/Jul/2025 18:14:20] "POST /upload HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Jul/2025 18:14:28] "[31m[1mPOST /upload HTTP/1.1[0m" 400 -
+INFO:werkzeug:127.0.0.1 - - [16/Jul/2025 18:14:42] "[31m[1mPOST /upload HTTP/1.1[0m" 400 -
+INFO:werkzeug:127.0.0.1 - - [16/Jul/2025 18:14:52] "POST /upload HTTP/1.1" 200 -

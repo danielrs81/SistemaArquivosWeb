@@ -134,12 +134,11 @@ HTML_TEMPLATE = r"""
         <input type="text" name="ano" maxlength="2" required pattern="\d{2}">
 
         <label>Referência:</label>
-        <input type="text" name="referencia" required pattern="^[A-Za-z0-9.-]+$" title="Apenas letras, números, hífen e ponto são permitidos">
+        <input type="text" name="referencia" required pattern="^[A-Za-z0-9. \-]+$" title="Apenas letras, números, ponto(.), hífen(-) e espaço são permitidos">
 
         <label>Arquivos:</label>
         <div class="file-controls">
             <button type="button" id="btnEscolherArquivos">Escolher arquivos</button>
-            <!--<button type="button" id="btnEscolherPasta">Escolher Pasta</button>-->
         </div>
         <input type="file" name="files" multiple id="fileInput" style="display: none;">
         <div id="fileList" class="file-list"></div>
@@ -192,7 +191,6 @@ HTML_TEMPLATE = r"""
 
         function addFilesToList(files) {
             for (let i = 0; i < files.length; i++) {
-                // Verifica se o arquivo já não está na lista (evita duplicatas)
                 if (!fileList.some(f => f.name === files[i].name && f.size === files[i].size && f.lastModified === files[i].lastModified)) {
                     fileList.push(files[i]);
                 }
@@ -200,10 +198,10 @@ HTML_TEMPLATE = r"""
             updateFileList();
         }
 
-                function removeFile(index) {
-                    fileList.splice(index, 1);
-                    updateFileList();
-                }
+        function removeFile(index) {
+            fileList.splice(index, 1);
+            updateFileList();
+        }
 
         function updateFileList() {
             const fileListDiv = document.getElementById('fileList');
@@ -235,21 +233,14 @@ HTML_TEMPLATE = r"""
         // Evento quando arquivos são selecionados
         fileInput.addEventListener('change', (e) => {
             if (e.target.files.length > 0) {
-                fileList = []; // Limpa a lista anterior
+                fileList = [];
                 Array.from(e.target.files).forEach(file => {
                     fileList.push(file);
                 });
                 updateFileList();
-                e.target.value = ''; // Permite selecionar os mesmos arquivos novamente
+                e.target.value = '';
             }
         });
-
-        // Função para remover arquivo
-        function removeFile(index) {
-            fileList.splice(index, 1);
-            updateFileList();
-        }
-
 
         // Função para limpar campos
         function limparCampos() {
@@ -264,14 +255,11 @@ HTML_TEMPLATE = r"""
         }
 
         // Modal para pasta vazia
-        let formDataForEmptyFolder = null;
-
         function confirmEmptyFolder(confirm) {
             const modal = document.getElementById('emptyFolderModal');
             modal.style.display = 'none';
             
             if (confirm) {
-                // Enviar o formulário sem arquivos
                 const form = document.getElementById('uploadForm');
                 const tempFormData = new FormData(form);
                 
@@ -279,10 +267,10 @@ HTML_TEMPLATE = r"""
                     method: 'POST',
                     body: tempFormData
                 })
-                .then(response => response.text())
-                .then(text => {
-                    alert(text);
-                    if (response.ok) {
+                .then(response => response.json())
+                .then(result => {
+                    alert(result.message);
+                    if (result.status === "success") {
                         fileList = [];
                         updateFileList();
                     }
@@ -316,7 +304,6 @@ HTML_TEMPLATE = r"""
             }
 
             try {
-                // Criar FormData e adicionar arquivos manualmente
                 const formData = new FormData();
                 
                 // Adicionar campos do formulário
@@ -337,16 +324,55 @@ HTML_TEMPLATE = r"""
                     body: formData
                 });
 
-                const result = await response.text();
-                alert(result);
+                const result = await response.json();
                 
-                if (response.ok) {
-                    fileList = [];
-                    updateFileList();
+                if (result.status === "confirmacao_necessaria") {
+                    const confirmado = confirm(`${result.message}\nArquivos: ${result.arquivos.join(', ')}`);
+                    
+                    if (confirmado) {
+                        const confirmResponse = await fetch('/confirmar_upload', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify({
+                                confirmado: true,
+                                arquivos: result.arquivos,
+                                dados: {
+                                    cliente: cliente,
+                                    area: area,
+                                    servico: servico,
+                                    numero_processo: numero_processo,
+                                    ano: ano,
+                                    referencia: referencia
+                                }
+                            })
+                        });
+                        
+                        const finalResult = await confirmResponse.json();
+                        alert(finalResult.message);
+                        
+                        if (finalResult.status === "success") {
+                            fileList = [];
+                            updateFileList();
+                        }
+                    } else {
+                        alert("Upload cancelado");
+                        fileList = [];
+                        updateFileList();
+                    }
+                } else {
+                    alert(result.message);
+                    if (result.status === "success") {
+                        fileList = [];
+                        updateFileList();
+                    }
                 }
             } catch (error) {
                 console.error("Erro no envio:", error);
                 alert("Erro ao enviar os arquivos.");
+                fileList = [];
+                updateFileList();
             }
         });
     </script>
@@ -364,13 +390,13 @@ def cliente():
     nome = request.form.get("novo_cliente", "").strip().upper()
     acao = request.form.get("acao")
     if not nome:
-        return "Nome do cliente não pode estar vazio", 400
+        return jsonify({"status": "error", "message": "Nome do cliente não pode estar vazio"}), 400
     if acao == "cadastrar":
         sucesso, msg = adicionar_cliente(nome)
     elif acao == "excluir":
         sucesso, msg = remover_cliente(nome)
     else:
-        return "Ação inválida", 400
+        return jsonify({"status": "error", "message": "Ação inválida"}), 400
     return redirect(url_for("index"))
 
 @app.route("/upload", methods=["POST"])
@@ -381,28 +407,34 @@ def upload():
         servico = request.form.get("servico", "").strip().capitalize()
         numero_processo = request.form.get("numero_processo", "").strip()
         ano = request.form.get("ano", "").strip()
-        referencia = request.form.get("referencia", "")
+        referencia = request.form.get("referencia", "").strip()
 
-        
-        # Validação da referência (apenas letras, números, ., - e espaço) 
-        if not re.match(r'^[A-Za-z0-9. \- ]+$', referencia): 
-            return "Referência inválida. Use apenas letras, números, ponto(.), hífen(-) e espaço.", 400
-        
-        # apagar se funcionar, usar apenas o de cima.
-        # Validação da referência (apenas letras, números, . e -) 
-        # if not re.match(r'^[A-Za-z0-9.-]+$', referencia): 
-        #   return "Referência inválida. Use apenas letras, números, ponto(.) e hífen(-).", 400
+        # Validação da referência
+        if not re.match(r'^[A-Za-z0-9. \-]+$', referencia): 
+            return jsonify({
+                "status": "error",
+                "message": "Referência inválida. Use apenas letras, números, ponto(.), hífen(-) e espaço."
+            }), 400
 
         if not all([cliente, area, servico, numero_processo, ano, referencia]):
-            return "Todos os campos são obrigatórios!", 400
+            return jsonify({
+                "status": "error",
+                "message": "Todos os campos são obrigatórios!"
+            }), 400
 
         if len(numero_processo) != 6 or not numero_processo.isdigit():
-            return "Número do processo inválido", 400
+            return jsonify({
+                "status": "error",
+                "message": "Número do processo inválido"
+            }), 400
 
         if len(ano) != 2 or not ano.isdigit():
-            return "Ano inválido", 400
+            return jsonify({
+                "status": "error",
+                "message": "Ano inválido"
+            }), 400
 
-        # Verificar se já existe processo com mesmo número para o mesmo cliente/área
+        # Verificar se já existe processo com mesmo número
         processos_existentes = obter_info_processos()
         for proc in processos_existentes.values():
             mesmo_processo = (
@@ -412,27 +444,22 @@ def upload():
             )
             if mesmo_processo:
                 if proc['ano'] != ano:
-                    return (
-                        f"Já existe um processo com o número {numero_processo}, mas com o ano '{proc['ano']}'. "
-                        f"Use o mesmo ano para continuar.",
-                        400
-                    )
+                    return jsonify({
+                        "status": "error",
+                        "message": f"Já existe um processo com o número {numero_processo}, mas com o ano '{proc['ano']}'. Use o mesmo ano para continuar."
+                    }), 400
                 if proc['servico'].capitalize() != servico:
-                    return (
-                        f"Já existe um processo com o número {numero_processo} e ano {ano} "
-                        f"para esse cliente/área, mas com o serviço '{proc['servico']}'. "
-                        f"Use o mesmo serviço para continuar.",
-                        400
-                    )
+                    return jsonify({
+                        "status": "error",
+                        "message": f"Já existe um processo com o número {numero_processo} e ano {ano} para esse cliente/área, mas com o serviço '{proc['servico']}'. Use o mesmo serviço para continuar."
+                    }), 400
                 if proc['referencia'].upper() != referencia.upper():
-                    return (
-                        f"Já existe um processo com o número {numero_processo} e ano {ano} "
-                        f"para esse cliente/área/serviço, com referência '{proc['referencia']}'. "
-                        f"Use a mesma referência para evitar duplicação.",
-                        400
-                    )
+                    return jsonify({
+                        "status": "error",
+                        "message": f"Já existe um processo com o número {numero_processo} e ano {ano} para esse cliente/área/serviço, com referência '{proc['referencia']}'. Use a mesma referência para evitar duplicação."
+                    }), 400
 
-        # Criar a pasta de destino
+        # Criar pasta de destino
         pasta_destino = criar_pasta(cliente, area, servico, numero_processo, ano, referencia)
 
         # Processar arquivos se existirem
@@ -442,9 +469,7 @@ def upload():
                 if file.filename == '':
                     continue
                 
-                # Garantir que a pasta de upload existe
                 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
-                
                 filename = secure_filename(file.filename)
                 temp_path = os.path.join(UPLOAD_FOLDER, filename)
                 file.save(temp_path)
@@ -453,10 +478,22 @@ def upload():
                     "name": filename
                 })
 
-        # Criar pasta de destino
-        pasta_destino = criar_pasta(cliente, area, servico, numero_processo, ano, referencia)
-
         if arquivos_para_upload:
+            # Verificar se algum arquivo já existe
+            arquivos_existentes = []
+            for arq in arquivos_para_upload:
+                destino = os.path.join(pasta_destino, arq['name'])
+                if os.path.exists(destino):
+                    arquivos_existentes.append(arq['name'])
+
+            if arquivos_existentes:
+                return jsonify({
+                    "status": "confirmacao_necessaria",
+                    "message": "Um ou mais arquivos já existem. Deseja substituir?",
+                    "arquivos": arquivos_existentes
+                }), 200
+
+            # Se não há arquivos existentes, copia diretamente
             sucesso = copiar_arquivos(pasta_destino, arquivos_para_upload)
             
             # Limpar arquivos temporários
@@ -465,15 +502,83 @@ def upload():
                     os.remove(arq["path"])
             
             if sucesso:
-                return f"{len(arquivos_para_upload)} arquivo(s) enviado(s) com sucesso!"
-            return "Erro ao copiar arquivos", 500
+                return jsonify({
+                    "status": "success",
+                    "message": f"{len(arquivos_para_upload)} arquivo(s) enviado(s) com sucesso!"
+                }), 200
+            else:
+                return jsonify({
+                    "status": "error",
+                    "message": "Erro ao copiar arquivos"
+                }), 500
         
-        return "Pasta criada com sucesso sem arquivos!", 200
+        return jsonify({
+            "status": "success",
+            "message": "Pasta criada com sucesso sem arquivos!"
+        }), 200
 
     except Exception as e:
         logging.error(f"Erro no upload: {str(e)}")
-        return f"Erro interno: {str(e)}", 500
-    
+        return jsonify({
+            "status": "error",
+            "message": f"Erro interno: {str(e)}"
+        }), 500
+
+@app.route("/confirmar_upload", methods=["POST"])
+def confirmar_upload():
+    try:
+        data = request.json
+        confirmado = data.get('confirmado', False)
+        
+        if not confirmado:
+            return jsonify({
+                "status": "canceled",
+                "message": "Upload cancelado pelo usuário"
+            }), 200
+
+        # Recupera os dados do formulário
+        dados = data.get('dados', {})
+        arquivos = data.get('arquivos', [])
+        
+        # Recria a pasta de destino
+        pasta_destino = criar_pasta(
+            dados.get('cliente', ''),
+            dados.get('area', ''),
+            dados.get('servico', ''),
+            dados.get('numero_processo', ''),
+            dados.get('ano', ''),
+            dados.get('referencia', '')
+        )
+
+        # Processa os arquivos temporários
+        arquivos_para_upload = []
+        for filename in arquivos:
+            temp_path = os.path.join(UPLOAD_FOLDER, filename)
+            if os.path.exists(temp_path):
+                arquivos_para_upload.append({
+                    "path": temp_path,
+                    "name": filename
+                })
+
+        # Copia os arquivos com substituição
+        for arq in arquivos_para_upload:
+            destino = os.path.join(pasta_destino, arq['name'])
+            if os.path.exists(destino):
+                os.remove(destino)
+            shutil.copy2(arq['path'], destino)
+            if os.path.exists(arq["path"]):
+                os.remove(arq["path"])
+
+        return jsonify({
+            "status": "success",
+            "message": "Arquivos substituídos com sucesso"
+        }), 200
+        
+    except Exception as e:
+        return jsonify({
+            "status": "error",
+            "message": f"Erro: {str(e)}"
+        }), 500
 
 @app.route("/busca", methods=["GET"])
 def busca():
