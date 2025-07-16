@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, render_template_string, redirect, url_for
+from flask import Flask, request, jsonify, render_template_string, redirect, url_for, send_from_directory
 import os
 import shutil
 from werkzeug.utils import secure_filename
@@ -12,6 +12,10 @@ config.read('config.ini')
 UPLOAD_FOLDER = os.path.join(os.getcwd(), 'uploads')
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
+# Criar a pasta static se não existir
+STATIC_FOLDER = os.path.join(os.getcwd(), 'static')
+os.makedirs(STATIC_FOLDER, exist_ok=True)
+
 HTML_TEMPLATE = r"""
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -23,10 +27,34 @@ HTML_TEMPLATE = r"""
         h2 { color: #333; }
         form { background: #fff; padding: 20px; border-radius: 8px; }
         input, select, button { margin: 5px 0; padding: 8px; width: 100%; }
+        .file-controls {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
         .file-list { margin-top: 10px; }
-        .file-item { display: flex; justify-content: space-between; background: #eee; padding: 5px; margin-bottom: 5px; }
-        .file-item button { background: red; color: white; border: none; padding: 2px 8px; }
-        .drag-area { border: 2px dashed #aaa; padding: 20px; text-align: center; background: #fafafa; margin-top: 10px; }
+        .file-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px;
+            background: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-bottom: 5px;
+        }
+        .remove-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+        .drag-area {
+            border: 2px dashed #aaa;
+            padding: 20px;
+            text-align: center;
+            background: #fafafa;
+            margin-top: 10px;
+        }
         .row { display: flex; gap: 10px; }
         .col { flex: 1; }
     </style>
@@ -80,110 +108,152 @@ HTML_TEMPLATE = r"""
         <input type="text" name="referencia" required pattern="^[A-Za-z0-9.-]+$" title="Apenas letras, números, hífen e ponto são permitidos">
 
         <label>Arquivos:</label>
-        <input type="file" name="files" multiple>
+        <div class="file-controls">
+            <button type="button" id="btnEscolherArquivos">Escolher arquivos</button>
+            <button type="button" id="btnEscolherPasta">Escolher Pasta</button>
+        </div>
+        <input type="file" name="files" multiple id="fileInput" style="display: none;">
         <div id="fileList" class="file-list"></div>
 
-        <div class="drag-area" ondrop="dropHandler(event);" ondragover="dragOverHandler(event);">
+        <div class="drag-area" id="dragArea">
             Arraste e solte arquivos aqui
         </div>
 
         <button type="submit">Enviar</button>
     </form>
-        <button type="button" onclick="limparCampos()">Limpar Campos</button>
+    <button type="button" onclick="limparCampos()">Limpar Campos</button>
 
     <form method="get" action="/busca">
         <button type="submit">Busca Avançada</button>
     </form>
 
     <script>
-        function dropHandler(ev) {
-            ev.preventDefault();
-            const input = document.querySelector('input[type=file]');
-            const dt = new DataTransfer();
-            for (const file of ev.dataTransfer.files) {
-                dt.items.add(file);
-            }
-            for (const f of input.files) {
-                dt.items.add(f);
-            }
-            input.files = dt.files;
-        }
+        // Lista global de arquivos
+        let fileList = [];
 
-        function dragOverHandler(ev) {
-            ev.preventDefault();
-        }
-    </script>
-    <script>
-const inputFile = document.querySelector('input[type=file]');
-const fileListDiv = document.getElementById('fileList');
-
-inputFile.addEventListener('change', updateFileList);
-
-function updateFileList() {
-    fileListDiv.innerHTML = '';
-    const dt = new DataTransfer();
-
-    for (let i = 0; i < inputFile.files.length; i++) {
-        const file = inputFile.files[i];
-        const item = document.createElement('div');
-        item.className = 'file-item';
-        item.innerHTML = `
-            ${file.name}
-            <button type="button" onclick="removeFile(${i})">X</button>
-        `;
-        fileListDiv.appendChild(item);
-        dt.items.add(file);
-    }
-
-    inputFile.files = dt.files;
-}
-
-function removeFile(index) {
-    const dt = new DataTransfer();
-    const { files } = inputFile;
-
-    for (let i = 0; i < files.length; i++) {
-        if (i !== index) dt.items.add(files[i]);
-    }
-
-    inputFile.files = dt.files;
-    updateFileList();
-}
-</script>
-
-<script>
-document.getElementById("uploadForm").addEventListener("submit", async function(event) {
-    event.preventDefault();
-
-    const formData = new FormData(this);
-
-    try {
-        const response = await fetch('/upload', {
-            method: 'POST',
-            body: formData
+        // Configurar drag and drop
+        const dragArea = document.getElementById('dragArea');
+        dragArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dragArea.style.backgroundColor = '#e9e9e9';
+        });
+        
+        dragArea.addEventListener('dragleave', () => {
+            dragArea.style.backgroundColor = '#fafafa';
+        });
+        
+        dragArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dragArea.style.backgroundColor = '#fafafa';
+            const files = e.dataTransfer.files;
+            addFilesToList(files);
         });
 
-        const text = await response.text();
-        alert(text);  // Exibe a quantidade de arquivos enviados com sucesso
-    } catch (error) {
-        alert("Erro ao enviar os arquivos.");
-    }
-});
-</script>
+        function addFilesToList(files) {
+            for (let i = 0; i < files.length; i++) {
+                fileList.push(files[i]);
+            }
+            updateFileList();
+        }
 
-<script>
-function limparCampos() {
-    document.querySelector('select[name=cliente]').value = "";
-    document.querySelector('select[name=area]').value = "";
-    document.querySelector('select[name=servico]').value = "";
-    document.querySelector('input[name=numero_processo]').value = "";
-    document.querySelector('input[name=ano]').value = "";
-    document.querySelector('input[name=referencia]').value = "";
-    document.querySelector('input[type=file]').value = "";
-    document.getElementById('fileList').innerHTML = "";
-}
-</script>
+        function removeFile(index) {
+            fileList.splice(index, 1);
+            updateFileList();
+        }
 
+        function updateFileList() {
+            const fileListDiv = document.getElementById('fileList');
+            fileListDiv.innerHTML = '';
+
+            fileList.forEach((file, index) => {
+                const fileItem = document.createElement('div');
+                fileItem.className = 'file-item';
+                fileItem.innerHTML = `
+                    <span>${file.name}</span>
+                    <button type="button" onclick="removeFile(${index})" class="remove-btn">
+                        <img src="/static/c_redX.png" alt="Remover" width="16">
+                    </button>
+                `;
+                fileListDiv.appendChild(fileItem);
+            });
+
+            // Atualizar input de arquivos
+            const dataTransfer = new DataTransfer();
+            fileList.forEach(file => dataTransfer.items.add(file));
+            document.getElementById('fileInput').files = dataTransfer.files;
+        }
+
+        // Event listeners para botões
+        document.getElementById('btnEscolherArquivos').addEventListener('click', () => {
+            document.getElementById('fileInput').click();
+        });
+
+        document.getElementById('fileInput').addEventListener('change', (e) => {
+            addFilesToList(e.target.files);
+            e.target.value = ''; // Resetar para permitir adicionar os mesmos arquivos novamente
+        });
+
+        document.getElementById('btnEscolherPasta').addEventListener('click', async () => {
+            // Verificar se a API está disponível
+            if (!window.showDirectoryPicker) {
+                alert('Seu navegador não suporta a seleção de pastas. Por favor, atualize ou use outro navegador.');
+                return;
+            }
+            try {
+                const dirHandle = await window.showDirectoryPicker();
+                await processFolder(dirHandle);
+            } catch (error) {
+                console.error('Erro ao selecionar pasta:', error);
+            }
+        });
+
+        async function processFolder(dirHandle, path = '') {
+            for await (const entry of dirHandle.values()) {
+                if (entry.kind === 'file') {
+                    const file = await entry.getFile();
+                    fileList.push(file);
+                } else if (entry.kind === 'directory') {
+                    await processFolder(entry, `${path}${entry.name}/`);
+                }
+            }
+            updateFileList();
+        }
+
+        // Função para limpar campos
+        function limparCampos() {
+            document.querySelector('select[name=cliente]').value = "";
+            document.querySelector('select[name=area]').value = "";
+            document.querySelector('select[name=servico]').value = "";
+            document.querySelector('input[name=numero_processo]').value = "";
+            document.querySelector('input[name=ano]').value = "";
+            document.querySelector('input[name=referencia]').value = "";
+            fileList = [];
+            updateFileList();
+        }
+
+        // Envio do formulário via AJAX
+        document.getElementById("uploadForm").addEventListener("submit", async function(event) {
+            event.preventDefault();
+
+            const formData = new FormData(this);
+
+            try {
+                const response = await fetch('/upload', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const text = await response.text();
+                alert(text);  // Exibe a quantidade de arquivos enviados com sucesso
+                if (response.ok) {
+                    fileList = [];
+                    updateFileList();
+                }
+            } catch (error) {
+                alert("Erro ao enviar os arquivos.");
+            }
+        });
+    </script>
 </body>
 </html>
 """
@@ -290,6 +360,11 @@ def upload():
 @app.route("/busca", methods=["GET"])
 def busca():
     return "Busca Avançada ainda não implementada nesta interface web."
+
+# Rota para servir arquivos estáticos (ícone de remover)
+@app.route('/static/<path:filename>')
+def serve_static(filename):
+    return send_from_directory(STATIC_FOLDER, filename)
 
 if __name__ == "__main__":
     app.run(debug=True, port=5001)

@@ -626,71 +626,92 @@ class Aplicativo:
                 messagebox.showwarning("Atenção", mensagem)
 
     def fazer_upload(self):
-        cliente = self.cliente_var.get()
-        area = self.area_var.get()
-        servico = self.servico_var.get()
-        numero_processo = self.numero_processo_entry.get()
-        ano = self.ano_entry.get()
-        referencia = self.referencia_entry.get().strip().upper()
-        
-        # Validações básicas
-        if len(numero_processo) != 6 or not numero_processo.isdigit():
-            messagebox.showwarning("Atenção", "O número do processo deve ter exatamente 6 dígitos numéricos!")
-            return
-        if len(ano) != 2 or not ano.isdigit():
-            messagebox.showwarning("Atenção", "O ano do processo deve ter exatamente 2 dígitos numéricos!")
-            return
-        if not all([cliente, area, servico, referencia]):
-            messagebox.showwarning("Atenção", "Todos os campos devem ser preenchidos!")
-            return
-        
-        # Validação de processo existente
-        if not self.validar_processo_existente(numero_processo, ano, servico, referencia):
-            return
-        
-        # Confirmação se não houver arquivos
-        if not self.arquivos_para_upload:
-            resposta = messagebox.askyesno(
-                "Pasta Vazia", 
-                "Nenhum arquivo foi selecionado. Deseja criar a pasta sem documentos?",
-                icon='warning'
-            )
-            if not resposta:
+        try:
+            cliente = self.cliente_var.get()
+            area = self.area_var.get()
+            servico = self.servico_var.get()
+            numero_processo = self.numero_processo_entry.get()
+            ano = self.ano_entry.get()
+            referencia = self.referencia_entry.get().strip().upper()
+            
+            # Validações básicas
+            if len(numero_processo) != 6 or not numero_processo.isdigit():
+                messagebox.showwarning("Atenção", "O número do processo deve ter exatamente 6 dígitos numéricos!")
                 return
-        
-        # Executa o upload/criação da pasta
-        pasta_destino = criar_pasta(cliente, area, servico, numero_processo, ano, referencia)
-        
-        if not self.arquivos_para_upload:
-            messagebox.showinfo("Sucesso", "Pasta criada sem documentos!")
-            return
-        
-        if copiar_arquivos(pasta_destino, self.arquivos_para_upload):
-            messagebox.showinfo("Sucesso", f"{len(self.arquivos_para_upload)} arquivo(s) copiado(s) com sucesso!")
+            if len(ano) != 2 or not ano.isdigit():
+                messagebox.showwarning("Atenção", "O ano do processo deve ter exatamente 2 dígitos numéricos!")
+                return
+            if not all([cliente, area, servico, referencia]):
+                messagebox.showwarning("Atenção", "Todos os campos devem ser preenchidos!")
+                return
+            
+            # Validação de processo existente
+            if not self.validar_processo_existente(numero_processo, ano, servico, referencia):
+                return
+            
+            # Confirmação se não houver arquivos
+            if not self.arquivos_para_upload:
+                resposta = messagebox.askyesno(
+                    "Pasta Vazia", 
+                    "Nenhum arquivo foi selecionado. Deseja criar a pasta sem documentos?",
+                    icon='warning'
+                )
+                if not resposta:
+                    return
+            
+            # Executa o upload/criação da pasta
+            pasta_destino = criar_pasta(cliente, area, servico, numero_processo, ano, referencia)
+            
+            # Verifica se o diretório foi criado
+            if not os.path.exists(pasta_destino):
+                messagebox.showerror("Erro", f"Falha ao criar diretório: {pasta_destino}")
+                return
+            
+            if not self.arquivos_para_upload:
+                messagebox.showinfo("Sucesso", "Pasta criada sem documentos!")
+                return
+            
+            # Inicializa contador de sucessos
+            sucessos = 0
+            falhas = []
+            
+            for arquivo in self.arquivos_para_upload:
+                try:
+                    destino = os.path.join(pasta_destino, arquivo['name'])
+                    
+                    # Se for arquivo temporário, já foi movido - apenas copiar
+                    if arquivo.get('is_temp'):
+                        shutil.copy2(arquivo['path'], destino)
+                    else:
+                        # Processamento normal para outros arquivos
+                        if not validar_arquivo(arquivo['path']):
+                            raise ValueError(f"Tipo de arquivo não permitido: {os.path.splitext(arquivo['path'])[1]}")
+                        
+                        if os.path.exists(destino):
+                            resposta = messagebox.askyesno("Arquivo Existente", f"Substituir {arquivo['name']}?")
+                            if not resposta:
+                                continue
+                        
+                        shutil.copy2(arquivo['path'], destino)
+                    
+                    sucessos += 1
+                except Exception as e:
+                    falhas.append((arquivo['name'], str(e)))
+            
+            # Limpa a lista de arquivos após o upload
             self.arquivos_para_upload = []
             self.atualizar_lista_arquivos()
             
-        for arquivo in self.arquivos_para_upload:
-            try:
-                destino = os.path.join(pasta_destino, arquivo['name'])
-                
-                # Se for arquivo temporário, já foi movido - apenas copiar
-                if arquivo.get('is_temp'):
-                    shutil.copy2(arquivo['path'], destino)
-                else:
-                    # Processamento normal para outros arquivos
-                    if not validar_arquivo(arquivo['path']):
-                        raise ValueError(f"Tipo de arquivo não permitido: {os.path.splitext(arquivo['path'])[1]}")
-                    
-                    if os.path.exists(destino):
-                        resposta = messagebox.askyesno("Arquivo Existente", f"Substituir {arquivo['name']}?")
-                        if not resposta:
-                            continue
-                    
-                    shutil.copy2(arquivo['path'], destino)
-            
-            except Exception as e:
-                messagebox.showerror("Erro", f"Falha ao copiar {arquivo['name']}: {str(e)}")
+            # Exibe resumo
+            if sucessos > 0:
+                messagebox.showinfo("Sucesso", f"{sucessos} arquivo(s) copiado(s) com sucesso!")
+            if falhas:
+                detalhes = "\n".join([f"{nome}: {erro}" for nome, erro in falhas])
+                messagebox.showerror("Falhas", f"Os seguintes arquivos falharam:\n{detalhes}")
+        
+        except Exception as e:
+            messagebox.showerror("Erro", f"Erro durante o upload: {str(e)}")
+            logging.error(f"Erro no upload: {str(e)}")
     
     def _limpar_arquivos_temporarios(self):
         """Remove arquivos temporários marcados para exclusão"""
