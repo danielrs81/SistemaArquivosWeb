@@ -6,6 +6,10 @@ import tkinter as tk
 import subprocess
 import sys
 import configparser
+import logging
+
+# Configurar logging
+logging.basicConfig(filename='sistema.log', level=logging.ERROR)
 
 # Inicializar root invisível para messagebox funcionar corretamente
 root = tk.Tk()
@@ -16,7 +20,6 @@ root.attributes('-topmost', True)
 # Carregar configurações
 config = configparser.ConfigParser()
 config.read('config.ini')
-
 
 BASE_DIR = config.get('PATHS', 'BASE_DIR', fallback="D:/Arquivo Digital")
 EXTENSOES_BLOQUEADAS = {'.exe', '.bat', '.cmd', '.ps1', '.vbs', '.js', '.jar', '.msi', '.dll'}
@@ -51,9 +54,11 @@ def validar_arquivo(arquivo_path):
     return ext.lower() not in EXTENSOES_BLOQUEADAS
 
 def criar_pasta(cliente, area, servico, numero_processo, ano, referencia):
+    # Remove apenas caracteres realmente inválidos, mantendo espaços
+    referencia = re.sub(r'[^A-Za-z0-9. \-]', '', referencia).strip()
     sigla_area = "I" if area == "IMPORTAÇÃO" else "E"
     sigla_servico = servico[0].upper()
-    nome_pasta = f"{sigla_area}{sigla_servico}-{numero_processo}-{ano} - {referencia.upper()}"
+    nome_pasta = f"{sigla_area}{sigla_servico}-{numero_processo}-{ano} - {referencia}"
     caminho_pasta = os.path.join(BASE_DIR, area, cliente, nome_pasta)
     os.makedirs(caminho_pasta, exist_ok=True)
     return caminho_pasta

@@ -1,18 +1,24 @@
 from flask import Flask, request, jsonify, render_template_string, redirect, url_for, send_from_directory
 import os
 import shutil
+import re
 from werkzeug.utils import secure_filename
 from configparser import ConfigParser
 from clientes import obter_clientes, adicionar_cliente, remover_cliente
 from logica import criar_pasta, copiar_arquivos, obter_info_processos
+import logging
 
 app = Flask(__name__)
 config = ConfigParser()
 config.read('config.ini')
+
+# Configurar logging
+logging.basicConfig(filename='flask.log', level=logging.ERROR)
+
+# Criar pastas necessárias
 UPLOAD_FOLDER = os.path.join(os.getcwd(), 'uploads')
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
-# Criar a pasta static se não existir
 STATIC_FOLDER = os.path.join(os.getcwd(), 'static')
 os.makedirs(STATIC_FOLDER, exist_ok=True)
 
@@ -57,6 +63,29 @@ HTML_TEMPLATE = r"""
         }
         .row { display: flex; gap: 10px; }
         .col { flex: 1; }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.4);
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 400px;
+        }
+        .modal-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
@@ -126,6 +155,17 @@ HTML_TEMPLATE = r"""
     <form method="get" action="/busca">
         <button type="submit">Busca Avançada</button>
     </form>
+
+    <!-- Modal para confirmação de pasta vazia -->
+    <div id="emptyFolderModal" class="modal">
+        <div class="modal-content">
+            <p>Deseja criar a pasta sem arquivos?</p>
+            <div class="modal-buttons">
+                <button onclick="confirmEmptyFolder(true)">Sim</button>
+                <button onclick="confirmEmptyFolder(false)">Não</button>
+            </div>
+        </div>
+    </div>
 
     <script>
         // Lista global de arquivos
@@ -231,9 +271,58 @@ HTML_TEMPLATE = r"""
             updateFileList();
         }
 
+        // Modal para pasta vazia
+        let formDataForEmptyFolder = null;
+
+        function confirmEmptyFolder(confirm) {
+            const modal = document.getElementById('emptyFolderModal');
+            modal.style.display = 'none';
+            
+            if (confirm) {
+                // Enviar o formulário sem arquivos
+                const form = document.getElementById('uploadForm');
+                const tempFormData = new FormData(form);
+                
+                fetch('/upload', {
+                    method: 'POST',
+                    body: tempFormData
+                })
+                .then(response => response.text())
+                .then(text => {
+                    alert(text);
+                    if (response.ok) {
+                        fileList = [];
+                        updateFileList();
+                    }
+                })
+                .catch(error => {
+                    alert("Erro ao criar pasta.");
+                });
+            }
+        }
+
         // Envio do formulário via AJAX
         document.getElementById("uploadForm").addEventListener("submit", async function(event) {
             event.preventDefault();
+
+            // Validar campos antes de continuar
+            const cliente = document.querySelector('select[name=cliente]').value;
+            const area = document.querySelector('select[name=area]').value;
+            const servico = document.querySelector('select[name=servico]').value;
+            const numero_processo = document.querySelector('input[name=numero_processo]').value;
+            const ano = document.querySelector('input[name=ano]').value;
+            const referencia = document.querySelector('input[name=referencia]').value;
+
+            if (!cliente || !area || !servico || !numero_processo || !ano || !referencia) {
+                alert("Todos os campos são obrigatórios!");
+                return;
+            }
+
+            if (fileList.length === 0) {
+                // Mostrar modal de confirmação para pasta vazia
+                document.getElementById('emptyFolderModal').style.display = 'block';
+                return;
+            }
 
             const formData = new FormData(this);
 
@@ -244,13 +333,17 @@ HTML_TEMPLATE = r"""
                 });
 
                 const text = await response.text();
-                alert(text);  // Exibe a quantidade de arquivos enviados com sucesso
-                if (response.ok) {
-                    fileList = [];
-                    updateFileList();
+                if (!response.ok) {
+                    throw new Error(text);
                 }
+                alert(text);
+                fileList = [];
+                updateFileList();
             } catch (error) {
-                alert("Erro ao enviar os arquivos.");
+                // Mostra apenas se for realmente um erro
+                if (!error.message.includes("Pasta criada com sucesso")) {
+                    alert(error.message);
+                }
             }
         });
     </script>
@@ -285,7 +378,17 @@ def upload():
         servico = request.form.get("servico", "").strip().capitalize()
         numero_processo = request.form.get("numero_processo", "").strip()
         ano = request.form.get("ano", "").strip()
-        referencia = request.form.get("referencia", "").strip().upper()
+        referencia = request.form.get("referencia", "")
+
+        
+        # Validação da referência (apenas letras, números, ., - e espaço) 
+        if not re.match(r'^[A-Za-z0-9. \- ]+$', referencia): 
+            return "Referência inválida. Use apenas letras, números, ponto(.), hífen(-) e espaço.", 400
+        
+        # apagar se funcionar, usar apenas o de cima.
+        # Validação da referência (apenas letras, números, . e -) 
+        # if not re.match(r'^[A-Za-z0-9.-]+$', referencia): 
+        #   return "Referência inválida. Use apenas letras, números, ponto(.) e hífen(-).", 400
 
         if not all([cliente, area, servico, numero_processo, ano, referencia]):
             return "Todos os campos são obrigatórios!", 400
@@ -296,7 +399,7 @@ def upload():
         if len(ano) != 2 or not ano.isdigit():
             return "Ano inválido", 400
 
-        # Verificar se já existe processo com mesmo número, mas com ano, referência ou serviço diferentes
+        # Verificar se já existe processo com mesmo número para o mesmo cliente/área
         processos_existentes = obter_info_processos()
         for proc in processos_existentes.values():
             mesmo_processo = (
@@ -313,8 +416,8 @@ def upload():
                     )
                 if proc['servico'].capitalize() != servico:
                     return (
-                        f"Já existe um processo com o número {numero_processo} e ano {ano}, "
-                        f"mas com o serviço '{proc['servico']}'. "
+                        f"Já existe um processo com o número {numero_processo} e ano {ano} "
+                        f"para esse cliente/área, mas com o serviço '{proc['servico']}'. "
                         f"Use o mesmo serviço para continuar.",
                         400
                     )
@@ -326,42 +429,53 @@ def upload():
                         400
                     )
 
-        arquivos = request.files.getlist("files")
-        arquivos_para_upload = []
-
-        for file in arquivos:
-            filename = secure_filename(file.filename)
-            temp_path = os.path.join(UPLOAD_FOLDER, filename)
-            file.save(temp_path)
-            arquivos_para_upload.append({
-                "path": temp_path,
-                "name": filename
-            })
-
+        # Criar a pasta de destino
         pasta_destino = criar_pasta(cliente, area, servico, numero_processo, ano, referencia)
 
-        if not arquivos_para_upload:
-            return "Nenhum arquivo foi enviado. Pasta criada sem documentos!", 200
+        # Processar arquivos se existirem
+        arquivos_para_upload = []
+        if 'files' in request.files:
+            for file in request.files.getlist("files"):
+                if file.filename == '':
+                    continue
+                
+                # Garantir que a pasta de upload existe
+                os.makedirs(UPLOAD_FOLDER, exist_ok=True)
+                
+                filename = secure_filename(file.filename)
+                temp_path = os.path.join(UPLOAD_FOLDER, filename)
+                file.save(temp_path)
+                arquivos_para_upload.append({
+                    "path": temp_path,
+                    "name": filename
+                })
 
-        sucesso = copiar_arquivos(pasta_destino, arquivos_para_upload)
+        # Criar pasta de destino
+        pasta_destino = criar_pasta(cliente, area, servico, numero_processo, ano, referencia)
 
-        for arq in arquivos_para_upload:
-            if os.path.exists(arq["path"]):
-                os.remove(arq["path"])
-
-        if sucesso:
-            return f"{len(arquivos_para_upload)} arquivo(s) enviado(s) com sucesso!"
-        else:
+        if arquivos_para_upload:
+            sucesso = copiar_arquivos(pasta_destino, arquivos_para_upload)
+            
+            # Limpar arquivos temporários
+            for arq in arquivos_para_upload:
+                if os.path.exists(arq["path"]):
+                    os.remove(arq["path"])
+            
+            if sucesso:
+                return f"{len(arquivos_para_upload)} arquivo(s) enviado(s) com sucesso!"
             return "Erro ao copiar arquivos", 500
+        
+        return "Pasta criada com sucesso sem arquivos!", 200
 
     except Exception as e:
+        logging.error(f"Erro no upload: {str(e)}")
         return f"Erro interno: {str(e)}", 500
+    
 
 @app.route("/busca", methods=["GET"])
 def busca():
     return "Busca Avançada ainda não implementada nesta interface web."
 
-# Rota para servir arquivos estáticos(ícone de remover)
 @app.route('/static/<path:filename>')
 def serve_static(filename):
     return send_from_directory(STATIC_FOLDER, filename)
