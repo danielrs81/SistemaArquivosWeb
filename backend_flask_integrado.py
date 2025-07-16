@@ -139,7 +139,7 @@ HTML_TEMPLATE = r"""
         <label>Arquivos:</label>
         <div class="file-controls">
             <button type="button" id="btnEscolherArquivos">Escolher arquivos</button>
-            <button type="button" id="btnEscolherPasta">Escolher Pasta</button>
+            <!--<button type="button" id="btnEscolherPasta">Escolher Pasta</button>-->
         </div>
         <input type="file" name="files" multiple id="fileInput" style="display: none;">
         <div id="fileList" class="file-list"></div>
@@ -170,6 +170,7 @@ HTML_TEMPLATE = r"""
     <script>
         // Lista global de arquivos
         let fileList = [];
+        const fileInput = document.getElementById('fileInput');
 
         // Configurar drag and drop
         const dragArea = document.getElementById('dragArea');
@@ -191,15 +192,18 @@ HTML_TEMPLATE = r"""
 
         function addFilesToList(files) {
             for (let i = 0; i < files.length; i++) {
-                fileList.push(files[i]);
+                // Verifica se o arquivo já não está na lista (evita duplicatas)
+                if (!fileList.some(f => f.name === files[i].name && f.size === files[i].size && f.lastModified === files[i].lastModified)) {
+                    fileList.push(files[i]);
+                }
             }
             updateFileList();
         }
 
-        function removeFile(index) {
-            fileList.splice(index, 1);
-            updateFileList();
-        }
+                function removeFile(index) {
+                    fileList.splice(index, 1);
+                    updateFileList();
+                }
 
         function updateFileList() {
             const fileListDiv = document.getElementById('fileList');
@@ -217,47 +221,35 @@ HTML_TEMPLATE = r"""
                 fileListDiv.appendChild(fileItem);
             });
 
-            // Atualizar input de arquivos
+            // Atualiza o input de arquivos do formulário
             const dataTransfer = new DataTransfer();
             fileList.forEach(file => dataTransfer.items.add(file));
-            document.getElementById('fileInput').files = dataTransfer.files;
+            fileInput.files = dataTransfer.files;
         }
 
-        // Event listeners para botões
+        // Evento para o botão "Escolher arquivos"
         document.getElementById('btnEscolherArquivos').addEventListener('click', () => {
-            document.getElementById('fileInput').click();
+            fileInput.click();
         });
 
-        document.getElementById('fileInput').addEventListener('change', (e) => {
-            addFilesToList(e.target.files);
-            e.target.value = ''; // Resetar para permitir adicionar os mesmos arquivos novamente
-        });
-
-        document.getElementById('btnEscolherPasta').addEventListener('click', async () => {
-            // Verificar se a API está disponível
-            if (!window.showDirectoryPicker) {
-                alert('Seu navegador não suporta a seleção de pastas. Por favor, atualize ou use outro navegador.');
-                return;
-            }
-            try {
-                const dirHandle = await window.showDirectoryPicker();
-                await processFolder(dirHandle);
-            } catch (error) {
-                console.error('Erro ao selecionar pasta:', error);
-            }
-        });
-
-        async function processFolder(dirHandle, path = '') {
-            for await (const entry of dirHandle.values()) {
-                if (entry.kind === 'file') {
-                    const file = await entry.getFile();
+        // Evento quando arquivos são selecionados
+        fileInput.addEventListener('change', (e) => {
+            if (e.target.files.length > 0) {
+                fileList = []; // Limpa a lista anterior
+                Array.from(e.target.files).forEach(file => {
                     fileList.push(file);
-                } else if (entry.kind === 'directory') {
-                    await processFolder(entry, `${path}${entry.name}/`);
-                }
+                });
+                updateFileList();
+                e.target.value = ''; // Permite selecionar os mesmos arquivos novamente
             }
+        });
+
+        // Função para remover arquivo
+        function removeFile(index) {
+            fileList.splice(index, 1);
             updateFileList();
         }
+
 
         // Função para limpar campos
         function limparCampos() {
@@ -319,31 +311,42 @@ HTML_TEMPLATE = r"""
             }
 
             if (fileList.length === 0) {
-                // Mostrar modal de confirmação para pasta vazia
                 document.getElementById('emptyFolderModal').style.display = 'block';
                 return;
             }
 
-            const formData = new FormData(this);
-
             try {
+                // Criar FormData e adicionar arquivos manualmente
+                const formData = new FormData();
+                
+                // Adicionar campos do formulário
+                formData.append('cliente', cliente);
+                formData.append('area', area);
+                formData.append('servico', servico);
+                formData.append('numero_processo', numero_processo);
+                formData.append('ano', ano);
+                formData.append('referencia', referencia);
+                
+                // Adicionar arquivos
+                fileList.forEach(file => {
+                    formData.append('files', file);
+                });
+
                 const response = await fetch('/upload', {
                     method: 'POST',
                     body: formData
                 });
 
-                const text = await response.text();
-                if (!response.ok) {
-                    throw new Error(text);
+                const result = await response.text();
+                alert(result);
+                
+                if (response.ok) {
+                    fileList = [];
+                    updateFileList();
                 }
-                alert(text);
-                fileList = [];
-                updateFileList();
             } catch (error) {
-                // Mostra apenas se for realmente um erro
-                if (!error.message.includes("Pasta criada com sucesso")) {
-                    alert(error.message);
-                }
+                console.error("Erro no envio:", error);
+                alert("Erro ao enviar os arquivos.");
             }
         });
     </script>
@@ -435,7 +438,7 @@ def upload():
         # Processar arquivos se existirem
         arquivos_para_upload = []
         if 'files' in request.files:
-            for file in request.files.getlist("files"):
+            for file in request.files.getlist('files'):
                 if file.filename == '':
                     continue
                 
