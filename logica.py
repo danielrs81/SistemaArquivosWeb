@@ -7,6 +7,7 @@ import subprocess
 import sys
 import configparser
 import logging
+import subprocess
 
 # Configurar logging
 logging.basicConfig(filename='sistema.log', level=logging.ERROR)
@@ -95,11 +96,22 @@ def copiar_arquivos(pasta_destino, arquivos):
 def abrir_pasta_processo(caminho_pasta):
     """Abre a pasta do processo no explorador de arquivos"""
     try:
+        # Verificar se o caminho existe
+        if not os.path.exists(caminho_pasta):
+            raise Exception("Pasta não encontrada")
+            
+        # Normalizar caminho
+        caminho_pasta = os.path.normpath(caminho_pasta)
+        
+        # Abrir pasta de acordo com o sistema operacional
         if os.name == 'nt':  # Windows
             os.startfile(caminho_pasta)
-        elif os.name == 'posix':  # Mac e Linux
-            subprocess.run(['open' if sys.platform == 'darwin' else 'xdg-open', caminho_pasta])
+        elif sys.platform == 'darwin':  # macOS
+            subprocess.run(['open', caminho_pasta])
+        else:  # Linux e outros
+            subprocess.run(['xdg-open', caminho_pasta])
+            
         return True
     except Exception as e:
-        messagebox.showerror("Erro", f"Não foi possível abrir a pasta: {str(e)}")
-        return False
+        logging.error(f"Erro ao abrir pasta {caminho_pasta}: {str(e)}")
+        raise Exception(f"Não foi possível abrir a pasta: {str(e)}")

@@ -893,3 +893,498 @@ INFO:werkzeug: * Detected change in 'C:\\Users\\ACEXCBN\\meu_sistema_upload\\bac
 INFO:werkzeug: * Restarting with stat
 WARNING:werkzeug: * Debugger is active!
 INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5001
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 11:43:26] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 11:44:05] "POST /upload HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 11:46:38] "GET /busca HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'C:\\Users\\ACEXCBN\\meu_sistema_upload\\backend_flask_integrado.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug: * Detected change in 'C:\\Users\\ACEXCBN\\meu_sistema_upload\\busca.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug: * Detected change in 'C:\\Users\\ACEXCBN\\meu_sistema_upload\\busca.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug: * Detected change in 'C:\\Users\\ACEXCBN\\meu_sistema_upload\\backend_flask_integrado.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug: * Detected change in 'C:\\Users\\ACEXCBN\\meu_sistema_upload\\backend_flask_integrado.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug: * Detected change in 'C:\\Users\\ACEXCBN\\meu_sistema_upload\\backend_flask_integrado.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5001
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 12:24:51] "[35m[1mGET / HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 12:24:51] "GET /?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 12:24:51] "GET /?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 12:24:51] "GET /?__debugger__=yes&cmd=resource&f=console.png&s=SaX7LcYzsw8CTIu58EE8 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 12:24:52] "GET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'C:\\Users\\ACEXCBN\\meu_sistema_upload\\backend_flask_integrado.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug: * Detected change in 'C:\\Users\\ACEXCBN\\meu_sistema_upload\\backend_flask_integrado.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5001
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 12:25:32] "[35m[1mGET / HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 12:25:32] "[36mGET /?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 12:25:33] "[36mGET /?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 12:25:33] "GET /?__debugger__=yes&cmd=resource&f=console.png&s=ONBhkbvIdmIZOI0FMc9h HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'C:\\Users\\ACEXCBN\\meu_sistema_upload\\backend_flask_integrado.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Detected change in 'C:\\Users\\ACEXCBN\\meu_sistema_upload\\backend_flask_integrado.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5001
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 12:29:28] "[35m[1mGET / HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 12:29:28] "[36mGET /?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 12:29:29] "[36mGET /?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 12:29:29] "GET /?__debugger__=yes&cmd=resource&f=console.png&s=T16y4EMH7LCE5vFkueDg HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'C:\\Users\\ACEXCBN\\meu_sistema_upload\\backend_flask_integrado.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Detected change in 'C:\\Users\\ACEXCBN\\meu_sistema_upload\\backend_flask_integrado.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5001
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 12:37:33] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 12:37:45] "[35m[1mGET /busca HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 12:37:45] "GET /busca?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 12:37:46] "GET /busca?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 12:37:46] "GET /busca?__debugger__=yes&cmd=resource&f=console.png&s=ppdWNNcx5uUgpFoKOElr HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 12:37:46] "GET /busca?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 12:38:38] "[35m[1mGET /busca HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 12:38:38] "[36mGET /busca?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 12:38:39] "[36mGET /busca?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 12:38:39] "[36mGET /busca?__debugger__=yes&cmd=resource&f=console.png&s=ppdWNNcx5uUgpFoKOElr HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 12:38:45] "[35m[1mGET /busca HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 12:38:46] "[36mGET /busca?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 12:38:46] "[36mGET /busca?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 12:38:46] "[36mGET /busca?__debugger__=yes&cmd=resource&f=console.png&s=ppdWNNcx5uUgpFoKOElr HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 12:38:56] "[35m[1mGET /busca HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 12:38:56] "[36mGET /busca?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 12:38:56] "[36mGET /busca?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 12:38:56] "[36mGET /busca?__debugger__=yes&cmd=resource&f=console.png&s=ppdWNNcx5uUgpFoKOElr HTTP/1.1[0m" 304 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5001
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 12:40:31] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 12:40:34] "[35m[1mGET /busca HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 12:40:34] "[36mGET /busca?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 12:40:34] "[36mGET /busca?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 12:40:35] "[36mGET /busca?__debugger__=yes&cmd=resource&f=console.png&s=ppdWNNcx5uUgpFoKOElr HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 12:40:38] "[35m[1mGET /busca HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 12:40:38] "[36mGET /busca?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 12:40:38] "[36mGET /busca?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 12:40:39] "[36mGET /busca?__debugger__=yes&cmd=resource&f=console.png&s=ppdWNNcx5uUgpFoKOElr HTTP/1.1[0m" 304 -
+INFO:werkzeug: * Detected change in 'C:\\Users\\ACEXCBN\\meu_sistema_upload\\busca.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\ACEXCBN\\meu_sistema_upload\\busca.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Detected change in 'C:\\Users\\ACEXCBN\\meu_sistema_upload\\busca.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug: * Detected change in 'C:\\Users\\ACEXCBN\\meu_sistema_upload\\busca.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Detected change in 'C:\\Users\\ACEXCBN\\meu_sistema_upload\\busca.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5001
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 13:51:43] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 13:51:56] "[35m[1mGET /busca HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 13:51:56] "[36mGET /busca?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 13:51:56] "[36mGET /busca?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 13:51:57] "GET /busca?__debugger__=yes&cmd=resource&f=console.png&s=ezBihzkIlB2ezXHyscBj HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 13:52:00] "[35m[1mGET /busca HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 13:52:00] "[36mGET /busca?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 13:52:00] "[36mGET /busca?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 13:52:00] "[36mGET /busca?__debugger__=yes&cmd=resource&f=console.png&s=ezBihzkIlB2ezXHyscBj HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 13:56:11] "[35m[1mGET /busca HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 13:56:11] "[36mGET /busca?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 13:56:11] "[36mGET /busca?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 13:56:12] "[36mGET /busca?__debugger__=yes&cmd=resource&f=console.png&s=ezBihzkIlB2ezXHyscBj HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 13:56:19] "[35m[1mGET /busca HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 13:56:19] "[36mGET /busca?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 13:56:19] "[36mGET /busca?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 13:56:19] "[36mGET /busca?__debugger__=yes&cmd=resource&f=console.png&s=ezBihzkIlB2ezXHyscBj HTTP/1.1[0m" 304 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5001
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 15:17:46] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 15:17:49] "GET /busca HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 15:17:49] "GET /static/js/busca.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 15:17:49] "[35m[1mGET /busca_advanced/api/buscar_processos?cliente=&numero=&ano=&area=&servico=&referencia= HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 15:17:54] "GET /busca HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 15:17:54] "[36mGET /static/js/busca.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 15:17:54] "[35m[1mGET /busca_advanced/api/buscar_processos?cliente=&numero=&ano=&area=&servico=&referencia= HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 15:18:18] "[35m[1mGET /busca_advanced/api/buscar_processos?cliente=&numero=&ano=25&area=&servico=&referencia= HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 15:18:21] "[35m[1mGET /busca_advanced/api/buscar_processos?cliente=&numero=&ano=25&area=IMPORTAÇÃO&servico=&referencia= HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 15:18:24] "[35m[1mGET /busca_advanced/api/buscar_processos?cliente=&numero=&ano=25&area=EXPORTAÇÃO&servico=&referencia= HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 15:18:26] "[35m[1mGET /busca_advanced/api/buscar_processos?cliente=&numero=&ano=25&area=EXPORTAÇÃO&servico=Aéreo&referencia= HTTP/1.1[0m" 500 -
+INFO:werkzeug: * Detected change in 'C:\\Users\\ACEXCBN\\meu_sistema_upload\\busca.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Detected change in 'C:\\Users\\ACEXCBN\\meu_sistema_upload\\busca.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Detected change in 'C:\\Users\\ACEXCBN\\meu_sistema_upload\\busca.py', reloading
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug: * Detected change in 'C:\\Users\\ACEXCBN\\meu_sistema_upload\\backend_flask_integrado.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Detected change in 'C:\\Users\\ACEXCBN\\meu_sistema_upload\\backend_flask_integrado.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\ACEXCBN\\meu_sistema_upload\\backend_flask_integrado.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug: * Detected change in 'C:\\Users\\ACEXCBN\\meu_sistema_upload\\busca.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Detected change in 'C:\\Users\\ACEXCBN\\meu_sistema_upload\\busca.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\ACEXCBN\\meu_sistema_upload\\busca.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5001
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 15:30:29] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 15:30:32] "[35m[1mGET /busca/busca HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 15:30:32] "GET /busca/busca?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 15:30:33] "GET /busca/busca?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 15:30:33] "GET /busca/busca?__debugger__=yes&cmd=resource&f=console.png&s=VvYcn6ORevuwghhBa1gd HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 15:30:33] "GET /busca/busca?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 15:30:38] "GET /busca HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 15:30:39] "[36mGET /static/js/busca.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 15:30:39] "[33mGET /busca_advanced/api/buscar_processos?cliente=&numero=&ano=&area=&servico=&referencia= HTTP/1.1[0m" 404 -
+INFO:werkzeug: * Detected change in 'C:\\Users\\ACEXCBN\\meu_sistema_upload\\backend_flask_integrado.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5001
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 15:33:58] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 15:34:00] "GET /busca HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 15:34:00] "[36mGET /static/js/busca.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 15:34:01] "[33mGET /busca_advanced/api/buscar_processos?cliente=&numero=&ano=&area=&servico=&referencia= HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 15:38:45] "GET /busca HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 15:38:45] "[36mGET /static/js/busca.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 15:38:45] "[33mGET /busca_advanced/api/buscar_processos?cliente=&numero=&ano=&area=&servico=&referencia= HTTP/1.1[0m" 404 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5001
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 15:42:10] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 15:42:14] "GET /busca HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 15:42:14] "[36mGET /static/js/busca.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 15:42:14] "[33mGET /busca_advanced/api/buscar_processos?cliente=&numero=&ano=&area=&servico=&referencia= HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 15:42:22] "[33mGET /busca_advanced/api/buscar_processos?cliente=&numero=&ano=&area=EXPORTAÇÃO&servico=&referencia= HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 15:42:23] "[33mGET /busca_advanced/api/buscar_processos?cliente=&numero=&ano=&area=EXPORTAÇÃO&servico=&referencia= HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 15:42:24] "[33mGET /busca_advanced/api/buscar_processos?cliente=&numero=&ano=&area=&servico=&referencia= HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 15:42:26] "[33mGET /busca_advanced/api/buscar_processos?cliente=&numero=&ano=&area=&servico=Aéreo&referencia= HTTP/1.1[0m" 404 -
+INFO:werkzeug: * Detected change in 'C:\\Users\\ACEXCBN\\meu_sistema_upload\\busca.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\ACEXCBN\\meu_sistema_upload\\busca.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5001
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 15:49:17] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 15:49:20] "GET /busca HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 15:49:20] "[36mGET /static/js/busca.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 15:49:21] "[33mGET /busca_advanced/api/buscar_processos?cliente=&numero=&ano=&area=&servico=&referencia= HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 15:49:24] "[33mGET /busca_advanced/api/buscar_processos?cliente=&numero=&ano=&area=IMPORTAÇÃO&servico=&referencia= HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 15:49:35] "GET /busca HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 15:49:35] "[36mGET /static/js/busca.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 15:49:35] "[33mGET /busca_advanced/api/buscar_processos?cliente=&numero=&ano=&area=&servico=&referencia= HTTP/1.1[0m" 404 -
+INFO:werkzeug: * Detected change in 'C:\\Users\\ACEXCBN\\meu_sistema_upload\\busca.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Detected change in 'C:\\Users\\ACEXCBN\\meu_sistema_upload\\busca.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5001
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 15:57:34] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 15:57:36] "GET /busca HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 15:57:37] "GET /static/js/busca.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 15:57:37] "GET /busca/api/buscar_processos?cliente=&numero=&ano=&area=&servico=&referencia= HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 15:57:46] "[33mPOST /busca_advanced/api/abrir_pasta HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 15:57:49] "[33mPOST /busca_advanced/api/abrir_pasta HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 15:57:51] "[33mPOST /busca_advanced/api/abrir_pasta HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 15:58:03] "GET /busca/api/buscar_processos?cliente=&numero=&ano=&area=IMPORTAÇÃO&servico=&referencia= HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 15:58:06] "[33mPOST /busca_advanced/api/abrir_pasta HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 15:58:17] "GET /busca/api/buscar_processos?cliente=&numero=&ano=&area=IMPORTAÇÃO&servico=&referencia=123 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 15:58:23] "GET /busca/api/buscar_processos?cliente=&numero=&ano=&area=EXPORTAÇÃO&servico=&referencia=123 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 15:58:41] "GET /busca/api/buscar_processos?cliente=&numero=&ano=24&area=EXPORTAÇÃO&servico=&referencia=123 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 15:58:45] "GET /busca/api/buscar_processos?cliente=&numero=&ano=&area=EXPORTAÇÃO&servico=&referencia=123 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 15:59:10] "GET /busca/api/buscar_processos?cliente=&numero=010212&ano=&area=EXPORTAÇÃO&servico=&referencia= HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 15:59:31] "GET /busca/api/buscar_processos?cliente=&numero=&ano=&area=&servico=&referencia= HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 15:59:37] "GET /busca/api/buscar_processos?cliente=&numero=010212&ano=&area=&servico=&referencia= HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 15:59:51] "[33mPOST /busca_advanced/api/abrir_pasta HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 15:59:58] "[33mPOST /busca_advanced/api/abrir_pasta HTTP/1.1[0m" 404 -
+INFO:werkzeug: * Detected change in 'C:\\Users\\ACEXCBN\\meu_sistema_upload\\busca.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Detected change in 'C:\\Users\\ACEXCBN\\meu_sistema_upload\\busca.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug: * Detected change in 'C:\\Users\\ACEXCBN\\meu_sistema_upload\\logica.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Detected change in 'C:\\Users\\ACEXCBN\\meu_sistema_upload\\logica.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug: * Detected change in 'C:\\Users\\ACEXCBN\\meu_sistema_upload\\busca.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Detected change in 'C:\\Users\\ACEXCBN\\meu_sistema_upload\\busca.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug: * Detected change in 'C:\\Users\\ACEXCBN\\meu_sistema_upload\\busca.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug: * Detected change in 'C:\\Users\\ACEXCBN\\meu_sistema_upload\\busca.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5001
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5001
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 16:20:12] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 16:20:17] "GET /busca HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 16:20:17] "GET /static/js/busca.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 16:20:17] "GET /busca/api/buscar_processos?cliente=&numero=&ano=&area=&servico=&referencia= HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 16:20:20] "POST /busca/api/abrir_pasta HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 16:20:39] "GET /busca/api/buscar_processos?cliente=&numero=&ano=&area=EXPORTAÇÃO&servico=Rodoviário&referencia= HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 16:21:00] "GET /busca/api/buscar_processos?cliente=&numero=&ano=&area=EXPORTAÇÃO&servico=Rodoviário&referencia= HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 16:21:05] "GET /busca/api/buscar_processos?cliente=&numero=&ano=&area=&servico=&referencia= HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 16:21:22] "GET /busca/api/buscar_processos?cliente=&numero=010212&ano=&area=&servico=&referencia= HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 16:21:25] "POST /busca/api/abrir_pasta HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 16:21:30] "POST /busca/api/abrir_pasta HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 16:21:53] "GET /busca/api/buscar_processos?cliente=&numero=010212&ano=&area=&servico=&referencia= HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 16:21:54] "GET /busca/api/buscar_processos?cliente=&numero=010212&ano=&area=&servico=&referencia= HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 16:21:55] "GET /busca/api/buscar_processos?cliente=&numero=010212&ano=&area=&servico=&referencia= HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 16:22:03] "GET /busca/api/buscar_processos?cliente=&numero=010212&ano=&area=EXPORTAÇÃO&servico=Rodoviário&referencia= HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 16:22:18] "GET /busca/api/buscar_processos?cliente=&numero=010212&ano=&area=EXPORTAÇÃO&servico=Rodoviário&referencia= HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 16:22:20] "GET /busca/api/buscar_processos?cliente=&numero=010212&ano=&area=EXPORTAÇÃO&servico=Rodoviário&referencia= HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 16:22:21] "GET /busca/api/buscar_processos?cliente=&numero=010212&ano=&area=EXPORTAÇÃO&servico=Rodoviário&referencia= HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 16:22:21] "GET /busca/api/buscar_processos?cliente=&numero=010212&ano=&area=EXPORTAÇÃO&servico=Rodoviário&referencia= HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 16:22:22] "POST /busca/api/abrir_pasta HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 16:22:23] "POST /busca/api/abrir_pasta HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 16:22:37] "GET /busca/api/buscar_processos?cliente=&numero=010212&ano=&area=EXPORTAÇÃO&servico=Rodoviário&referencia= HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 16:22:39] "POST /busca/api/abrir_pasta HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 16:22:58] "POST /busca/api/abrir_pasta HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 16:23:13] "GET /busca/api/buscar_processos?cliente=&numero=010212&ano=&area=EXPORTAÇÃO&servico=Rodoviário&referencia= HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 16:23:15] "POST /busca/api/abrir_pasta HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 16:23:29] "GET /busca/api/buscar_processos?cliente=&numero=&ano=&area=&servico=&referencia= HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 16:25:09] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 16:25:12] "POST /busca/api/abrir_pasta HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 16:25:24] "GET /busca/api/buscar_processos?cliente=&numero=&ano=&area=EXPORTAÇÃO&servico=&referencia= HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 16:25:27] "GET /busca/api/buscar_processos?cliente=&numero=&ano=&area=EXPORTAÇÃO&servico=Rodoviário&referencia= HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 16:25:35] "GET /busca/api/buscar_processos?cliente=&numero=&ano=25&area=EXPORTAÇÃO&servico=Rodoviário&referencia= HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 16:25:37] "GET /busca/api/buscar_processos?cliente=&numero=&ano=&area=&servico=&referencia= HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'C:\\Users\\ACEXCBN\\meu_sistema_upload\\logica.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\ACEXCBN\\meu_sistema_upload\\logica.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Detected change in 'C:\\Users\\ACEXCBN\\meu_sistema_upload\\logica.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug: * Debugger PIN: 119-258-205
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5001
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 16:27:41] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 16:27:41] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 16:27:43] "GET /busca HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 16:27:44] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 16:27:44] "[36mGET /static/js/busca.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 16:27:44] "GET /busca/api/buscar_processos?cliente=&numero=&ano=&area=&servico=&referencia= HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 16:27:53] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 16:27:53] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+INFO:werkzeug: * Detected change in 'C:\\Users\\ACEXCBN\\meu_sistema_upload\\backend_flask_integrado.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\ACEXCBN\\meu_sistema_upload\\backend_flask_integrado.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Detected change in 'C:\\Users\\ACEXCBN\\meu_sistema_upload\\backend_flask_integrado.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug: * Debugger PIN: 119-258-205
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 16:31:56] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 16:31:56] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 16:31:59] "GET /busca HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 16:31:59] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 16:31:59] "[36mGET /static/js/busca.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 16:31:59] "GET /busca/api/buscar_processos?cliente=&numero=&ano=&area=&servico=&referencia= HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 16:32:01] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 16:32:01] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+INFO:werkzeug: * Detected change in 'C:\\Users\\ACEXCBN\\meu_sistema_upload\\backend_flask_integrado.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\ACEXCBN\\meu_sistema_upload\\backend_flask_integrado.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Detected change in 'C:\\Users\\ACEXCBN\\meu_sistema_upload\\backend_flask_integrado.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug: * Debugger PIN: 119-258-205
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 16:33:40] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 16:33:40] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+INFO:werkzeug: * Detected change in 'C:\\Users\\ACEXCBN\\meu_sistema_upload\\backend_flask_integrado.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\ACEXCBN\\meu_sistema_upload\\backend_flask_integrado.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\ACEXCBN\\meu_sistema_upload\\backend_flask_integrado.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug: * Debugger PIN: 119-258-205
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 16:34:00] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 16:34:00] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+INFO:werkzeug: * Detected change in 'C:\\Users\\ACEXCBN\\meu_sistema_upload\\backend_flask_integrado.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\ACEXCBN\\meu_sistema_upload\\backend_flask_integrado.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\ACEXCBN\\meu_sistema_upload\\backend_flask_integrado.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 16:37:43] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 16:37:43] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 16:37:46] "GET /busca HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 16:37:46] "[36mGET /static/js/busca.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 16:37:47] "GET /busca/api/buscar_processos?cliente=&numero=&ano=&area=&servico=&referencia= HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'C:\\Users\\ACEXCBN\\meu_sistema_upload\\backend_flask_integrado.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\ACEXCBN\\meu_sistema_upload\\backend_flask_integrado.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\ACEXCBN\\meu_sistema_upload\\backend_flask_integrado.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205

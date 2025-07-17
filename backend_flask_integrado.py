@@ -8,8 +8,12 @@ from clientes import obter_clientes, adicionar_cliente, remover_cliente
 from logica import criar_pasta, copiar_arquivos, obter_info_processos
 import logging
 from datetime import datetime
+from flask import render_template
+from busca import busca_bp
+from flask import Blueprint
 
 app = Flask(__name__)
+app.register_blueprint(busca_bp, url_prefix='/busca')
 config = ConfigParser()
 config.read('config.ini')
 
@@ -141,6 +145,33 @@ HTML_TEMPLATE = r"""
             color: #a94442;
             border: 1px solid #ebccd1;
         }
+        /* NOVOS ESTILOS PARA O BOTÃO DE BUSCA */
+        .btn-busca-avancada {
+            display: inline-block;
+            padding: 8px 16px;
+            background-color: #2196F3;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+            font-size: 14px;
+            margin: 5px 0;
+            transition: background-color 0.3s;
+        }
+        
+        .btn-busca-avancada:hover {
+            background-color: #0b7dda;
+        }
+        
+        /* Se quiser manter o estilo igual aos outros botões do sistema */
+        .btn-busca-avancada {
+            background-color: #4CAF50; /* Verde igual ao botão Enviar */
+        }
+        .btn-busca-avancada:hover {
+            background-color: #45a049; /* Tom mais escuro do verde */
+        }
     </style>
 </head>
 <body>
@@ -214,8 +245,9 @@ HTML_TEMPLATE = r"""
     <button type="button" onclick="limparCampos()">Limpar Campos</button>
 
     <form method="get" action="/busca">
-        <button type="submit">Busca Avançada</button>
-    </form>
+    <button type="submit" formtarget="_blank">Busca Avançada</button>
+</form>
+    
 
     <!-- Modal para confirmação de pasta vazia -->
     <div id="emptyFolderModal" class="modal">
@@ -719,7 +751,7 @@ def confirmar_upload():
 
 @app.route("/busca", methods=["GET"])
 def busca():
-    return "Busca Avançada ainda não implementada nesta interface web."
+    return render_template("busca.html")
 
 @app.route('/static/<path:filename>')
 def serve_static(filename):

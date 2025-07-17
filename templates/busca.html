@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="busca-container">
+    <h2>Busca Avançada</h2>
+    
+    <div class="filtros">
+        <div class="filtro-group">
+            <label for="cliente">Cliente:</label>
+            <select id="cliente">
+                <option value="">Todos</option>
+                {% for cliente in clientes %}
+                <option value="{{ cliente }}">{{ cliente }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        
+        <div class="filtro-group">
+            <label for="numero">Número do Processo:</label>
+            <input type="text" id="numero" placeholder="Digite o número">
+        </div>
+        
+        <div class="filtro-group">
+            <label for="ano">Ano:</label>
+            <input type="text" id="ano" placeholder="Digite o ano">
+        </div>
+        
+        <div class="filtro-group">
+            <label for="area">Área:</label>
+            <select id="area">
+                <option value="">Todas</option>
+                <option value="IMPORTAÇÃO">IMPORTAÇÃO</option>
+                <option value="EXPORTAÇÃO">EXPORTAÇÃO</option>
+            </select>
+        </div>
+        
+        <div class="filtro-group">
+            <label for="servico">Serviço:</label>
+            <select id="servico">
+                <option value="">Todos</option>
+                <option value="Aéreo">Aéreo</option>
+                <option value="Rodoviário">Rodoviário</option>
+                <option value="Marítimo">Marítimo</option>
+            </select>
+        </div>
+        
+        <div class="filtro-group">
+            <label for="referencia">Referência:</label>
+            <input type="text" id="referencia" placeholder="Digite a referência">
+        </div>
+    </div>
+    
+    <div>
+        <button onclick="executarBusca()" class="btn-busca">Buscar</button>
+        <button onclick="limparFiltros()" class="btn-limpar">Limpar</button>
+    </div>
+    
+    <div class="resultados">
+        <div id="contador" class="contador"></div>
+        <div style="overflow-x: auto;">
+            <table id="tabelaResultados">
+                <thead>
+                    <tr>
+                        <th onclick="ordenarPor('numero')">Número</th>
+                        <th onclick="ordenarPor('cliente')">Cliente</th>
+                        <th onclick="ordenarPor('area')">Área</th>
+                        <th onclick="ordenarPor('servico')">Serviço</th>
+                        <th onclick="ordenarPor('ano')">Ano</th>
+                        <th onclick="ordenarPor('referencia')">Referência</th>
+                        <th>Ação</th>
+                    </tr>
+                </thead>
+                <tbody id="corpoTabela">
+                    <!-- Resultados serão inseridos aqui via JavaScript -->
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="paginacao">
+            <div id="infoPaginacao" class="info-paginacao"></div>
+            <div class="paginacao-botoes">
+                <button onclick="primeiraPagina()" class="btn-paginacao">⏮ Primeira</button>
+                <button onclick="paginaAnterior()" class="btn-paginacao">⏪ Anterior</button>
+                <button onclick="proximaPagina()" class="btn-paginacao">Próxima ⏩</button>
+                <button onclick="ultimaPagina()" class="btn-paginacao">Última ⏭</button>
+            </div>
+            <div class="itens-por-pagina">
+                Itens por página: 
+                <select id="itensPorPagina" onchange="atualizarItensPorPagina()">
+                    <option value="10">10</option>
+                    <option value="25" selected>25</option>
+                    <option value="50">50</option>
+                    <option value="100">100</option>
+                </select>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="{{ url_for('static', filename='js/busca.js') }}"></script>
+{% endblock %}
