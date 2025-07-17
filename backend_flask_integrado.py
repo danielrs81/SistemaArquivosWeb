@@ -7,6 +7,7 @@ from configparser import ConfigParser
 from clientes import obter_clientes, adicionar_cliente, remover_cliente
 from logica import criar_pasta, copiar_arquivos, obter_info_processos
 import logging
+from datetime import datetime
 
 app = Flask(__name__)
 config = ConfigParser()
@@ -66,7 +67,7 @@ HTML_TEMPLATE = r"""
         .modal {
             display: none;
             position: fixed;
-            z-index: 1;
+            z-index: 1000;
             left: 0;
             top: 0;
             width: 100%;
@@ -79,12 +80,66 @@ HTML_TEMPLATE = r"""
             padding: 20px;
             border: 1px solid #888;
             width: 80%;
-            max-width: 400px;
+            max-width: 500px;
+            border-radius: 8px;
         }
         .modal-buttons {
             display: flex;
             justify-content: space-between;
             margin-top: 20px;
+            gap: 10px;
+        }
+        .modal-btn {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            flex: 1;
+        }
+        .btn-substituir {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .btn-pular {
+            background-color: #2196F3;
+            color: white;
+        }
+        .btn-cancelar {
+            background-color: #f44336;
+            color: white;
+        }
+        .modal-message {
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+        .modal-file-list {
+            background: #f5f5f5;
+            padding: 10px;
+            border-radius: 4px;
+            margin-top: 10px;
+            max-height: 150px;
+            overflow-y: auto;
+        }
+        .upload-status {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 4px;
+        }
+        .status-success {
+            background-color: #dff0d8;
+            color: #3c763d;
+            border: 1px solid #d6e9c6;
+        }
+        .status-warning {
+            background-color: #fcf8e3;
+            color: #8a6d3b;
+            border: 1px solid #faebcc;
+        }
+        .status-error {
+            background-color: #f2dede;
+            color: #a94442;
+            border: 1px solid #ebccd1;
         }
     </style>
 </head>
@@ -136,6 +191,13 @@ HTML_TEMPLATE = r"""
         <label>Referência:</label>
         <input type="text" name="referencia" required pattern="^[A-Za-z0-9. \-+]+$" title="Apenas letras, números, ponto(.), hífen(-), espaço e sinal de mais(+) são permitidos">
 
+        <label>Ação para arquivos existentes:</label>
+        <select name="file_action" required>
+            <option value="substituir">Substituir</option>
+            <option value="renomear">Renomear (adicionar data)</option>
+            <option value="pular">Pular</option>
+        </select>
+
         <label>Arquivos:</label>
         <div class="file-controls">
             <button type="button" id="btnEscolherArquivos">Escolher arquivos</button>
@@ -160,11 +222,27 @@ HTML_TEMPLATE = r"""
         <div class="modal-content">
             <p>Deseja criar a pasta sem arquivos?</p>
             <div class="modal-buttons">
-                <button onclick="confirmEmptyFolder(true)">Sim</button>
-                <button onclick="confirmEmptyFolder(false)">Não</button>
+                <button class="modal-btn btn-substituir" onclick="confirmEmptyFolder(true)">Sim</button>
+                <button class="modal-btn btn-cancelar" onclick="confirmEmptyFolder(false)">Não</button>
             </div>
         </div>
     </div>
+
+    <!-- Modal para confirmação de substituição -->
+    <div id="replaceModal" class="modal">
+        <div class="modal-content">
+            <p class="modal-message" id="replaceModalMessage"></p>
+            <div class="modal-file-list" id="replaceModalFileList"></div>
+            <div class="modal-buttons">
+                <button class="modal-btn btn-substituir" id="btnSubstituir">Substituir</button>
+                <button class="modal-btn btn-pular" id="btnPular">Pular</button>
+                <button class="modal-btn btn-cancelar" id="btnCancelar">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Área para mostrar resultados do upload -->
+    <div id="uploadResult" class="upload-status" style="display: none;"></div>
 
     <script>
         // Lista global de arquivos
@@ -252,6 +330,7 @@ HTML_TEMPLATE = r"""
             document.querySelector('input[name=referencia]').value = "";
             fileList = [];
             updateFileList();
+            document.getElementById('uploadResult').style.display = 'none';
         }
 
         // Modal para pasta vazia
@@ -269,15 +348,67 @@ HTML_TEMPLATE = r"""
                 })
                 .then(response => response.json())
                 .then(result => {
-                    alert(result.message);
+                    showUploadResult(result);
                     if (result.status === "success") {
                         fileList = [];
                         updateFileList();
                     }
                 })
                 .catch(error => {
-                    alert("Erro ao criar pasta.");
+                    showUploadResult({
+                        status: "error",
+                        message: "Erro ao criar pasta."
+                    });
                 });
+            }
+        }
+
+        // Mostrar resultado do upload
+        function showUploadResult(result) {
+            const resultDiv = document.getElementById('uploadResult');
+            resultDiv.style.display = 'block';
+            resultDiv.innerHTML = result.message;
+            
+            // Aplicar classes CSS conforme o status
+            resultDiv.className = 'upload-status';
+            if (result.status === "success") {
+                resultDiv.classList.add('status-success');
+            } else if (result.status === "warning") {
+                resultDiv.classList.add('status-warning');
+            } else {
+                resultDiv.classList.add('status-error');
+            }
+            
+            // Mostrar detalhes se existirem
+            if (result.details) {
+                if (result.details.enviados && result.details.enviados.length > 0) {
+                    resultDiv.innerHTML += `<br><strong>Arquivos enviados:</strong><ul>`;
+                    result.details.enviados.forEach(file => {
+                        resultDiv.innerHTML += `<li>${file}</li>`;
+                    });
+                    resultDiv.innerHTML += `</ul>`;
+                }
+                if (result.details.substituidos && result.details.substituidos.length > 0) {
+                    resultDiv.innerHTML += `<br><strong>Arquivos substituídos:</strong><ul>`;
+                    result.details.substituidos.forEach(file => {
+                        resultDiv.innerHTML += `<li>${file}</li>`;
+                    });
+                    resultDiv.innerHTML += `</ul>`;
+                }
+                if (result.details.renomeados && result.details.renomeados.length > 0) {
+                    resultDiv.innerHTML += `<br><strong>Arquivos renomeados:</strong><ul>`;
+                    result.details.renomeados.forEach(file => {
+                        resultDiv.innerHTML += `<li>${file}</li>`;
+                    });
+                    resultDiv.innerHTML += `</ul>`;
+                }
+                if (result.details.pulados && result.details.pulados.length > 0) {
+                    resultDiv.innerHTML += `<br><strong>Arquivos pulados:</strong><ul>`;
+                    result.details.pulados.forEach(file => {
+                        resultDiv.innerHTML += `<li>${file}</li>`;
+                    });
+                    resultDiv.innerHTML += `</ul>`;
+                }
             }
         }
 
@@ -292,9 +423,13 @@ HTML_TEMPLATE = r"""
             const numero_processo = document.querySelector('input[name=numero_processo]').value;
             const ano = document.querySelector('input[name=ano]').value;
             const referencia = document.querySelector('input[name=referencia]').value;
+            const file_action = document.querySelector('select[name=file_action]').value;
 
             if (!cliente || !area || !servico || !numero_processo || !ano || !referencia) {
-                alert("Todos os campos são obrigatórios!");
+                showUploadResult({
+                    status: "error",
+                    message: "Todos os campos são obrigatórios!"
+                });
                 return;
             }
 
@@ -313,6 +448,7 @@ HTML_TEMPLATE = r"""
                 formData.append('numero_processo', numero_processo);
                 formData.append('ano', ano);
                 formData.append('referencia', referencia);
+                formData.append('file_action', file_action);
                 
                 // Adicionar arquivos
                 fileList.forEach(file => {
@@ -325,54 +461,18 @@ HTML_TEMPLATE = r"""
                 });
 
                 const result = await response.json();
+                showUploadResult(result);
                 
-                if (result.status === "confirmacao_necessaria") {
-                    const confirmado = confirm(`${result.message}\nArquivos: ${result.arquivos.join(', ')}`);
-                    
-                    if (confirmado) {
-                        const confirmResponse = await fetch('/confirmar_upload', {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json',
-                            },
-                            body: JSON.stringify({
-                                confirmado: true,
-                                arquivos: result.arquivos,
-                                dados: {
-                                    cliente: cliente,
-                                    area: area,
-                                    servico: servico,
-                                    numero_processo: numero_processo,
-                                    ano: ano,
-                                    referencia: referencia
-                                }
-                            })
-                        });
-                        
-                        const finalResult = await confirmResponse.json();
-                        alert(finalResult.message);
-                        
-                        if (finalResult.status === "success") {
-                            fileList = [];
-                            updateFileList();
-                        }
-                    } else {
-                        alert("Upload cancelado");
-                        fileList = [];
-                        updateFileList();
-                    }
-                } else {
-                    alert(result.message);
-                    if (result.status === "success") {
-                        fileList = [];
-                        updateFileList();
-                    }
+                if (result.status === "success") {
+                    fileList = [];
+                    updateFileList();
                 }
             } catch (error) {
                 console.error("Erro no envio:", error);
-                alert("Erro ao enviar os arquivos.");
-                fileList = [];
-                updateFileList();
+                showUploadResult({
+                    status: "error",
+                    message: "Erro ao enviar os arquivos."
+                });
             }
         });
     </script>
@@ -399,6 +499,38 @@ def cliente():
         return jsonify({"status": "error", "message": "Ação inválida"}), 400
     return redirect(url_for("index"))
 
+def processar_arquivo(file, pasta_destino, file_action):
+    """Processa um arquivo de acordo com a ação escolhida"""
+    filename = secure_filename(file.filename)
+    temp_path = os.path.join(UPLOAD_FOLDER, filename)
+    file.save(temp_path)
+    
+    destino = os.path.join(pasta_destino, filename)
+    resultado = {
+        'nome': filename,
+        'status': 'enviado',
+        'novo_nome': filename
+    }
+
+    if os.path.exists(destino):
+        if file_action == "substituir":
+            os.remove(destino)
+            shutil.move(temp_path, destino)
+            resultado['status'] = 'substituido'
+        elif file_action == "renomear":
+            base, ext = os.path.splitext(filename)
+            novo_nome = f"{base}_{datetime.now().strftime('%Y%m%d%H%M%S')}{ext}"
+            shutil.move(temp_path, os.path.join(pasta_destino, novo_nome))
+            resultado['status'] = 'renomeado'
+            resultado['novo_nome'] = novo_nome
+        else:  # pular
+            os.remove(temp_path)
+            resultado['status'] = 'pulado'
+    else:
+        shutil.move(temp_path, destino)
+    
+    return resultado
+
 @app.route("/upload", methods=["POST"])
 def upload():
     try:
@@ -408,9 +540,10 @@ def upload():
         numero_processo = request.form.get("numero_processo", "").strip()
         ano = request.form.get("ano", "").strip()
         referencia = request.form.get("referencia", "").strip()
+        file_action = request.form.get("file_action", "pular")
 
-        # Validação da referência
-        if not re.match(r'^[A-Za-z0-9. \-+]+$', referencia): 
+        # Validações
+        if not re.match(r'^[A-Za-z0-9. \-+]+$', referencia):
             return jsonify({
                 "status": "error",
                 "message": "Referência inválida. Use apenas letras, números, ponto(.), hífen(-), espaço e sinal de mais(+)."
@@ -462,63 +595,61 @@ def upload():
         # Criar pasta de destino
         pasta_destino = criar_pasta(cliente, area, servico, numero_processo, ano, referencia)
 
-        # Processar arquivos se existirem
-        arquivos_para_upload = []
-        if 'files' in request.files:
-            for file in request.files.getlist('files'):
-                if file.filename == '':
-                    continue
-                
-                os.makedirs(UPLOAD_FOLDER, exist_ok=True)
-                filename = secure_filename(file.filename)
-                temp_path = os.path.join(UPLOAD_FOLDER, filename)
-                file.save(temp_path)
-                arquivos_para_upload.append({
-                    "path": temp_path,
-                    "name": filename
-                })
+        # Processar arquivos
+        resultados = {
+            "enviados": [],
+            "substituidos": [],
+            "renomeados": [],
+            "pulados": []
+        }
 
-        if arquivos_para_upload:
-            # Verificar se algum arquivo já existe
-            arquivos_existentes = []
-            for arq in arquivos_para_upload:
-                destino = os.path.join(pasta_destino, arq['name'])
-                if os.path.exists(destino):
-                    arquivos_existentes.append(arq['name'])
+        if 'files' not in request.files:
+            return jsonify({
+                "status": "success",
+                "message": "Pasta criada com sucesso sem arquivos!"
+            }), 200
 
-            if arquivos_existentes:
-                return jsonify({
-                    "status": "confirmacao_necessaria",
-                    "message": "Um ou mais arquivos já existem. Deseja substituir?",
-                    "arquivos": arquivos_existentes
-                }), 200
+        files = request.files.getlist('files')
+        if not files or files[0].filename == '':
+            return jsonify({
+                "status": "success",
+                "message": "Pasta criada com sucesso sem arquivos!"
+            }), 200
 
-            # Se não há arquivos existentes, copia diretamente
-            sucesso = copiar_arquivos(pasta_destino, arquivos_para_upload)
+        for file in files:
+            if file.filename == '':
+                continue
+
+            resultado = processar_arquivo(file, pasta_destino, file_action)
             
-            # Limpar arquivos temporários
-            for arq in arquivos_para_upload:
-                if os.path.exists(arq["path"]):
-                    os.remove(arq["path"])
-            
-            if sucesso:
-                return jsonify({
-                    "status": "success",
-                    "message": f"{len(arquivos_para_upload)} arquivo(s) enviado(s) com sucesso!"
-                }), 200
-            else:
-                return jsonify({
-                    "status": "error",
-                    "message": "Erro ao copiar arquivos"
-                }), 500
-        
+            if resultado['status'] == 'enviado':
+                resultados['enviados'].append(resultado['nome'])
+            elif resultado['status'] == 'substituido':
+                resultados['substituidos'].append(resultado['nome'])
+            elif resultado['status'] == 'renomeado':
+                resultados['renomeados'].append(resultado['novo_nome'])
+            elif resultado['status'] == 'pulado':
+                resultados['pulados'].append(resultado['nome'])
+
+        # Montar mensagem de resultado
+        mensagem = "Upload concluído com sucesso!<br>"
+        if resultados['enviados']:
+            mensagem += f"<strong>Novos arquivos enviados:</strong> {len(resultados['enviados'])}<br>"
+        if resultados['substituidos']:
+            mensagem += f"<strong>Arquivos substituídos:</strong> {len(resultados['substituidos'])}<br>"
+        if resultados['renomeados']:
+            mensagem += f"<strong>Arquivos renomeados:</strong> {len(resultados['renomeados'])}<br>"
+        if resultados['pulados']:
+            mensagem += f"<strong>Arquivos pulados (já existiam):</strong> {len(resultados['pulados'])}"
+
         return jsonify({
             "status": "success",
-            "message": "Pasta criada com sucesso sem arquivos!"
+            "message": mensagem,
+            "details": resultados
         }), 200
 
     except Exception as e:
-        logging.error(f"Erro no upload: {str(e)}")
+        logging.error(f"Erro no upload: {str(e)}", exc_info=True)
         return jsonify({
             "status": "error",
             "message": f"Erro interno: {str(e)}"
