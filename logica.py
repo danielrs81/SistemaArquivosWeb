@@ -54,8 +54,8 @@ def validar_arquivo(arquivo_path):
     return ext.lower() not in EXTENSOES_BLOQUEADAS
 
 def criar_pasta(cliente, area, servico, numero_processo, ano, referencia):
-    # Remove apenas caracteres realmente inválidos, mantendo espaços
-    referencia = re.sub(r'[^A-Za-z0-9. \-]', '', referencia).strip()
+    # Remove apenas caracteres realmente inválidos, mantendo espaços e +
+    referencia = re.sub(r'[^A-Za-z0-9. \-+]', '', referencia).strip()
     sigla_area = "I" if area == "IMPORTAÇÃO" else "E"
     sigla_servico = servico[0].upper()
     nome_pasta = f"{sigla_area}{sigla_servico}-{numero_processo}-{ano} - {referencia}"

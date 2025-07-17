@@ -134,7 +134,7 @@ HTML_TEMPLATE = r"""
         <input type="text" name="ano" maxlength="2" required pattern="\d{2}">
 
         <label>Referência:</label>
-        <input type="text" name="referencia" required pattern="^[A-Za-z0-9. \-]+$" title="Apenas letras, números, ponto(.), hífen(-) e espaço são permitidos">
+        <input type="text" name="referencia" required pattern="^[A-Za-z0-9. \-+]+$" title="Apenas letras, números, ponto(.), hífen(-), espaço e sinal de mais(+) são permitidos">
 
         <label>Arquivos:</label>
         <div class="file-controls">
@@ -410,10 +410,10 @@ def upload():
         referencia = request.form.get("referencia", "").strip()
 
         # Validação da referência
-        if not re.match(r'^[A-Za-z0-9. \-]+$', referencia): 
+        if not re.match(r'^[A-Za-z0-9. \-+]+$', referencia): 
             return jsonify({
                 "status": "error",
-                "message": "Referência inválida. Use apenas letras, números, ponto(.), hífen(-) e espaço."
+                "message": "Referência inválida. Use apenas letras, números, ponto(.), hífen(-), espaço e sinal de mais(+)."
             }), 400
 
         if not all([cliente, area, servico, numero_processo, ano, referencia]):
