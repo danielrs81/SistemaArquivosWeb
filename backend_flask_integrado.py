@@ -311,9 +311,14 @@ HTML_TEMPLATE = r"""
         // Evento quando arquivos são selecionados
         fileInput.addEventListener('change', (e) => {
             if (e.target.files.length > 0) {
-                fileList = [];
+                // Remove apenas esta linha que estava limpando a lista:
+                // fileList = [];  // <-- Esta é a linha que estava causando o problema
+                
                 Array.from(e.target.files).forEach(file => {
-                    fileList.push(file);
+                    // Verifica se o arquivo já não está na lista
+                    if (!fileList.some(f => f.name === file.name && f.size === file.size && f.lastModified === file.lastModified)) {
+                        fileList.push(file);
+                    }
                 });
                 updateFileList();
                 e.target.value = '';
