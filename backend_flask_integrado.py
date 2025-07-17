@@ -45,19 +45,28 @@ HTML_TEMPLATE = r"""
         }
         .file-list { margin-top: 10px; }
         .file-item {
-            display: flex;
-            justify-content: space-between;
+            display: grid;
+            grid-template-columns: 1fr auto; /* Nome do arquivo ocupa espaço disponível, X fica à direita */
             align-items: center;
-            padding: 8px;
+            gap: 10px;
+            padding: 8px 12px;
             background: #f9f9f9;
             border: 1px solid #ddd;
             border-radius: 4px;
             margin-bottom: 5px;
         }
+        .file-item span {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
         .remove-btn {
             background: none;
             border: none;
             cursor: pointer;
+            padding: 4px;
+            margin-left: auto; /* Empurra o botão para a direita */
         }
         .drag-area {
             border: 2px dashed #aaa;
