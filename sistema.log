@@ -884,3 +884,12 @@ INFO:werkzeug: * Restarting with stat
 WARNING:werkzeug: * Debugger is active!
 INFO:werkzeug: * Debugger PIN: 119-258-205
 INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 11:28:41] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 11:28:59] "[32mPOST /cliente HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 11:28:59] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 11:31:00] "[36mGET /static/c_redX.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 11:31:14] "POST /upload HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jul/2025 11:31:32] "POST /upload HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'C:\\Users\\ACEXCBN\\meu_sistema_upload\\backend_flask_integrado.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205

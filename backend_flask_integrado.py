@@ -544,8 +544,9 @@ def upload():
         servico = request.form.get("servico", "").strip().capitalize()
         numero_processo = request.form.get("numero_processo", "").strip()
         ano = request.form.get("ano", "").strip()
-        referencia = request.form.get("referencia", "").strip()
+        referencia = request.form.get("referencia", "").strip().upper()  # Convertendo para maiúsculas aqui
         file_action = request.form.get("file_action", "pular")
+        
 
         # Validações
         if not re.match(r'^[A-Za-z0-9. \-+]+$', referencia):
