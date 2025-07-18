@@ -1,62 +1,368 @@
 {% extends "base.html" %}
 
+{% block styles %}
+{{ super() }}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+    /* Variáveis de cores */
+    :root {
+        --primary-color: #2c3e50;
+        --secondary-color: #3498db;
+        --accent-color: #e74c3c;
+        --light-color: #ecf0f1;
+        --dark-color: #34495e;
+        --success-color: #2ecc71;
+        --border-radius: 8px;
+        --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Estilos específicos para a busca avançada */
+    .header-busca {
+        background: linear-gradient(135deg, var(--primary-color), var(--dark-color));
+        color: white;
+        padding: 20px;
+        border-radius: var(--border-radius);
+        margin-bottom: 25px;
+        box-shadow: var(--box-shadow);
+    }
+    
+    .header-busca h2 {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin: 0;
+    }
+    
+    .header-busca h2 i {
+        color: var(--secondary-color);
+    }
+    
+    .card {
+        background: white;
+        border-radius: var(--border-radius);
+        box-shadow: var(--box-shadow);
+        padding: 25px;
+        margin-bottom: 25px;
+    }
+    
+    .card-title {
+        color: var(--primary-color);
+        margin-bottom: 20px;
+        padding-bottom: 15px;
+        border-bottom: 2px solid var(--light-color);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    .card-title i {
+        color: var(--secondary-color);
+    }
+    
+    .filters-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+        margin-bottom: 20px;
+    }
+    
+    .filter-group {
+        margin-bottom: 15px;
+    }
+    
+    .filter-group label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 600;
+        color: var(--dark-color);
+    }
+    
+    .filter-group select, 
+    .filter-group input {
+        width: 80%;
+        padding: 12px;
+        border: 1px solid #ddd;
+        border-radius: var(--border-radius);
+        background-color: var(--light-color);
+        transition: all 0.3s;
+    }
+    
+    .filter-group select:focus, 
+    .filter-group input:focus {
+        border-color: var(--secondary-color);
+        box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+        outline: none;
+    }
+    
+    .action-buttons {
+        display: flex;
+        gap: 15px;
+        margin-top: 10px;
+        justify-content: flex-end;
+    }
+    
+    .btn {
+        padding: 12px 24px;
+        border: none;
+        border-radius: var(--border-radius);
+        cursor: pointer;
+        font-weight: 600;
+        transition: all 0.3s;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    
+    .btn-primary {
+        background-color: var(--secondary-color);
+        color: white;
+    }
+    
+    .btn-secondary {
+        background-color: var(--dark-color);
+        color: white;
+    }
+    
+    .btn-danger {
+        background-color: var(--accent-color);
+        color: white;
+    }
+    
+    .btn:hover {
+        opacity: 0.9;
+        transform: translateY(-2px);
+    }
+    
+    .results-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+    
+    .results-count {
+        font-weight: 600;
+        color: var(--dark-color);
+        background-color: var(--light-color);
+        padding: 8px 15px;
+        border-radius: 20px;
+    }
+    
+    .results-count span {
+        color: var(--secondary-color);
+        font-weight: 700;
+    }
+    
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 25px;
+    }
+    
+    th {
+        background-color: var(--primary-color);
+        color: white;
+        text-align: left;
+        padding: 15px;
+        cursor: pointer;
+        position: relative;
+    }
+    
+    th:hover {
+        background-color: var(--dark-color);
+    }
+    
+    th:after {
+        content: "↕";
+        position: absolute;
+        right: 15px;
+    }
+    
+    td {
+        padding: 15px;
+        border-bottom: 1px solid #eee;
+    }
+    
+    tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+    
+    tr:hover {
+        background-color: #f0f7ff;
+    }
+    
+    .btn-open {
+        background-color: var(--success-color);
+        color: white;
+        padding: 8px 15px;
+        border-radius: var(--border-radius);
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        transition: all 0.3s;
+        border: none;
+        cursor: pointer;
+        font-weight: 600;
+    }
+    
+    .btn-open:hover {
+        background-color: #27ae60;
+        transform: translateY(-2px);
+    }
+    
+    .pagination {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+    
+    .page-info {
+        font-weight: 600;
+        color: var(--dark-color);
+    }
+    
+    .pagination-buttons {
+        display: flex;
+        gap: 10px;
+    }
+    
+    .page-selector {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    .items-per-page {
+        padding: 8px;
+        border: 1px solid #ddd;
+        border-radius: var(--border-radius);
+        background-color: var(--light-color);
+    }
+
+    @media (max-width: 768px) {
+        .filters-grid {
+            grid-template-columns: 1fr;
+        }
+        
+        .action-buttons {
+            justify-content: center;
+        }
+        
+        .results-header {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        
+        table {
+            display: block;
+            overflow-x: auto;
+        }
+        
+        .pagination {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        
+    }
+
+    /* Novo estilo para grupo de filtros de número */
+    .numero-filter-group {
+        display: flex;
+        gap: 10px;
+    }
+
+    .numero-filter-group .filter-group {
+        flex: 1;
+    }
+
+</style>
+{% endblock %}
+
 {% block content %}
-<div class="busca-container">
-    <h2>Busca Avançada</h2>
+<div class="container">
+    <div class="header-busca">
+        <h2><i class="fas fa-search"></i> Busca Avançada</h2>
+    </div>
     
-    <div class="filtros">
-        <div class="filtro-group">
-            <label for="cliente">Cliente:</label>
-            <select id="cliente">
-                <option value="">Todos</option>
-                {% for cliente in clientes %}
-                <option value="{{ cliente }}">{{ cliente }}</option>
-                {% endfor %}
-            </select>
+    <div class="card">
+        <h3 class="card-title"><i class="fas fa-filter"></i> Filtros de Busca</h3>
+        
+        <div class="filters-grid">
+            <div class="filter-group">
+                <label for="cliente">Cliente:</label>
+                <select id="cliente">
+                    <option value="">Todos</option>
+                    {% for cliente in clientes %}
+                    <option value="{{ cliente }}">{{ cliente }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            
+            <div class="filter-group">
+                <label>Número do Processo:</label>
+                <div class="numero-filter-group">
+                    <div class="filter-group">
+                        <input type="text" id="numero_inicio" placeholder="Início (ex: 000001)" maxlength="6">
+                    </div>
+                    <div class="filter-group">
+                        <input type="text" id="numero_fim" placeholder="Fim (ex: 000050)" maxlength="6">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="filter-group">
+                <label for="ano">Ano:</label>
+                <input type="text" id="ano" placeholder="Digite o ano">
+            </div>
+            
+            <div class="filter-group">
+                <label for="area">Área:</label>
+                <select id="area">
+                    <option value="">Todas</option>
+                    <option value="IMPORTAÇÃO">IMPORTAÇÃO</option>
+                    <option value="EXPORTAÇÃO">EXPORTAÇÃO</option>
+                </select>
+            </div>
+            
+            <div class="filter-group">
+                <label for="servico">Serviço:</label>
+                <select id="servico">
+                    <option value="">Todos</option>
+                    <option value="Aéreo">Aéreo</option>
+                    <option value="Rodoviário">Rodoviário</option>
+                    <option value="Marítimo">Marítimo</option>
+                </select>
+            </div>
+            
+            <div class="filter-group">
+                <label for="referencia">Referência:</label>
+                <input type="text" id="referencia" placeholder="Digite a referência">
+            </div>
         </div>
         
-        <div class="filtro-group">
-            <label for="numero">Número do Processo:</label>
-            <input type="text" id="numero" placeholder="Digite o número">
-        </div>
-        
-        <div class="filtro-group">
-            <label for="ano">Ano:</label>
-            <input type="text" id="ano" placeholder="Digite o ano">
-        </div>
-        
-        <div class="filtro-group">
-            <label for="area">Área:</label>
-            <select id="area">
-                <option value="">Todas</option>
-                <option value="IMPORTAÇÃO">IMPORTAÇÃO</option>
-                <option value="EXPORTAÇÃO">EXPORTAÇÃO</option>
-            </select>
-        </div>
-        
-        <div class="filtro-group">
-            <label for="servico">Serviço:</label>
-            <select id="servico">
-                <option value="">Todos</option>
-                <option value="Aéreo">Aéreo</option>
-                <option value="Rodoviário">Rodoviário</option>
-                <option value="Marítimo">Marítimo</option>
-            </select>
-        </div>
-        
-        <div class="filtro-group">
-            <label for="referencia">Referência:</label>
-            <input type="text" id="referencia" placeholder="Digite a referência">
+        <div class="action-buttons">
+            <button class="btn btn-primary" onclick="executarBusca()">
+                <i class="fas fa-search"></i> Buscar
+            </button>
+            <button class="btn btn-secondary" onclick="limparFiltros()">
+                <i class="fas fa-broom"></i> Limpar Filtros
+            </button>
         </div>
     </div>
     
-    <div>
-        <button onclick="executarBusca()" class="btn-busca">Buscar</button>
-        <button onclick="limparFiltros()" class="btn-limpar">Limpar</button>
-    </div>
-    
-    <div class="resultados">
-        <div id="contador" class="contador"></div>
+    <div class="card">
+        <div class="results-header">
+            <div class="results-count">
+                <i class="fas fa-folder-open"></i> Total: <span id="contador">0</span> processos encontrados
+            </div>
+        </div>
+        
         <div style="overflow-x: auto;">
             <table id="tabelaResultados">
                 <thead>
@@ -76,17 +382,29 @@
             </table>
         </div>
         
-        <div class="paginacao">
-            <div id="infoPaginacao" class="info-paginacao"></div>
-            <div class="paginacao-botoes">
-                <button onclick="primeiraPagina()" class="btn-paginacao">⏮ Primeira</button>
-                <button onclick="paginaAnterior()" class="btn-paginacao">⏪ Anterior</button>
-                <button onclick="proximaPagina()" class="btn-paginacao">Próxima ⏩</button>
-                <button onclick="ultimaPagina()" class="btn-paginacao">Última ⏭</button>
+        <div class="pagination">
+            <div class="page-info">
+                <i class="fas fa-file-alt"></i> <span id="infoPaginacao">Página 0 de 0</span>
             </div>
-            <div class="itens-por-pagina">
-                Itens por página: 
-                <select id="itensPorPagina" onchange="atualizarItensPorPagina()">
+            
+            <div class="pagination-buttons">
+                <button class="btn btn-secondary" onclick="primeiraPagina()">
+                    <i class="fas fa-step-backward"></i> Primeira
+                </button>
+                <button class="btn btn-secondary" onclick="paginaAnterior()">
+                    <i class="fas fa-chevron-left"></i> Anterior
+                </button>
+                <button class="btn btn-secondary" onclick="proximaPagina()">
+                    Próxima <i class="fas fa-chevron-right"></i>
+                </button>
+                <button class="btn btn-secondary" onclick="ultimaPagina()">
+                    Última <i class="fas fa-step-forward"></i>
+                </button>
+            </div>
+            
+            <div class="page-selector">
+                <span><i class="fas fa-list"></i> Itens por página:</span>
+                <select id="itensPorPagina" class="items-per-page" onchange="atualizarItensPorPagina()">
                     <option value="10">10</option>
                     <option value="25" selected>25</option>
                     <option value="50">50</option>
@@ -96,6 +414,9 @@
         </div>
     </div>
 </div>
+{% endblock %}
 
+{% block scripts %}
+{{ super() }}
 <script src="{{ url_for('static', filename='js/busca.js') }}"></script>
 {% endblock %}

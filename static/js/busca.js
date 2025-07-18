@@ -23,9 +23,19 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Função principal de busca
 function executarBusca() {
+    const numeroInicio = document.getElementById('numero_inicio').value;
+    const numeroFim = document.getElementById('numero_fim').value;
+    
+    // Validação básica do intervalo
+    if (numeroInicio && numeroFim && parseInt(numeroInicio) > parseInt(numeroFim)) {
+        alert("O número inicial deve ser menor ou igual ao número final");
+        return;
+    }
+
     const filtros = {
         cliente: document.getElementById('cliente').value,
-        numero: document.getElementById('numero').value,
+        numero_inicio: numeroInicio,
+        numero_fim: numeroFim,
         ano: document.getElementById('ano').value,
         area: document.getElementById('area').value,
         servico: document.getElementById('servico').value,
@@ -63,7 +73,8 @@ function executarBusca() {
 // Limpa os filtros
 function limparFiltros() {
     document.getElementById('cliente').value = '';
-    document.getElementById('numero').value = '';
+    document.getElementById('numero_inicio').value = '';
+    document.getElementById('numero_fim').value = '';
     document.getElementById('ano').value = '';
     document.getElementById('area').value = '';
     document.getElementById('servico').value = '';

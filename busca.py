@@ -29,8 +29,41 @@ def api_buscar_processos():
         
         resultados = []
         for proc in processos.values():
+            # Filtro por intervalo de número do processo
+            numero_processo = int(proc['numero'])
+            
+            # Verifica se foi fornecido um intervalo
+            numero_inicio = filtros.get('numero_inicio')
+            numero_fim = filtros.get('numero_fim')
+            
+            # Se ambos os campos estão preenchidos, filtra por intervalo
+            if numero_inicio and numero_fim:
+                try:
+                    inicio = int(numero_inicio)
+                    fim = int(numero_fim)
+                    if not (inicio <= numero_processo <= fim):
+                        continue
+                except ValueError:
+                    pass  # Se não for número, ignora este filtro
+            # Se apenas o início foi preenchido
+            elif numero_inicio:
+                try:
+                    inicio = int(numero_inicio)
+                    if numero_processo < inicio:
+                        continue
+                except ValueError:
+                    pass
+            # Se apenas o fim foi preenchido
+            elif numero_fim:
+                try:
+                    fim = int(numero_fim)
+                    if numero_processo > fim:
+                        continue
+                except ValueError:
+                    pass
+            
+            # Os outros filtros permanecem
             if (not filtros.get('cliente') or proc['cliente'].upper() == filtros.get('cliente').upper()) and \
-               (not filtros.get('numero') or proc['numero'] == filtros.get('numero')) and \
                (not filtros.get('ano') or proc['ano'] == filtros.get('ano')) and \
                (not filtros.get('area') or proc['area'].upper() == filtros.get('area').upper()) and \
                (not filtros.get('servico') or proc['servico'].upper() == filtros.get('servico').upper()) and \
