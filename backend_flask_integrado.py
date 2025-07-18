@@ -33,20 +33,178 @@ HTML_TEMPLATE = r"""
 <head>
     <meta charset="UTF-8">
     <title>Sistema de Arquivos Digitais</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body { font-family: Arial; margin: 40px; background-color: #f4f4f4; }
-        h2 { color: #333; }
-        form { background: #fff; padding: 20px; border-radius: 8px; }
-        input, select, button { margin: 5px 0; padding: 8px; width: 100%; }
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #34495e;
+            --success-color: #2ecc71;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, var(--primary-color), var(--dark-color));
+            color: white;
+            padding: 20px;
+            border-radius: var(--border-radius);
+            margin-bottom: 25px;
+            box-shadow: var(--box-shadow);
+            text-align: center;
+        }
+        
+        .header h1 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin: 0;
+        }
+        
+        .header h1 i {
+            color: var(--secondary-color);
+        }
+        
+        .card {
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 25px;
+            margin-bottom: 25px;
+        }
+        
+        .card-title {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--light-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .card-title i {
+            color: var(--secondary-color);
+        }
+        
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--dark-color);
+        }
+        
+        .form-group select, 
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            background-color: var(--light-color);
+            transition: all 0.3s;
+        }
+        
+        .form-group select:focus, 
+        .form-group input:focus {
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+            outline: none;
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 10px;
+        }
+        
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .btn-primary {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+        
+        .btn-secondary {
+            background-color: var(--dark-color);
+            color: white;
+        }
+        
+        .btn-success {
+            background-color: var(--success-color);
+            color: white;
+        }
+        
+        .btn-danger {
+            background-color: var(--accent-color);
+            color: white;
+        }
+        
+        .btn:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+        
+        /* Estilos para a área de arquivos */
         .file-controls {
             display: flex;
             gap: 10px;
             margin-bottom: 10px;
         }
-        .file-list { margin-top: 10px; }
+        
+        .file-list {
+            margin-top: 10px;
+            max-height: 300px;
+            overflow-y: auto;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            padding: 10px;
+        }
+        
         .file-item {
             display: grid;
-            grid-template-columns: 1fr auto; /* Nome do arquivo ocupa espaço disponível, X fica à direita */
+            grid-template-columns: 1fr auto;
             align-items: center;
             gap: 10px;
             padding: 8px 12px;
@@ -55,28 +213,60 @@ HTML_TEMPLATE = r"""
             border-radius: 4px;
             margin-bottom: 5px;
         }
+        
         .file-item span {
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
         }
-
+        
         .remove-btn {
             background: none;
             border: none;
             cursor: pointer;
             padding: 4px;
-            margin-left: auto; /* Empurra o botão para a direita */
+            color: var(--accent-color);
         }
+        
         .drag-area {
             border: 2px dashed #aaa;
             padding: 20px;
             text-align: center;
             background: #fafafa;
             margin-top: 10px;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: all 0.3s;
         }
-        .row { display: flex; gap: 10px; }
-        .col { flex: 1; }
+        
+        .drag-area:hover {
+            background-color: #f0f0f0;
+        }
+        
+        .upload-status {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: var(--border-radius);
+        }
+        
+        .status-success {
+            background-color: #dff0d8;
+            color: #3c763d;
+            border: 1px solid #d6e9c6;
+        }
+        
+        .status-warning {
+            background-color: #fcf8e3;
+            color: #8a6d3b;
+            border: 1px solid #faebcc;
+        }
+        
+        .status-error {
+            background-color: #f2dede;
+            color: #a94442;
+            border: 1px solid #ebccd1;
+        }
+        
         .modal {
             display: none;
             position: fixed;
@@ -87,6 +277,7 @@ HTML_TEMPLATE = r"""
             height: 100%;
             background-color: rgba(0,0,0,0.4);
         }
+        
         .modal-content {
             background-color: #fefefe;
             margin: 15% auto;
@@ -94,196 +285,199 @@ HTML_TEMPLATE = r"""
             border: 1px solid #888;
             width: 80%;
             max-width: 500px;
-            border-radius: 8px;
+            border-radius: var(--border-radius);
         }
+        
         .modal-buttons {
             display: flex;
             justify-content: space-between;
             margin-top: 20px;
             gap: 10px;
         }
+        
         .modal-btn {
-            padding: 8px 16px;
+            padding: 12px 24px;
             border: none;
-            border-radius: 4px;
+            border-radius: var(--border-radius);
             cursor: pointer;
             font-weight: bold;
             flex: 1;
         }
+        
         .btn-substituir {
-            background-color: #4CAF50;
+            background-color: var(--success-color);
             color: white;
         }
+        
         .btn-pular {
-            background-color: #2196F3;
+            background-color: var(--secondary-color);
             color: white;
         }
+        
         .btn-cancelar {
-            background-color: #f44336;
+            background-color: var(--accent-color);
             color: white;
         }
-        .modal-message {
-            margin-bottom: 15px;
-            line-height: 1.5;
-        }
-        .modal-file-list {
-            background: #f5f5f5;
-            padding: 10px;
-            border-radius: 4px;
-            margin-top: 10px;
-            max-height: 150px;
-            overflow-y: auto;
-        }
-        .upload-status {
-            margin-top: 20px;
-            padding: 15px;
-            border-radius: 4px;
-        }
-        .status-success {
-            background-color: #dff0d8;
-            color: #3c763d;
-            border: 1px solid #d6e9c6;
-        }
-        .status-warning {
-            background-color: #fcf8e3;
-            color: #8a6d3b;
-            border: 1px solid #faebcc;
-        }
-        .status-error {
-            background-color: #f2dede;
-            color: #a94442;
-            border: 1px solid #ebccd1;
-        }
-        /* NOVOS ESTILOS PARA O BOTÃO DE BUSCA */
-        .btn-busca-avancada {
-            display: inline-block;
-            padding: 8px 16px;
-            background-color: #2196F3;
-            color: white;
-            text-decoration: none;
-            border-radius: 4px;
-            border: none;
-            cursor: pointer;
+        
+        .footer {
             text-align: center;
-            font-size: 14px;
-            margin: 5px 0;
-            transition: background-color 0.3s;
+            padding: 20px;
+            color: #7f8c8d;
+            margin-top: 30px;
         }
         
-        .btn-busca-avancada:hover {
-            background-color: #0b7dda;
-        }
-        
-        /* Se quiser manter o estilo igual aos outros botões do sistema */
-        .btn-busca-avancada {
-            background-color: #4CAF50; /* Verde igual ao botão Enviar */
-        }
-        .btn-busca-avancada:hover {
-            background-color: #45a049; /* Tom mais escuro do verde */
+        @media (max-width: 768px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+            }
         }
     </style>
 </head>
 <body>
-    <h2>Sistema de Arquivos Digitais</h2>
-
-    <form id="clienteForm" method="post" action="/cliente">
-        <div class="row">
-            <div class="col">
-                <input type="text" name="novo_cliente" placeholder="Nome do Cliente" required>
-            </div>
-            <div class="col">
-                <button type="submit" name="acao" value="cadastrar">Cadastrar Cliente</button>
-                <button type="submit" name="acao" value="excluir">Excluir Cliente</button>
+    <div class="container">
+        <div class="header">
+            <h1><i class="fas fa-folder-open"></i> Sistema de Arquivos Digitais</h1>
+        </div>
+        
+        <div class="card">
+            <h2 class="card-title"><i class="fas fa-users"></i> Gerenciamento de Clientes</h2>
+            
+            <form id="clienteForm" method="post" action="/cliente">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="novo_cliente">Nome do Cliente:</label>
+                        <input type="text" name="novo_cliente" placeholder="Nome do Cliente" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Ações:</label>
+                        <div class="action-buttons">
+                            <button class="btn btn-success" type="submit" name="acao" value="cadastrar">
+                                <i class="fas fa-plus-circle"></i> Cadastrar Cliente
+                            </button>
+                            <button class="btn btn-danger" type="submit" name="acao" value="excluir">
+                                <i class="fas fa-trash-alt"></i> Excluir Cliente
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        
+        <div class="card">
+            <h2 class="card-title"><i class="fas fa-upload"></i> Upload de Arquivos</h2>
+            
+            <form id="uploadForm" method="post" action="/upload" enctype="multipart/form-data">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="cliente">Cliente:</label>
+                        <select name="cliente" required>
+                            <option value="">Selecione o Cliente</option>
+                            {% for c in clientes %}
+                            <option value="{{c}}">{{c}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="area">Área:</label>
+                        <select name="area" required>
+                            <option value="">Selecione</option>
+                            <option value="IMPORTAÇÃO">IMPORTAÇÃO</option>
+                            <option value="EXPORTAÇÃO">EXPORTAÇÃO</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="servico">Serviço:</label>
+                        <select name="servico" required>
+                            <option value="">Selecione</option>
+                            <option value="Aéreo">Aéreo</option>
+                            <option value="Rodoviário">Rodoviário</option>
+                            <option value="Marítimo">Marítimo</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="numero_processo">Nº Processo (6 dígitos):</label>
+                        <input type="text" name="numero_processo" maxlength="6" required pattern="\d{6}" placeholder="Ex: 000123">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="ano">Ano (2 dígitos):</label>
+                        <input type="text" name="ano" maxlength="2" required pattern="\d{2}" placeholder="Ex: 23">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="referencia">Referência:</label>
+                        <input type="text" name="referencia" required pattern="^[A-Za-z0-9. \-+]+$" 
+                               title="Apenas letras, números, ponto(.), hífen(-), espaço e sinal de mais(+) são permitidos"
+                               placeholder="Descrição do processo">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="file_action">Ação para arquivos existentes:</label>
+                        <select name="file_action" required>
+                            <option value="substituir">Substituir</option>
+                            <option value="renomear">Renomear (adicionar data)</option>
+                            <option value="pular">Pular</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Arquivos:</label>
+                    <div class="file-controls">
+                        <button type="button" id="btnEscolherArquivos" class="btn btn-secondary">
+                            <i class="fas fa-folder-open"></i> Escolher arquivos
+                        </button>
+                    </div>
+                    <input type="file" name="files" multiple id="fileInput" style="display: none;">
+                    <div id="fileList" class="file-list"></div>
+                </div>
+                
+                <div class="drag-area" id="dragArea">
+                    <i class="fas fa-cloud-upload-alt" style="font-size: 48px; margin-bottom: 10px;"></i>
+                    <h3>Arraste e solte arquivos aqui</h3>
+                    <p>ou clique para selecionar</p>
+                </div>
+                
+                <div class="action-buttons" style="margin-top: 20px;">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-paper-plane"></i> Enviar
+                    </button>
+                    <button type="button" class="btn btn-secondary" onclick="limparCampos()">
+                        <i class="fas fa-broom"></i> Limpar Campos
+                    </button>
+                    <a href="/busca" class="btn btn-success" target="_blank">
+                        <i class="fas fa-search"></i> Busca Avançada
+                    </a>
+                </div>
+            </form>
+        </div>
+        
+        <!-- Modal para confirmação de pasta vazia -->
+        <div id="emptyFolderModal" class="modal">
+            <div class="modal-content">
+                <p>Deseja criar a pasta sem arquivos?</p>
+                <div class="modal-buttons">
+                    <button class="modal-btn btn-substituir" onclick="confirmEmptyFolder(true)">Sim</button>
+                    <button class="modal-btn btn-cancelar" onclick="confirmEmptyFolder(false)">Não</button>
+                </div>
             </div>
         </div>
-    </form>
-
-    <form id="uploadForm" method="post" action="/upload" enctype="multipart/form-data">
-        <label>Cliente:</label>
-        <select name="cliente" required>
-            <option value="">Selecione o Cliente</option>
-            {% for c in clientes %}
-            <option value="{{c}}">{{c}}</option>
-            {% endfor %}
-        </select>
-
-        <label>Área:</label>
-        <select name="area" required>
-            <option value="">Selecione</option>
-            <option value="IMPORTAÇÃO">IMPORTAÇÃO</option>
-            <option value="EXPORTAÇÃO">EXPORTAÇÃO</option>
-        </select>
-
-        <label>Serviço:</label>
-        <select name="servico" required>
-            <option value="">Selecione</option>
-            <option value="Aéreo">Aéreo</option>
-            <option value="Rodoviário">Rodoviário</option>
-            <option value="Marítimo">Marítimo</option>
-        </select>
-
-        <label>Nº Processo (6 dígitos):</label>
-        <input type="text" name="numero_processo" maxlength="6" required pattern="\d{6}">
-
-        <label>Ano (2 dígitos):</label>
-        <input type="text" name="ano" maxlength="2" required pattern="\d{2}">
-
-        <label>Referência:</label>
-        <input type="text" name="referencia" required pattern="^[A-Za-z0-9. \-+]+$" title="Apenas letras, números, ponto(.), hífen(-), espaço e sinal de mais(+) são permitidos">
-
-        <label>Ação para arquivos existentes:</label>
-        <select name="file_action" required>
-            <option value="substituir">Substituir</option>
-            <option value="renomear">Renomear (adicionar data)</option>
-            <option value="pular">Pular</option>
-        </select>
-
-        <label>Arquivos:</label>
-        <div class="file-controls">
-            <button type="button" id="btnEscolherArquivos">Escolher arquivos</button>
-        </div>
-        <input type="file" name="files" multiple id="fileInput" style="display: none;">
-        <div id="fileList" class="file-list"></div>
-
-        <div class="drag-area" id="dragArea">
-            Arraste e solte arquivos aqui
-        </div>
-
-        <button type="submit">Enviar</button>
-    </form>
-    <button type="button" onclick="limparCampos()">Limpar Campos</button>
-
-    <form method="get" action="/busca">
-    <button type="submit" formtarget="_blank">Busca Avançada</button>
-</form>
-    
-
-    <!-- Modal para confirmação de pasta vazia -->
-    <div id="emptyFolderModal" class="modal">
-        <div class="modal-content">
-            <p>Deseja criar a pasta sem arquivos?</p>
-            <div class="modal-buttons">
-                <button class="modal-btn btn-substituir" onclick="confirmEmptyFolder(true)">Sim</button>
-                <button class="modal-btn btn-cancelar" onclick="confirmEmptyFolder(false)">Não</button>
-            </div>
+        
+        <!-- Área para mostrar resultados do upload -->
+        <div id="uploadResult" class="upload-status" style="display: none;"></div>
+        
+        <div class="footer">
+            Sistema de Arquivos Digitais © 2025
         </div>
     </div>
-
-    <!-- Modal para confirmação de substituição -->
-    <div id="replaceModal" class="modal">
-        <div class="modal-content">
-            <p class="modal-message" id="replaceModalMessage"></p>
-            <div class="modal-file-list" id="replaceModalFileList"></div>
-            <div class="modal-buttons">
-                <button class="modal-btn btn-substituir" id="btnSubstituir">Substituir</button>
-                <button class="modal-btn btn-pular" id="btnPular">Pular</button>
-                <button class="modal-btn btn-cancelar" id="btnCancelar">Cancelar</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Área para mostrar resultados do upload -->
-    <div id="uploadResult" class="upload-status" style="display: none;"></div>
 
     <script>
         // Lista global de arquivos
@@ -306,6 +500,10 @@ HTML_TEMPLATE = r"""
             dragArea.style.backgroundColor = '#fafafa';
             const files = e.dataTransfer.files;
             addFilesToList(files);
+        });
+        
+        dragArea.addEventListener('click', () => {
+            fileInput.click();
         });
 
         function addFilesToList(files) {
@@ -332,7 +530,7 @@ HTML_TEMPLATE = r"""
                 fileItem.innerHTML = `
                     <span>${file.name}</span>
                     <button type="button" onclick="removeFile(${index})" class="remove-btn">
-                        <img src="/static/c_redX.png" alt="Remover" width="16">
+                        <i class="fas fa-times"></i>
                     </button>
                 `;
                 fileListDiv.appendChild(fileItem);
@@ -352,9 +550,6 @@ HTML_TEMPLATE = r"""
         // Evento quando arquivos são selecionados
         fileInput.addEventListener('change', (e) => {
             if (e.target.files.length > 0) {
-                // Remove apenas esta linha que estava limpando a lista:
-                // fileList = [];  // <-- Esta é a linha que estava causando o problema
-                
                 Array.from(e.target.files).forEach(file => {
                     // Verifica se o arquivo já não está na lista
                     if (!fileList.some(f => f.name === file.name && f.size === file.size && f.lastModified === file.lastModified)) {
