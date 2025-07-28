@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from flask import Blueprint, jsonify, request, render_template
 from logica import obter_info_processos, abrir_pasta_processo
 from clientes import obter_clientes

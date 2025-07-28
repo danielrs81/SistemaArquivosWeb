@@ -1985,3 +1985,217 @@ INFO:werkzeug:[33mPress CTRL+C to quit[0m
 INFO:werkzeug: * Restarting with stat
 WARNING:werkzeug: * Debugger is active!
 INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 10:32:27] "GET /busca HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 10:32:27] "[36mGET /static/js/busca.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 10:32:27] "GET /busca/api/clientes HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 10:32:27] "GET /busca/api/buscar_processos?cliente=&numero_inicio=&numero_fim=&ano=&area=&servico=&referencia= HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 10:32:30] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 10:32:34] "GET /busca HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 10:32:34] "[36mGET /static/js/busca.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 10:32:34] "GET /busca/api/clientes HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 10:32:34] "GET /busca/api/buscar_processos?cliente=&numero_inicio=&numero_fim=&ano=&area=&servico=&referencia= HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 10:33:32] "POST /upload HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 10:33:56] "GET /busca HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 10:33:56] "[36mGET /static/js/busca.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 10:33:56] "GET /busca/api/clientes HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 10:33:56] "GET /busca/api/buscar_processos?cliente=&numero_inicio=&numero_fim=&ano=&area=&servico=&referencia= HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 10:34:00] "POST /busca/api/abrir_pasta HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 10:34:05] "POST /busca/api/abrir_pasta HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 10:34:38] "POST /upload HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 10:35:01] "GET /busca/api/buscar_processos?cliente=&numero_inicio=&numero_fim=&ano=&area=&servico=&referencia= HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 10:35:18] "GET /busca/api/buscar_processos?cliente=&numero_inicio=&numero_fim=&ano=24&area=&servico=&referencia= HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 10:35:29] "GET /busca/api/buscar_processos?cliente=&numero_inicio=&numero_fim=&ano=24&area=&servico=&referencia= HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 10:35:41] "GET /busca/api/buscar_processos?cliente=&numero_inicio=&numero_fim=&ano=&area=&servico=&referencia= HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 10:35:46] "GET /busca/api/buscar_processos?cliente=&numero_inicio=&numero_fim=&ano=&area=&servico=&referencia= HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 10:36:05] "GET /busca/api/buscar_processos?cliente=&numero_inicio=&numero_fim=&ano=&area=&servico=&referencia= HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 10:36:13] "GET /busca/api/buscar_processos?cliente=&numero_inicio=&numero_fim=&ano=23&area=&servico=&referencia= HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 10:37:01] "POST /upload HTTP/1.1" 200 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5001
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 10:56:29] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 10:56:44] "[32mPOST /cliente HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 10:56:44] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 10:57:10] "POST /upload HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 10:57:47] "GET /busca HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 10:57:48] "[36mGET /static/js/busca.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 10:57:48] "GET /busca/api/buscar_processos?cliente=&numero_inicio=&numero_fim=&ano=&area=&servico=&referencia= HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 10:57:48] "GET /busca/api/clientes HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 10:58:02] "POST /busca/api/abrir_pasta HTTP/1.1" 200 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5001
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 11:18:27] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 11:18:43] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 11:18:56] "[32mPOST /cliente HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 11:18:56] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 11:19:28] "POST /upload HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 11:19:30] "GET /busca HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 11:19:31] "[36mGET /static/js/busca.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 11:19:31] "GET /busca/api/clientes HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 11:19:31] "GET /busca/api/buscar_processos?cliente=&numero_inicio=&numero_fim=&ano=&area=&servico=&referencia= HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 11:19:32] "[33mPOST /busca/api/abrir_pasta HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 11:19:37] "[33mPOST /busca/api/abrir_pasta HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 11:20:25] "[33mPOST /busca/api/abrir_pasta HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 11:21:11] "POST /upload HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 11:21:39] "POST /upload HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 11:21:50] "GET /busca HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 11:21:50] "[36mGET /static/js/busca.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 11:21:50] "GET /busca/api/clientes HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 11:21:50] "GET /busca/api/buscar_processos?cliente=&numero_inicio=&numero_fim=&ano=&area=&servico=&referencia= HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 11:21:55] "[33mPOST /busca/api/abrir_pasta HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 11:21:57] "[33mPOST /busca/api/abrir_pasta HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 11:22:01] "[31m[1mPOST /busca/api/abrir_pasta HTTP/1.1[0m" 403 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 11:22:05] "[33mPOST /busca/api/abrir_pasta HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 11:22:09] "[31m[1mPOST /busca/api/abrir_pasta HTTP/1.1[0m" 403 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 11:22:44] "[33mPOST /busca/api/abrir_pasta HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 11:22:46] "[33mPOST /busca/api/abrir_pasta HTTP/1.1[0m" 404 -
+INFO:werkzeug: * Detected change in 'C:\\Users\\ACEXCBN\\meu_sistema_upload\\backend_flask_integrado.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug: * Detected change in 'C:\\Users\\ACEXCBN\\meu_sistema_upload\\backend_flask_integrado.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug: * Detected change in 'C:\\Users\\ACEXCBN\\meu_sistema_upload\\clientes.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug: * Detected change in 'C:\\Users\\ACEXCBN\\meu_sistema_upload\\busca.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug: * Detected change in 'C:\\Users\\ACEXCBN\\meu_sistema_upload\\logica.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5001
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 11:28:34] "GET / HTTP/1.1" 200 -
+ERROR:root:Erro no upload: [WinError 161] O caminho especificado não é válido: '\\\\\\\\'
+Traceback (most recent call last):
+  File "C:\Users\ACEXCBN\meu_sistema_upload\backend_flask_integrado.py", line 841, in upload
+    pasta_destino = criar_pasta(cliente, area, servico, numero_processo, ano, referencia)
+  File "C:\Users\ACEXCBN\meu_sistema_upload\logica.py", line 110, in criar_pasta
+    os.makedirs(caminho_pasta, exist_ok=True)
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen os>", line 217, in makedirs
+  File "<frozen os>", line 217, in makedirs
+  File "<frozen os>", line 217, in makedirs
+  [Previous line repeated 3 more times]
+  File "<frozen os>", line 227, in makedirs
+FileNotFoundError: [WinError 161] O caminho especificado não é válido: '\\\\\\\\'
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 11:28:51] "[35m[1mPOST /upload HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 11:29:27] "GET /busca HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 11:29:28] "[36mGET /static/js/busca.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 11:29:28] "GET /busca/api/buscar_processos?cliente=&numero_inicio=&numero_fim=&ano=&area=&servico=&referencia= HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 11:29:28] "GET /busca/api/clientes HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 11:29:30] "GET /busca/api/buscar_processos?cliente=&numero_inicio=&numero_fim=&ano=&area=&servico=&referencia= HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 11:29:32] "GET /busca/api/buscar_processos?cliente=&numero_inicio=&numero_fim=&ano=&area=&servico=&referencia= HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 11:29:33] "GET /busca/api/buscar_processos?cliente=&numero_inicio=&numero_fim=&ano=&area=&servico=&referencia= HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 11:29:34] "GET /busca/api/buscar_processos?cliente=&numero_inicio=&numero_fim=&ano=&area=&servico=&referencia= HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 11:29:35] "GET /busca/api/buscar_processos?cliente=&numero_inicio=&numero_fim=&ano=&area=&servico=&referencia= HTTP/1.1" 200 -
+ERROR:root:Erro no upload: [WinError 161] O caminho especificado não é válido: '\\\\\\\\'
+Traceback (most recent call last):
+  File "C:\Users\ACEXCBN\meu_sistema_upload\backend_flask_integrado.py", line 841, in upload
+    pasta_destino = criar_pasta(cliente, area, servico, numero_processo, ano, referencia)
+  File "C:\Users\ACEXCBN\meu_sistema_upload\logica.py", line 110, in criar_pasta
+    os.makedirs(caminho_pasta, exist_ok=True)
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen os>", line 217, in makedirs
+  File "<frozen os>", line 217, in makedirs
+  File "<frozen os>", line 217, in makedirs
+  [Previous line repeated 3 more times]
+  File "<frozen os>", line 227, in makedirs
+FileNotFoundError: [WinError 161] O caminho especificado não é válido: '\\\\\\\\'
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 11:29:55] "[35m[1mPOST /upload HTTP/1.1[0m" 500 -
+ERROR:root:Erro no upload: [WinError 161] O caminho especificado não é válido: '\\\\\\\\'
+Traceback (most recent call last):
+  File "C:\Users\ACEXCBN\meu_sistema_upload\backend_flask_integrado.py", line 841, in upload
+    pasta_destino = criar_pasta(cliente, area, servico, numero_processo, ano, referencia)
+  File "C:\Users\ACEXCBN\meu_sistema_upload\logica.py", line 110, in criar_pasta
+    os.makedirs(caminho_pasta, exist_ok=True)
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen os>", line 217, in makedirs
+  File "<frozen os>", line 217, in makedirs
+  File "<frozen os>", line 217, in makedirs
+  [Previous line repeated 3 more times]
+  File "<frozen os>", line 227, in makedirs
+FileNotFoundError: [WinError 161] O caminho especificado não é válido: '\\\\\\\\'
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 11:29:56] "[35m[1mPOST /upload HTTP/1.1[0m" 500 -
+INFO:werkzeug: * Detected change in 'C:\\Users\\ACEXCBN\\meu_sistema_upload\\logica.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5001
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5001
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 11:32:16] "GET / HTTP/1.1" 200 -
+ERROR:root:Erro no upload: [WinError 161] O caminho especificado não é válido: '\\\\\\\\'
+Traceback (most recent call last):
+  File "C:\Users\ACEXCBN\meu_sistema_upload\backend_flask_integrado.py", line 841, in upload
+    pasta_destino = criar_pasta(cliente, area, servico, numero_processo, ano, referencia)
+  File "C:\Users\ACEXCBN\meu_sistema_upload\logica.py", line 110, in criar_pasta
+    os.makedirs(caminho_pasta, exist_ok=True)
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen os>", line 217, in makedirs
+  File "<frozen os>", line 217, in makedirs
+  File "<frozen os>", line 217, in makedirs
+  [Previous line repeated 3 more times]
+  File "<frozen os>", line 227, in makedirs
+FileNotFoundError: [WinError 161] O caminho especificado não é válido: '\\\\\\\\'
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 11:32:37] "[35m[1mPOST /upload HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 11:32:50] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5001
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 11:33:05] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 11:33:22] "POST /upload HTTP/1.1" 200 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5001
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 11:34:39] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 11:34:53] "POST /upload HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 11:36:12] "GET / HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'C:\\Users\\ACEXCBN\\meu_sistema_upload\\logica.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug: * Detected change in 'C:\\Users\\ACEXCBN\\meu_sistema_upload\\logica.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5001
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 11:43:01] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 11:43:25] "POST /upload HTTP/1.1" 200 -

@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import sqlite3
 import os
 from threading import Lock
@@ -10,7 +11,8 @@ logging.basicConfig(filename='sistema.log', level=logging.ERROR)
 # Obter caminho do banco de dados
 config = ConfigParser()
 config.read('config.ini')
-CLIENTES_DB = config.get('PATHS', 'CLIENTES_FILE')
+CLIENTES_DB = config.get('PATHS', 'CLIENTES_FILE', 
+                       fallback=os.path.join(config.get('PATHS', 'BASE_DIR'), '_Sistema', 'clientes.db'))
 
 # Garantir que o diretório existe
 os.makedirs(os.path.dirname(CLIENTES_DB), exist_ok=True)
@@ -93,3 +95,4 @@ def remover_cliente(nome_cliente):
     except Exception as e:
         logging.error(f"Erro ao remover cliente: {str(e)}")
         return False, f"Erro de banco de dados: {str(e)}"
+    

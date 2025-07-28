@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from flask import Flask, request, jsonify, render_template_string, redirect, url_for, send_from_directory
 import os
 import shutil
@@ -11,6 +12,8 @@ from datetime import datetime
 from flask import render_template
 from busca import busca_bp
 from flask import Blueprint
+import locale
+locale.setlocale(locale.LC_ALL, 'pt_BR.UTF-8')
 
 app = Flask(__name__)
 app.register_blueprint(busca_bp, url_prefix='/busca')
@@ -963,3 +966,20 @@ def serve_static(filename):
 
 if __name__ == "__main__":
     app.run(debug=True, port=5001)
+
+@app.before_first_request
+def verificar_acessos():
+    from logica import get_path
+    areas = ["IMPORTAÇÃO", "EXPORTAÇÃO"]
+    
+    for area in areas:
+        try:
+            path = get_path(area)
+            test_file = os.path.join(path, "teste_acesso.tmp")
+            with open(test_file, 'w') as f:
+                f.write("teste")
+            os.remove(test_file)
+            logging.info(f"Acesso OK: {path}")
+        except Exception as e:
+            logging.error(f"Falha no acesso a {area}: {str(e)}")
+            # Pode adicionar notificações por email aqui se necessário
