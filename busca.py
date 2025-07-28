@@ -105,3 +105,12 @@ def api_abrir_pasta():
     except Exception as e:
         logging.error(f"Erro ao abrir pasta: {str(e)}")
         return jsonify({"status": "error", "message": str(e)}), 500
+    
+@busca_bp.route("/api/clientes", methods=["GET"])
+def api_clientes():
+    try:
+        clientes = obter_clientes()
+        return jsonify(clientes)
+    except Exception as e:
+        logging.error(f"Erro ao obter lista de clientes: {str(e)}")
+        return jsonify({"error": str(e)}), 500

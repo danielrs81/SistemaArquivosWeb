@@ -15,11 +15,31 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // Carrega dados iniciais
+    carregarClientes();
     executarBusca();
     
     // Configura eventos
     document.getElementById('itensPorPagina').addEventListener('change', atualizarItensPorPagina);
 });
+
+// Nova função para carregar clientes
+function carregarClientes() {
+    fetch('/busca/api/clientes')
+        .then(response => response.json())
+        .then(clientes => {
+            const select = document.getElementById('cliente');
+            select.innerHTML = '<option value="">Todos</option>';
+            clientes.forEach(cliente => {
+                const option = document.createElement('option');
+                option.value = cliente;
+                option.textContent = cliente;
+                select.appendChild(option);
+            });
+        })
+        .catch(error => {
+            console.error('Erro ao carregar clientes:', error);
+        });
+}
 
 // Função principal de busca
 function executarBusca() {
