@@ -34,19 +34,22 @@ def obter_info_processos():
                 for cliente in os.listdir(area_path):
                     cliente_path = os.path.join(area_path, cliente)
                     if os.path.isdir(cliente_path):
-                        for pasta in os.listdir(cliente_path):
-                            match = re.search(r'([IE])([ARM])-(\d{6})-(\d{2}) - (.+)', pasta)
-                            if match:
-                                numero_processo = match.group(3)
-                                processos[f"{numero_processo}_{match.group(1)}{match.group(2)}{match.group(4)}"] = {
-                                    "numero": numero_processo,
-                                    "cliente": cliente,
-                                    "area": "IMPORTAÇÃO" if match.group(1) == "I" else "EXPORTAÇÃO",
-                                    "servico": {"A": "Aéreo", "R": "Rodoviário", "M": "Marítimo"}[match.group(2)],
-                                    "ano": match.group(4),
-                                    "referencia": match.group(5),
-                                    "caminho": os.path.join(area_path, cliente, pasta)
-                                }
+                        for ano in os.listdir(cliente_path):  # Nova camada de pasta (ano)
+                            ano_path = os.path.join(cliente_path, ano)
+                            if os.path.isdir(ano_path):
+                                for pasta in os.listdir(ano_path):
+                                    match = re.search(r'([IE])([ARM])-(\d{6})-(\d{2}) - (.+)', pasta)
+                                    if match:
+                                        numero_processo = match.group(3)
+                                        processos[f"{numero_processo}_{match.group(1)}{match.group(2)}{match.group(4)}"] = {
+                                            "numero": numero_processo,
+                                            "cliente": cliente,
+                                            "area": "IMPORTAÇÃO" if match.group(1) == "I" else "EXPORTAÇÃO",
+                                            "servico": {"A": "Aéreo", "R": "Rodoviário", "M": "Marítimo"}[match.group(2)],
+                                            "ano": match.group(4),
+                                            "referencia": match.group(5),
+                                            "caminho": os.path.join(area_path, cliente, ano, pasta)  # Atualizado com novo caminho
+                                        }
     return processos
 
 def validar_arquivo(arquivo_path):
@@ -59,8 +62,23 @@ def criar_pasta(cliente, area, servico, numero_processo, ano, referencia):
     referencia = re.sub(r'[^A-Za-z0-9. \-+]', '', referencia).strip()
     sigla_area = "I" if area == "IMPORTAÇÃO" else "E"
     sigla_servico = servico[0].upper()
-    nome_pasta = f"{sigla_area}{sigla_servico}-{numero_processo}-{ano} - {referencia}"
-    caminho_pasta = os.path.join(BASE_DIR, area, cliente, nome_pasta)
+    
+    # Converter ano de 2 para 4 dígitos (25 -> 2025)
+    ano_completo = f"20{ano}" if len(ano) == 2 else ano
+    
+    # Criar nome da pasta do processo (mantendo o formato original)
+    nome_pasta_processo = f"{sigla_area}{sigla_servico}-{numero_processo}-{ano} - {referencia}"
+    
+    # Caminho completo com a nova estrutura
+    caminho_pasta = os.path.join(
+        BASE_DIR, 
+        area, 
+        cliente, 
+        ano_completo,  # Nova pasta do ano (2025)
+        nome_pasta_processo
+    )
+    
+    # Criar todas as pastas necessárias (incluindo a do ano)
     os.makedirs(caminho_pasta, exist_ok=True)
     return caminho_pasta
 
