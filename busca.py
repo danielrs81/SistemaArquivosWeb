@@ -4,6 +4,7 @@ from logica import obter_info_processos, abrir_pasta_processo
 from clientes import obter_clientes
 import os
 import logging
+import subprocess
 from configparser import ConfigParser
 
 # Carregar configurações
@@ -85,27 +86,29 @@ def api_abrir_pasta():
             
         caminho = data['caminho']
         
-        # Verificar se o caminho existe e é seguro
-        if not os.path.exists(caminho) or not os.path.isdir(caminho):
-            return jsonify({"status": "error", "message": "Pasta não encontrada"}), 404
+        # Verificação adicional para caminhos de rede
+        if caminho.startswith('\\\\'):
+            # Testa conexão com o servidor primeiro
+            servidor = caminho.split('\\')[2]
+            try:
+                subprocess.run(['ping', '-n', '1', servidor], check=True)
+            except subprocess.CalledProcessError:
+                return jsonify({
+                    "status": "error",
+                    "message": f"Servidor {servidor} não está respondendo"
+                }), 404
         
-        # Converter para caminho absoluto e normalizar
-        caminho = os.path.abspath(os.path.normpath(caminho))
-        
-        # Verificar se o caminho está dentro do BASE_DIR por segurança
-        base_dir = os.path.abspath(BASE_DIR)
-        if not caminho.startswith(base_dir):
-            return jsonify({"status": "error", "message": "Acesso não permitido"}), 403
-        
-        # Tentar abrir a pasta
         if abrir_pasta_processo(caminho):
             return jsonify({"status": "success"})
         else:
             return jsonify({"status": "error", "message": "Falha ao abrir pasta"}), 500
             
     except Exception as e:
-        logging.error(f"Erro ao abrir pasta: {str(e)}")
-        return jsonify({"status": "error", "message": str(e)}), 500
+        logging.error(f"Erro ao abrir pasta: {str(e)}", exc_info=True)
+        return jsonify({
+            "status": "error",
+            "message": str(e)
+        }), 500
     
 @busca_bp.route("/api/clientes", methods=["GET"])
 def api_clientes():

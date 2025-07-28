@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from network_utils import verificar_conexao_servidor, mapear_unidade_rede
 from configparser import ConfigParser
 import os
 import shutil
@@ -153,16 +154,29 @@ def copiar_arquivos(pasta_destino, arquivos):
     return True,
 
 def abrir_pasta_processo(caminho_pasta):
-    """Abre a pasta do processo no explorador"""
     try:
-        caminho_pasta = corrigir_codificacao_caminho(caminho_pasta)
-        if not os.path.exists(caminho_pasta):
-            raise Exception("Pasta não encontrada")
-            
-        caminho_pasta = os.path.normpath(caminho_pasta)
+        # Converte para caminho UNC estendido
+        if caminho_pasta.startswith('\\\\'):
+            if not caminho_pasta.startswith('\\\\?\\UNC\\'):
+                caminho_pasta = f"\\\\?\\UNC\\{caminho_pasta[2:]}"
         
+        # Verifica se é rede e testa acesso
+        if caminho_pasta.startswith('\\\\?\\UNC\\'):
+            from network_utils import verificar_conexao_servidor, verificar_permissao_pasta
+            
+            if not verificar_conexao_servidor():
+                raise Exception("Servidor não respondendo ao ping")
+                
+            pasta_cliente = os.path.dirname(caminho_pasta)
+            if not verificar_permissao_pasta(pasta_cliente):
+                raise Exception(f"Sem permissão em {pasta_cliente}")
+
+        # Abre com o explorador nativo
         if os.name == 'nt':
-            os.startfile(caminho_pasta)
+            import ctypes
+            ctypes.windll.shell32.ShellExecuteW(
+                None, "open", caminho_pasta, None, None, 1
+            )
         elif sys.platform == 'darwin':
             subprocess.run(['open', caminho_pasta])
         else:
@@ -170,5 +184,34 @@ def abrir_pasta_processo(caminho_pasta):
             
         return True
     except Exception as e:
-        logging.error(f"Erro ao abrir pasta {caminho_pasta}: {str(e)}")
-        raise Exception(f"Não foi possível abrir a pasta: {str(e)}")
+        logging.error(f"Erro ao abrir {caminho_pasta}: {str(e)}")
+        raise Exception(f"""
+            Falha técnica ao abrir pasta. Soluções possíveis:
+            1. Execute o sistema como Administrador
+            2. Mapeie manualmente a rede como unidade Z:
+            3. Verifique o firewall/antivírus
+            4. Caminho testado: {caminho_pasta}
+            Erro original: {str(e)}
+        """)
+    
+def tentar_encontrar_pasta_alternativa(caminho_original):
+    """Tenta encontrar a pasta em locais alternativos"""
+    try:
+        # Extrai componentes do caminho
+        partes = Path(caminho_original).parts
+        
+        # Tenta reconstruir o caminho com diferentes codificações
+        tentativas = [
+            os.path.join(*partes),  # Original
+            os.path.join(*[p.encode('latin1').decode('utf8') for p in partes]),  # Latin1 → UTF8
+            os.path.join(*[p.encode('utf8').decode('latin1') for p in partes]),  # UTF8 → Latin1
+        ]
+        
+        # Verifica se alguma tentativa funciona
+        for tentativa in tentativas:
+            if os.path.exists(tentativa):
+                return tentativa
+                
+        return None
+    except:
+        return None

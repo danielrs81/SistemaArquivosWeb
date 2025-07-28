@@ -182,8 +182,12 @@ function atualizarTabela() {
 
 // Função para abrir pasta
 function abrirPasta(caminho) {
-    // Decodificar caracteres especiais no caminho
     caminho = decodeURIComponent(caminho);
+    
+    // Mostra loading
+    const btn = event.target;
+    btn.disabled = true;
+    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Abrindo...';
     
     fetch('/busca/api/abrir_pasta', {
         method: 'POST',
@@ -191,24 +195,54 @@ function abrirPasta(caminho) {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({ 
-            caminho: caminho.replace(/\\/g, '\\\\')  // Escapar barras invertidas
+            caminho: caminho.replace(/\\/g, '\\\\')
         })
     })
     .then(response => {
         if (!response.ok) {
-            return response.json().then(err => { throw new Error(err.message || 'Erro ao abrir pasta'); });
+            return response.json().then(err => { 
+                throw new Error(err.message || 'Erro no servidor'); 
+            });
         }
         return response.json();
     })
     .then(data => {
         if (data.status !== "success") {
-            alert(data.message || 'Não foi possível abrir a pasta');
+            showErrorModal(`Erro ao abrir pasta: ${data.message || 'Contate o administrador'}`);
         }
     })
     .catch(error => {
         console.error('Erro:', error);
-        alert(error.message || 'Falha na comunicação com o servidor');
+        showErrorModal(`Falha: ${error.message || 'Verifique:\n1. Se o servidor está acessível\n2. Se a pasta ainda existe'}`);
+    })
+    .finally(() => {
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fas fa-folder-open"></i> Abrir Pasta';
     });
+}
+
+function showErrorModal(message) {
+    // Implemente um modal de erro mais amigável
+    const modal = document.createElement('div');
+    modal.style.position = 'fixed';
+    modal.style.top = '0';
+    modal.style.left = '0';
+    modal.style.right = '0';
+    modal.style.backgroundColor = '#ffebee';
+    modal.style.padding = '15px';
+    modal.style.zIndex = '1000';
+    modal.style.textAlign = 'center';
+    modal.style.boxShadow = '0 2px 10px rgba(0,0,0,0.2)';
+    
+    modal.innerHTML = `
+        <p style="margin: 0; color: #c62828; font-weight: bold;">${message}</p>
+        <button onclick="this.parentNode.remove()" 
+                style="margin-top: 10px; padding: 5px 10px; background: #c62828; color: white; border: none; border-radius: 4px;">
+            Fechar
+        </button>
+    `;
+    
+    document.body.appendChild(modal);
 }
 
 // Controles de paginação

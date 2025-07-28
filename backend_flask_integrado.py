@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from network_utils import verificar_conexao_servidor
 from flask import Flask, request, jsonify, render_template_string, redirect, url_for, send_from_directory
 import os
 import shutil
@@ -968,6 +969,12 @@ if __name__ == "__main__":
     app.run(debug=True, port=5001)
 
 @app.before_first_request
+def init_network():
+    """Verifica conexão com servidor ao iniciar"""
+    if not verificar_conexao_servidor():
+        logging.error("Servidor de exportação não está acessível")
+        # Pode adicionar notificação por email aqui se necessário
+
 def verificar_acessos():
     from logica import get_path
     areas = ["IMPORTAÇÃO", "EXPORTAÇÃO"]

@@ -2199,3 +2199,1098 @@ WARNING:werkzeug: * Debugger is active!
 INFO:werkzeug: * Debugger PIN: 119-258-205
 INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 11:43:01] "GET / HTTP/1.1" 200 -
 INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 11:43:25] "POST /upload HTTP/1.1" 200 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5001
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 11:44:31] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 11:44:44] "[32mPOST /cliente HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 11:44:44] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 11:45:49] "POST /upload HTTP/1.1" 200 -
+ERROR:root:Erro no upload: [WinError 2] O sistema não pode encontrar o arquivo especificado: 'C:\\Users\\ACEXCBN\\meu_sistema_upload\\uploads\\JSADNW961_INVOICE.pdf'
+Traceback (most recent call last):
+  File "C:\Users\ACEXCBN\AppData\Local\Programs\Python\Python313\Lib\shutil.py", line 856, in move
+    os.rename(src, real_dst)
+    ~~~~~~~~~^^^^^^^^^^^^^^^
+OSError: [WinError 17] O sistema não pode mover o arquivo para uma unidade de disco diferente: 'C:\\Users\\ACEXCBN\\meu_sistema_upload\\uploads\\JSADNW961_INVOICE.pdf' -> '\\\\serverdell\\E\\ARQUIVO DIGITAL EXPORTAÇÃO\\NAKAT\\2025\\EA-000001-25 - EXT 123-2025\\JSADNW961_INVOICE.pdf'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\ACEXCBN\meu_sistema_upload\backend_flask_integrado.py", line 868, in upload
+    resultado = processar_arquivo(file, pasta_destino, file_action)
+  File "C:\Users\ACEXCBN\meu_sistema_upload\backend_flask_integrado.py", line 774, in processar_arquivo
+    shutil.move(temp_path, destino)
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ACEXCBN\AppData\Local\Programs\Python\Python313\Lib\shutil.py", line 877, in move
+    os.unlink(src)
+    ~~~~~~~~~^^^^^
+FileNotFoundError: [WinError 2] O sistema não pode encontrar o arquivo especificado: 'C:\\Users\\ACEXCBN\\meu_sistema_upload\\uploads\\JSADNW961_INVOICE.pdf'
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 11:45:49] "[35m[1mPOST /upload HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 11:45:51] "POST /upload HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 11:46:22] "POST /upload HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 11:46:34] "POST /upload HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 11:46:53] "[32mPOST /cliente HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 11:46:53] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 11:47:00] "GET /busca HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 11:47:01] "[36mGET /static/js/busca.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 11:47:01] "GET /busca/api/clientes HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 11:47:05] "GET /busca/api/buscar_processos?cliente=&numero_inicio=&numero_fim=&ano=&area=&servico=&referencia= HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 11:47:08] "GET /busca/api/buscar_processos?cliente=&numero_inicio=&numero_fim=&ano=&area=&servico=&referencia= HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 11:47:12] "GET /busca/api/buscar_processos?cliente=&numero_inicio=&numero_fim=&ano=&area=&servico=&referencia= HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 11:47:26] "[33mPOST /busca/api/abrir_pasta HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 11:47:50] "[33mPOST /busca/api/abrir_pasta HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 11:48:12] "[32mPOST /cliente HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 11:48:12] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 11:48:36] "POST /upload HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 11:48:51] "GET /busca HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 11:48:51] "[36mGET /static/js/busca.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 11:48:52] "GET /busca/api/clientes HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 11:48:56] "GET /busca/api/buscar_processos?cliente=&numero_inicio=&numero_fim=&ano=&area=&servico=&referencia= HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 11:49:06] "GET /busca/api/buscar_processos?cliente=NAKATA&numero_inicio=&numero_fim=&ano=&area=&servico=&referencia= HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 11:49:12] "[33mPOST /busca/api/abrir_pasta HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 11:49:29] "[31m[1mPOST /busca/api/abrir_pasta HTTP/1.1[0m" 403 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 11:50:28] "POST /upload HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 11:50:44] "GET /busca HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 11:50:44] "[36mGET /static/js/busca.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 11:50:45] "GET /busca/api/clientes HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 11:50:49] "GET /busca/api/buscar_processos?cliente=&numero_inicio=&numero_fim=&ano=&area=&servico=&referencia= HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 11:50:54] "GET /busca/api/buscar_processos?cliente=NAKATA&numero_inicio=&numero_fim=&ano=&area=&servico=&referencia= HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 11:50:57] "[33mPOST /busca/api/abrir_pasta HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 14:51:40] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 14:52:09] "POST /upload HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 14:52:23] "POST /upload HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 14:54:09] "GET /busca HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 14:54:09] "[36mGET /static/js/busca.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 14:54:09] "GET /busca/api/clientes HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 14:54:13] "GET /busca/api/buscar_processos?cliente=&numero_inicio=&numero_fim=&ano=&area=&servico=&referencia= HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 14:54:19] "GET /busca/api/buscar_processos?cliente=NAKATA&numero_inicio=&numero_fim=&ano=&area=&servico=&referencia= HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 14:55:14] "[32mPOST /cliente HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 14:55:14] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 14:55:39] "POST /upload HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 14:56:14] "GET /busca HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 14:56:14] "[36mGET /static/js/busca.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 14:56:14] "GET /busca/api/clientes HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 14:56:18] "GET /busca/api/buscar_processos?cliente=&numero_inicio=&numero_fim=&ano=&area=&servico=&referencia= HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 14:56:29] "GET /busca/api/buscar_processos?cliente=CESTARI&numero_inicio=&numero_fim=&ano=&area=&servico=&referencia= HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 14:56:32] "[33mPOST /busca/api/abrir_pasta HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 14:56:34] "[33mPOST /busca/api/abrir_pasta HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 14:57:19] "GET /busca/api/buscar_processos?cliente=CESTARI&numero_inicio=&numero_fim=&ano=&area=&servico=&referencia= HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 14:57:41] "[33mPOST /busca/api/abrir_pasta HTTP/1.1[0m" 404 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5001
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 15:02:50] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 15:02:52] "GET /busca HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 15:02:52] "[36mGET /static/js/busca.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 15:02:52] "GET /busca/api/clientes HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 15:02:56] "GET /busca/api/buscar_processos?cliente=&numero_inicio=&numero_fim=&ano=&area=&servico=&referencia= HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 15:03:01] "GET /busca/api/buscar_processos?cliente=CESTARI&numero_inicio=&numero_fim=&ano=&area=&servico=&referencia= HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 15:03:02] "[33mPOST /busca/api/abrir_pasta HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 15:03:05] "[33mPOST /busca/api/abrir_pasta HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 15:03:16] "GET /busca/api/buscar_processos?cliente=&numero_inicio=&numero_fim=&ano=&area=&servico=&referencia= HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 15:03:17] "[33mPOST /busca/api/abrir_pasta HTTP/1.1[0m" 404 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5001
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 15:05:35] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 15:05:45] "GET /busca HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 15:05:45] "GET /static/js/busca.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 15:05:45] "GET /busca/api/clientes HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 15:05:49] "GET /busca/api/buscar_processos?cliente=&numero_inicio=&numero_fim=&ano=&area=&servico=&referencia= HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 15:05:50] "[33mPOST /busca/api/abrir_pasta HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 15:05:54] "[31m[1mPOST /busca/api/abrir_pasta HTTP/1.1[0m" 403 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 15:06:00] "[33mPOST /busca/api/abrir_pasta HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 15:06:14] "GET /busca/api/buscar_processos?cliente=CESTARI&numero_inicio=&numero_fim=&ano=&area=&servico=&referencia= HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 15:06:15] "[33mPOST /busca/api/abrir_pasta HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 15:06:19] "[33mPOST /busca/api/abrir_pasta HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 15:06:30] "GET /busca/api/buscar_processos?cliente=NAKATA&numero_inicio=&numero_fim=&ano=&area=&servico=&referencia= HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 15:06:33] "[31m[1mPOST /busca/api/abrir_pasta HTTP/1.1[0m" 403 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 15:06:41] "[33mPOST /busca/api/abrir_pasta HTTP/1.1[0m" 404 -
+INFO:werkzeug: * Detected change in 'C:\\Users\\ACEXCBN\\meu_sistema_upload\\logica.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5001
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 15:10:26] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 15:10:29] "GET /busca HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 15:10:29] "[36mGET /static/js/busca.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 15:10:29] "GET /busca/api/clientes HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 15:10:34] "GET /busca/api/buscar_processos?cliente=&numero_inicio=&numero_fim=&ano=&area=&servico=&referencia= HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 15:10:35] "GET /busca/api/buscar_processos?cliente=CESTARI&numero_inicio=&numero_fim=&ano=&area=&servico=&referencia= HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 15:10:36] "[33mPOST /busca/api/abrir_pasta HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 15:10:39] "[33mPOST /busca/api/abrir_pasta HTTP/1.1[0m" 404 -
+INFO:werkzeug: * Detected change in 'C:\\Users\\ACEXCBN\\meu_sistema_upload\\busca.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5001
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 15:11:36] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 15:11:39] "GET /busca HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 15:11:39] "[36mGET /static/js/busca.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 15:11:40] "GET /busca/api/clientes HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 15:11:44] "GET /busca/api/buscar_processos?cliente=&numero_inicio=&numero_fim=&ano=&area=&servico=&referencia= HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 15:11:46] "GET /busca/api/buscar_processos?cliente=NAKATA&numero_inicio=&numero_fim=&ano=&area=&servico=&referencia= HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 15:11:48] "POST /busca/api/abrir_pasta HTTP/1.1" 200 -
+ERROR:root:Erro ao abrir pasta: name 'subprocess' is not defined
+Traceback (most recent call last):
+  File "C:\Users\ACEXCBN\meu_sistema_upload\busca.py", line 93, in api_abrir_pasta
+    subprocess.run(['ping', '-n', '1', servidor], check=True)
+    ^^^^^^^^^^
+NameError: name 'subprocess' is not defined. Did you forget to import 'subprocess'?
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\ACEXCBN\meu_sistema_upload\busca.py", line 94, in api_abrir_pasta
+    except subprocess.CalledProcessError:
+           ^^^^^^^^^^
+NameError: name 'subprocess' is not defined. Did you forget to import 'subprocess'?
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 15:11:56] "[35m[1mPOST /busca/api/abrir_pasta HTTP/1.1[0m" 500 -
+ERROR:root:Erro ao abrir pasta: name 'subprocess' is not defined
+Traceback (most recent call last):
+  File "C:\Users\ACEXCBN\meu_sistema_upload\busca.py", line 93, in api_abrir_pasta
+    subprocess.run(['ping', '-n', '1', servidor], check=True)
+    ^^^^^^^^^^
+NameError: name 'subprocess' is not defined. Did you forget to import 'subprocess'?
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\ACEXCBN\meu_sistema_upload\busca.py", line 94, in api_abrir_pasta
+    except subprocess.CalledProcessError:
+           ^^^^^^^^^^
+NameError: name 'subprocess' is not defined. Did you forget to import 'subprocess'?
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 15:11:59] "[35m[1mPOST /busca/api/abrir_pasta HTTP/1.1[0m" 500 -
+ERROR:root:Erro ao abrir pasta: name 'subprocess' is not defined
+Traceback (most recent call last):
+  File "C:\Users\ACEXCBN\meu_sistema_upload\busca.py", line 93, in api_abrir_pasta
+    subprocess.run(['ping', '-n', '1', servidor], check=True)
+    ^^^^^^^^^^
+NameError: name 'subprocess' is not defined. Did you forget to import 'subprocess'?
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\ACEXCBN\meu_sistema_upload\busca.py", line 94, in api_abrir_pasta
+    except subprocess.CalledProcessError:
+           ^^^^^^^^^^
+NameError: name 'subprocess' is not defined. Did you forget to import 'subprocess'?
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 15:12:02] "[35m[1mPOST /busca/api/abrir_pasta HTTP/1.1[0m" 500 -
+ERROR:root:Erro ao abrir pasta: name 'subprocess' is not defined
+Traceback (most recent call last):
+  File "C:\Users\ACEXCBN\meu_sistema_upload\busca.py", line 93, in api_abrir_pasta
+    subprocess.run(['ping', '-n', '1', servidor], check=True)
+    ^^^^^^^^^^
+NameError: name 'subprocess' is not defined. Did you forget to import 'subprocess'?
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\ACEXCBN\meu_sistema_upload\busca.py", line 94, in api_abrir_pasta
+    except subprocess.CalledProcessError:
+           ^^^^^^^^^^
+NameError: name 'subprocess' is not defined. Did you forget to import 'subprocess'?
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 15:12:06] "[35m[1mPOST /busca/api/abrir_pasta HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 15:12:16] "GET /busca/api/buscar_processos?cliente=CESTARI&numero_inicio=&numero_fim=&ano=&area=&servico=&referencia= HTTP/1.1" 200 -
+ERROR:root:Erro ao abrir pasta: name 'subprocess' is not defined
+Traceback (most recent call last):
+  File "C:\Users\ACEXCBN\meu_sistema_upload\busca.py", line 93, in api_abrir_pasta
+    subprocess.run(['ping', '-n', '1', servidor], check=True)
+    ^^^^^^^^^^
+NameError: name 'subprocess' is not defined. Did you forget to import 'subprocess'?
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\ACEXCBN\meu_sistema_upload\busca.py", line 94, in api_abrir_pasta
+    except subprocess.CalledProcessError:
+           ^^^^^^^^^^
+NameError: name 'subprocess' is not defined. Did you forget to import 'subprocess'?
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 15:12:17] "[35m[1mPOST /busca/api/abrir_pasta HTTP/1.1[0m" 500 -
+INFO:werkzeug: * Detected change in 'C:\\Users\\ACEXCBN\\meu_sistema_upload\\busca.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5001
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 15:17:27] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 15:17:29] "GET /busca HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 15:17:29] "[36mGET /static/js/busca.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 15:17:29] "GET /busca/api/clientes HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 15:17:34] "GET /busca/api/buscar_processos?cliente=&numero_inicio=&numero_fim=&ano=&area=&servico=&referencia= HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 15:17:42] "POST /busca/api/abrir_pasta HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 15:17:56] "GET /busca/api/buscar_processos?cliente=CESTARI&numero_inicio=&numero_fim=&ano=&area=&servico=&referencia= HTTP/1.1" 200 -
+ERROR:root:Erro ao abrir pasta \\?\UNC\\\serverdell\E\ARQUIVO DIGITAL EXPORTAÇÃO\CESTARI\2023\EA-008486-23 -  INV-300021122023: Pasta não encontrada: \\\\serverdell\E\ARQUIVO DIGITAL EXPORTAÇÃO\CESTARI\2023\EA-008486-23 -  INV-300021122023
+Traceback (most recent call last):
+  File "C:\Users\ACEXCBN\meu_sistema_upload\logica.py", line 177, in abrir_pasta_processo
+    raise FileNotFoundError(f"Pasta não encontrada: {caminho_alternativo}")
+FileNotFoundError: Pasta não encontrada: \\\\serverdell\E\ARQUIVO DIGITAL EXPORTAÇÃO\CESTARI\2023\EA-008486-23 -  INV-300021122023
+ERROR:root:Erro ao abrir pasta: Não foi possível abrir a pasta. Verifique:
+1. Se o caminho existe
+2. Se você tem permissões
+3. Se o servidor está acessível
+
+Detalhes: Pasta não encontrada: \\\\serverdell\E\ARQUIVO DIGITAL EXPORTAÇÃO\CESTARI\2023\EA-008486-23 -  INV-300021122023
+Traceback (most recent call last):
+  File "C:\Users\ACEXCBN\meu_sistema_upload\logica.py", line 177, in abrir_pasta_processo
+    raise FileNotFoundError(f"Pasta não encontrada: {caminho_alternativo}")
+FileNotFoundError: Pasta não encontrada: \\\\serverdell\E\ARQUIVO DIGITAL EXPORTAÇÃO\CESTARI\2023\EA-008486-23 -  INV-300021122023
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\ACEXCBN\meu_sistema_upload\busca.py", line 101, in api_abrir_pasta
+    if abrir_pasta_processo(caminho):
+       ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ACEXCBN\meu_sistema_upload\logica.py", line 190, in abrir_pasta_processo
+    raise Exception(f"Não foi possível abrir a pasta. Verifique:\n1. Se o caminho existe\n2. Se você tem permissões\n3. Se o servidor está acessível\n\nDetalhes: {str(e)}")
+Exception: Não foi possível abrir a pasta. Verifique:
+1. Se o caminho existe
+2. Se você tem permissões
+3. Se o servidor está acessível
+
+Detalhes: Pasta não encontrada: \\\\serverdell\E\ARQUIVO DIGITAL EXPORTAÇÃO\CESTARI\2023\EA-008486-23 -  INV-300021122023
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 15:18:04] "[35m[1mPOST /busca/api/abrir_pasta HTTP/1.1[0m" 500 -
+ERROR:root:Erro ao abrir pasta \\?\UNC\\\serverdell\E\ARQUIVO DIGITAL EXPORTAÇÃO\CESTARI\2025\EM-000005-25 - 123: Pasta não encontrada: \\\\serverdell\E\ARQUIVO DIGITAL EXPORTAÇÃO\CESTARI\2025\EM-000005-25 - 123
+Traceback (most recent call last):
+  File "C:\Users\ACEXCBN\meu_sistema_upload\logica.py", line 177, in abrir_pasta_processo
+    raise FileNotFoundError(f"Pasta não encontrada: {caminho_alternativo}")
+FileNotFoundError: Pasta não encontrada: \\\\serverdell\E\ARQUIVO DIGITAL EXPORTAÇÃO\CESTARI\2025\EM-000005-25 - 123
+ERROR:root:Erro ao abrir pasta: Não foi possível abrir a pasta. Verifique:
+1. Se o caminho existe
+2. Se você tem permissões
+3. Se o servidor está acessível
+
+Detalhes: Pasta não encontrada: \\\\serverdell\E\ARQUIVO DIGITAL EXPORTAÇÃO\CESTARI\2025\EM-000005-25 - 123
+Traceback (most recent call last):
+  File "C:\Users\ACEXCBN\meu_sistema_upload\logica.py", line 177, in abrir_pasta_processo
+    raise FileNotFoundError(f"Pasta não encontrada: {caminho_alternativo}")
+FileNotFoundError: Pasta não encontrada: \\\\serverdell\E\ARQUIVO DIGITAL EXPORTAÇÃO\CESTARI\2025\EM-000005-25 - 123
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\ACEXCBN\meu_sistema_upload\busca.py", line 101, in api_abrir_pasta
+    if abrir_pasta_processo(caminho):
+       ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ACEXCBN\meu_sistema_upload\logica.py", line 190, in abrir_pasta_processo
+    raise Exception(f"Não foi possível abrir a pasta. Verifique:\n1. Se o caminho existe\n2. Se você tem permissões\n3. Se o servidor está acessível\n\nDetalhes: {str(e)}")
+Exception: Não foi possível abrir a pasta. Verifique:
+1. Se o caminho existe
+2. Se você tem permissões
+3. Se o servidor está acessível
+
+Detalhes: Pasta não encontrada: \\\\serverdell\E\ARQUIVO DIGITAL EXPORTAÇÃO\CESTARI\2025\EM-000005-25 - 123
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 15:18:37] "[35m[1mPOST /busca/api/abrir_pasta HTTP/1.1[0m" 500 -
+ERROR:root:Erro ao abrir pasta \\?\UNC\\\serverdell\E\ARQUIVO DIGITAL EXPORTAÇÃO\CESTARI\2023\EA-008486-23 -  INV-300021122023: Pasta não encontrada: \\\\serverdell\E\ARQUIVO DIGITAL EXPORTAÇÃO\CESTARI\2023\EA-008486-23 -  INV-300021122023
+Traceback (most recent call last):
+  File "C:\Users\ACEXCBN\meu_sistema_upload\logica.py", line 177, in abrir_pasta_processo
+    raise FileNotFoundError(f"Pasta não encontrada: {caminho_alternativo}")
+FileNotFoundError: Pasta não encontrada: \\\\serverdell\E\ARQUIVO DIGITAL EXPORTAÇÃO\CESTARI\2023\EA-008486-23 -  INV-300021122023
+ERROR:root:Erro ao abrir pasta: Não foi possível abrir a pasta. Verifique:
+1. Se o caminho existe
+2. Se você tem permissões
+3. Se o servidor está acessível
+
+Detalhes: Pasta não encontrada: \\\\serverdell\E\ARQUIVO DIGITAL EXPORTAÇÃO\CESTARI\2023\EA-008486-23 -  INV-300021122023
+Traceback (most recent call last):
+  File "C:\Users\ACEXCBN\meu_sistema_upload\logica.py", line 177, in abrir_pasta_processo
+    raise FileNotFoundError(f"Pasta não encontrada: {caminho_alternativo}")
+FileNotFoundError: Pasta não encontrada: \\\\serverdell\E\ARQUIVO DIGITAL EXPORTAÇÃO\CESTARI\2023\EA-008486-23 -  INV-300021122023
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\ACEXCBN\meu_sistema_upload\busca.py", line 101, in api_abrir_pasta
+    if abrir_pasta_processo(caminho):
+       ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ACEXCBN\meu_sistema_upload\logica.py", line 190, in abrir_pasta_processo
+    raise Exception(f"Não foi possível abrir a pasta. Verifique:\n1. Se o caminho existe\n2. Se você tem permissões\n3. Se o servidor está acessível\n\nDetalhes: {str(e)}")
+Exception: Não foi possível abrir a pasta. Verifique:
+1. Se o caminho existe
+2. Se você tem permissões
+3. Se o servidor está acessível
+
+Detalhes: Pasta não encontrada: \\\\serverdell\E\ARQUIVO DIGITAL EXPORTAÇÃO\CESTARI\2023\EA-008486-23 -  INV-300021122023
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 15:20:39] "[35m[1mPOST /busca/api/abrir_pasta HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 15:23:00] "[31m[1mPOST /upload HTTP/1.1[0m" 400 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 15:23:20] "POST /upload HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'C:\\Users\\ACEXCBN\\meu_sistema_upload\\network_utils.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug: * Detected change in 'C:\\Users\\ACEXCBN\\meu_sistema_upload\\logica.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug: * Detected change in 'C:\\Users\\ACEXCBN\\meu_sistema_upload\\logica.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug: * Detected change in 'C:\\Users\\ACEXCBN\\meu_sistema_upload\\backend_flask_integrado.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5001
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 15:33:02] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 15:33:04] "GET /busca HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 15:33:04] "GET /static/js/busca.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 15:33:04] "GET /busca/api/clientes HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 15:33:09] "GET /busca/api/buscar_processos?cliente=&numero_inicio=&numero_fim=&ano=&area=&servico=&referencia= HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 15:33:10] "GET /busca/api/buscar_processos?cliente=CESTARI&numero_inicio=&numero_fim=&ano=&area=&servico=&referencia= HTTP/1.1" 200 -
+ERROR:root:Erro ao verificar conexão: RawConfigParser.get() takes 3 positional arguments but 4 were given
+ERROR:root:Erro ao abrir pasta \\\\serverdell\\E\\ARQUIVO DIGITAL EXPORTAÇÃO\\CESTARI\\2023\\EA-008486-23 -  INV-300021122023: Servidor de rede não está acessível
+Traceback (most recent call last):
+  File "C:\Users\ACEXCBN\meu_sistema_upload\logica.py", line 161, in abrir_pasta_processo
+    raise Exception("Servidor de rede não está acessível")
+Exception: Servidor de rede não está acessível
+ERROR:root:Erro ao abrir pasta: 
+            Falha ao acessar pasta de rede. Por favor:
+            1. Verifique se está conectado à rede corporativa
+            2. Tente acessar manualmente este caminho:
+               \\\\serverdell\\E\\ARQUIVO DIGITAL EXPORTAÇÃO\\CESTARI\\2023\\EA-008486-23 -  INV-300021122023
+            3. Contate o suporte técnico se o problema persistir
+            Detalhes: Servidor de rede não está acessível
+        
+Traceback (most recent call last):
+  File "C:\Users\ACEXCBN\meu_sistema_upload\logica.py", line 161, in abrir_pasta_processo
+    raise Exception("Servidor de rede não está acessível")
+Exception: Servidor de rede não está acessível
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\ACEXCBN\meu_sistema_upload\busca.py", line 101, in api_abrir_pasta
+    if abrir_pasta_processo(caminho):
+       ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ACEXCBN\meu_sistema_upload\logica.py", line 195, in abrir_pasta_processo
+    raise Exception(f"""
+    ...<6 lines>...
+    """)
+Exception: 
+            Falha ao acessar pasta de rede. Por favor:
+            1. Verifique se está conectado à rede corporativa
+            2. Tente acessar manualmente este caminho:
+               \\\\serverdell\\E\\ARQUIVO DIGITAL EXPORTAÇÃO\\CESTARI\\2023\\EA-008486-23 -  INV-300021122023
+            3. Contate o suporte técnico se o problema persistir
+            Detalhes: Servidor de rede não está acessível
+        
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 15:33:12] "[35m[1mPOST /busca/api/abrir_pasta HTTP/1.1[0m" 500 -
+ERROR:root:Erro ao verificar conexão: RawConfigParser.get() takes 3 positional arguments but 4 were given
+ERROR:root:Erro ao abrir pasta \\\\serverdell\\E\\ARQUIVO DIGITAL EXPORTAÇÃO\\CESTARI\\2025\\EM-000005-25 - 123: Servidor de rede não está acessível
+Traceback (most recent call last):
+  File "C:\Users\ACEXCBN\meu_sistema_upload\logica.py", line 161, in abrir_pasta_processo
+    raise Exception("Servidor de rede não está acessível")
+Exception: Servidor de rede não está acessível
+ERROR:root:Erro ao abrir pasta: 
+            Falha ao acessar pasta de rede. Por favor:
+            1. Verifique se está conectado à rede corporativa
+            2. Tente acessar manualmente este caminho:
+               \\\\serverdell\\E\\ARQUIVO DIGITAL EXPORTAÇÃO\\CESTARI\\2025\\EM-000005-25 - 123
+            3. Contate o suporte técnico se o problema persistir
+            Detalhes: Servidor de rede não está acessível
+        
+Traceback (most recent call last):
+  File "C:\Users\ACEXCBN\meu_sistema_upload\logica.py", line 161, in abrir_pasta_processo
+    raise Exception("Servidor de rede não está acessível")
+Exception: Servidor de rede não está acessível
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\ACEXCBN\meu_sistema_upload\busca.py", line 101, in api_abrir_pasta
+    if abrir_pasta_processo(caminho):
+       ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ACEXCBN\meu_sistema_upload\logica.py", line 195, in abrir_pasta_processo
+    raise Exception(f"""
+    ...<6 lines>...
+    """)
+Exception: 
+            Falha ao acessar pasta de rede. Por favor:
+            1. Verifique se está conectado à rede corporativa
+            2. Tente acessar manualmente este caminho:
+               \\\\serverdell\\E\\ARQUIVO DIGITAL EXPORTAÇÃO\\CESTARI\\2025\\EM-000005-25 - 123
+            3. Contate o suporte técnico se o problema persistir
+            Detalhes: Servidor de rede não está acessível
+        
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 15:33:16] "[35m[1mPOST /busca/api/abrir_pasta HTTP/1.1[0m" 500 -
+ERROR:root:Erro ao verificar conexão: RawConfigParser.get() takes 3 positional arguments but 4 were given
+ERROR:root:Erro ao abrir pasta \\\\serverdell\\E\\ARQUIVO DIGITAL EXPORTAÇÃO\\CESTARI\\2025\\EM-000005-25 - 123: Servidor de rede não está acessível
+Traceback (most recent call last):
+  File "C:\Users\ACEXCBN\meu_sistema_upload\logica.py", line 161, in abrir_pasta_processo
+    raise Exception("Servidor de rede não está acessível")
+Exception: Servidor de rede não está acessível
+ERROR:root:Erro ao abrir pasta: 
+            Falha ao acessar pasta de rede. Por favor:
+            1. Verifique se está conectado à rede corporativa
+            2. Tente acessar manualmente este caminho:
+               \\\\serverdell\\E\\ARQUIVO DIGITAL EXPORTAÇÃO\\CESTARI\\2025\\EM-000005-25 - 123
+            3. Contate o suporte técnico se o problema persistir
+            Detalhes: Servidor de rede não está acessível
+        
+Traceback (most recent call last):
+  File "C:\Users\ACEXCBN\meu_sistema_upload\logica.py", line 161, in abrir_pasta_processo
+    raise Exception("Servidor de rede não está acessível")
+Exception: Servidor de rede não está acessível
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\ACEXCBN\meu_sistema_upload\busca.py", line 101, in api_abrir_pasta
+    if abrir_pasta_processo(caminho):
+       ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ACEXCBN\meu_sistema_upload\logica.py", line 195, in abrir_pasta_processo
+    raise Exception(f"""
+    ...<6 lines>...
+    """)
+Exception: 
+            Falha ao acessar pasta de rede. Por favor:
+            1. Verifique se está conectado à rede corporativa
+            2. Tente acessar manualmente este caminho:
+               \\\\serverdell\\E\\ARQUIVO DIGITAL EXPORTAÇÃO\\CESTARI\\2025\\EM-000005-25 - 123
+            3. Contate o suporte técnico se o problema persistir
+            Detalhes: Servidor de rede não está acessível
+        
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 15:34:09] "[35m[1mPOST /busca/api/abrir_pasta HTTP/1.1[0m" 500 -
+ERROR:root:Erro ao verificar conexão: RawConfigParser.get() takes 3 positional arguments but 4 were given
+ERROR:root:Erro ao abrir pasta \\\\serverdell\\E\\ARQUIVO DIGITAL EXPORTAÇÃO\\CESTARI\\2023\\EA-008486-23 -  INV-300021122023: Servidor de rede não está acessível
+Traceback (most recent call last):
+  File "C:\Users\ACEXCBN\meu_sistema_upload\logica.py", line 161, in abrir_pasta_processo
+    raise Exception("Servidor de rede não está acessível")
+Exception: Servidor de rede não está acessível
+ERROR:root:Erro ao abrir pasta: 
+            Falha ao acessar pasta de rede. Por favor:
+            1. Verifique se está conectado à rede corporativa
+            2. Tente acessar manualmente este caminho:
+               \\\\serverdell\\E\\ARQUIVO DIGITAL EXPORTAÇÃO\\CESTARI\\2023\\EA-008486-23 -  INV-300021122023
+            3. Contate o suporte técnico se o problema persistir
+            Detalhes: Servidor de rede não está acessível
+        
+Traceback (most recent call last):
+  File "C:\Users\ACEXCBN\meu_sistema_upload\logica.py", line 161, in abrir_pasta_processo
+    raise Exception("Servidor de rede não está acessível")
+Exception: Servidor de rede não está acessível
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\ACEXCBN\meu_sistema_upload\busca.py", line 101, in api_abrir_pasta
+    if abrir_pasta_processo(caminho):
+       ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ACEXCBN\meu_sistema_upload\logica.py", line 195, in abrir_pasta_processo
+    raise Exception(f"""
+    ...<6 lines>...
+    """)
+Exception: 
+            Falha ao acessar pasta de rede. Por favor:
+            1. Verifique se está conectado à rede corporativa
+            2. Tente acessar manualmente este caminho:
+               \\\\serverdell\\E\\ARQUIVO DIGITAL EXPORTAÇÃO\\CESTARI\\2023\\EA-008486-23 -  INV-300021122023
+            3. Contate o suporte técnico se o problema persistir
+            Detalhes: Servidor de rede não está acessível
+        
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 15:34:21] "[35m[1mPOST /busca/api/abrir_pasta HTTP/1.1[0m" 500 -
+ERROR:root:Erro ao verificar conexão: RawConfigParser.get() takes 3 positional arguments but 4 were given
+ERROR:root:Erro ao abrir pasta \\\\serverdell\\E\\ARQUIVO DIGITAL EXPORTAÇÃO\\CESTARI\\2023\\EA-008486-23 -  INV-300021122023: Servidor de rede não está acessível
+Traceback (most recent call last):
+  File "C:\Users\ACEXCBN\meu_sistema_upload\logica.py", line 161, in abrir_pasta_processo
+    raise Exception("Servidor de rede não está acessível")
+Exception: Servidor de rede não está acessível
+ERROR:root:Erro ao abrir pasta: 
+            Falha ao acessar pasta de rede. Por favor:
+            1. Verifique se está conectado à rede corporativa
+            2. Tente acessar manualmente este caminho:
+               \\\\serverdell\\E\\ARQUIVO DIGITAL EXPORTAÇÃO\\CESTARI\\2023\\EA-008486-23 -  INV-300021122023
+            3. Contate o suporte técnico se o problema persistir
+            Detalhes: Servidor de rede não está acessível
+        
+Traceback (most recent call last):
+  File "C:\Users\ACEXCBN\meu_sistema_upload\logica.py", line 161, in abrir_pasta_processo
+    raise Exception("Servidor de rede não está acessível")
+Exception: Servidor de rede não está acessível
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\ACEXCBN\meu_sistema_upload\busca.py", line 101, in api_abrir_pasta
+    if abrir_pasta_processo(caminho):
+       ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ACEXCBN\meu_sistema_upload\logica.py", line 195, in abrir_pasta_processo
+    raise Exception(f"""
+    ...<6 lines>...
+    """)
+Exception: 
+            Falha ao acessar pasta de rede. Por favor:
+            1. Verifique se está conectado à rede corporativa
+            2. Tente acessar manualmente este caminho:
+               \\\\serverdell\\E\\ARQUIVO DIGITAL EXPORTAÇÃO\\CESTARI\\2023\\EA-008486-23 -  INV-300021122023
+            3. Contate o suporte técnico se o problema persistir
+            Detalhes: Servidor de rede não está acessível
+        
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 15:37:04] "[35m[1mPOST /busca/api/abrir_pasta HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 15:38:22] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 15:38:52] "POST /upload HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 15:39:07] "GET /busca/api/buscar_processos?cliente=CESTARI&numero_inicio=&numero_fim=&ano=&area=&servico=&referencia= HTTP/1.1" 200 -
+ERROR:root:Erro ao verificar conexão: RawConfigParser.get() takes 3 positional arguments but 4 were given
+ERROR:root:Erro ao abrir pasta \\\\serverdell\\E\\ARQUIVO DIGITAL EXPORTAÇÃO\\CESTARI\\2023\\ER-000022-23 - TESTE: Servidor de rede não está acessível
+Traceback (most recent call last):
+  File "C:\Users\ACEXCBN\meu_sistema_upload\logica.py", line 161, in abrir_pasta_processo
+    raise Exception("Servidor de rede não está acessível")
+Exception: Servidor de rede não está acessível
+ERROR:root:Erro ao abrir pasta: 
+            Falha ao acessar pasta de rede. Por favor:
+            1. Verifique se está conectado à rede corporativa
+            2. Tente acessar manualmente este caminho:
+               \\\\serverdell\\E\\ARQUIVO DIGITAL EXPORTAÇÃO\\CESTARI\\2023\\ER-000022-23 - TESTE
+            3. Contate o suporte técnico se o problema persistir
+            Detalhes: Servidor de rede não está acessível
+        
+Traceback (most recent call last):
+  File "C:\Users\ACEXCBN\meu_sistema_upload\logica.py", line 161, in abrir_pasta_processo
+    raise Exception("Servidor de rede não está acessível")
+Exception: Servidor de rede não está acessível
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\ACEXCBN\meu_sistema_upload\busca.py", line 101, in api_abrir_pasta
+    if abrir_pasta_processo(caminho):
+       ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ACEXCBN\meu_sistema_upload\logica.py", line 195, in abrir_pasta_processo
+    raise Exception(f"""
+    ...<6 lines>...
+    """)
+Exception: 
+            Falha ao acessar pasta de rede. Por favor:
+            1. Verifique se está conectado à rede corporativa
+            2. Tente acessar manualmente este caminho:
+               \\\\serverdell\\E\\ARQUIVO DIGITAL EXPORTAÇÃO\\CESTARI\\2023\\ER-000022-23 - TESTE
+            3. Contate o suporte técnico se o problema persistir
+            Detalhes: Servidor de rede não está acessível
+        
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 15:39:09] "[35m[1mPOST /busca/api/abrir_pasta HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 15:40:17] "POST /upload HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 15:40:29] "GET /busca HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 15:40:30] "[36mGET /static/js/busca.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 15:40:30] "GET /busca/api/clientes HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 15:40:34] "GET /busca/api/buscar_processos?cliente=&numero_inicio=&numero_fim=&ano=&area=&servico=&referencia= HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 15:40:36] "GET /busca/api/buscar_processos?cliente=NAKATA&numero_inicio=&numero_fim=&ano=&area=&servico=&referencia= HTTP/1.1" 200 -
+ERROR:root:Erro ao verificar conexão: RawConfigParser.get() takes 3 positional arguments but 4 were given
+ERROR:root:Erro ao abrir pasta \\\\serverdell\\E\\ARQUIVO DIGITAL EXPORTAÇÃO\\NAKATA\\2023\\EA-000025-23 - TESTE: Servidor de rede não está acessível
+Traceback (most recent call last):
+  File "C:\Users\ACEXCBN\meu_sistema_upload\logica.py", line 161, in abrir_pasta_processo
+    raise Exception("Servidor de rede não está acessível")
+Exception: Servidor de rede não está acessível
+ERROR:root:Erro ao abrir pasta: 
+            Falha ao acessar pasta de rede. Por favor:
+            1. Verifique se está conectado à rede corporativa
+            2. Tente acessar manualmente este caminho:
+               \\\\serverdell\\E\\ARQUIVO DIGITAL EXPORTAÇÃO\\NAKATA\\2023\\EA-000025-23 - TESTE
+            3. Contate o suporte técnico se o problema persistir
+            Detalhes: Servidor de rede não está acessível
+        
+Traceback (most recent call last):
+  File "C:\Users\ACEXCBN\meu_sistema_upload\logica.py", line 161, in abrir_pasta_processo
+    raise Exception("Servidor de rede não está acessível")
+Exception: Servidor de rede não está acessível
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\ACEXCBN\meu_sistema_upload\busca.py", line 101, in api_abrir_pasta
+    if abrir_pasta_processo(caminho):
+       ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ACEXCBN\meu_sistema_upload\logica.py", line 195, in abrir_pasta_processo
+    raise Exception(f"""
+    ...<6 lines>...
+    """)
+Exception: 
+            Falha ao acessar pasta de rede. Por favor:
+            1. Verifique se está conectado à rede corporativa
+            2. Tente acessar manualmente este caminho:
+               \\\\serverdell\\E\\ARQUIVO DIGITAL EXPORTAÇÃO\\NAKATA\\2023\\EA-000025-23 - TESTE
+            3. Contate o suporte técnico se o problema persistir
+            Detalhes: Servidor de rede não está acessível
+        
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 15:40:43] "[35m[1mPOST /busca/api/abrir_pasta HTTP/1.1[0m" 500 -
+ERROR:root:Erro ao verificar conexão: RawConfigParser.get() takes 3 positional arguments but 4 were given
+ERROR:root:Erro ao abrir pasta \\\\serverdell\\E\\ARQUIVO DIGITAL EXPORTAÇÃO\\NAKATA\\2024\\EM-000010-24 - TESTE: Servidor de rede não está acessível
+Traceback (most recent call last):
+  File "C:\Users\ACEXCBN\meu_sistema_upload\logica.py", line 161, in abrir_pasta_processo
+    raise Exception("Servidor de rede não está acessível")
+Exception: Servidor de rede não está acessível
+ERROR:root:Erro ao abrir pasta: 
+            Falha ao acessar pasta de rede. Por favor:
+            1. Verifique se está conectado à rede corporativa
+            2. Tente acessar manualmente este caminho:
+               \\\\serverdell\\E\\ARQUIVO DIGITAL EXPORTAÇÃO\\NAKATA\\2024\\EM-000010-24 - TESTE
+            3. Contate o suporte técnico se o problema persistir
+            Detalhes: Servidor de rede não está acessível
+        
+Traceback (most recent call last):
+  File "C:\Users\ACEXCBN\meu_sistema_upload\logica.py", line 161, in abrir_pasta_processo
+    raise Exception("Servidor de rede não está acessível")
+Exception: Servidor de rede não está acessível
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\ACEXCBN\meu_sistema_upload\busca.py", line 101, in api_abrir_pasta
+    if abrir_pasta_processo(caminho):
+       ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ACEXCBN\meu_sistema_upload\logica.py", line 195, in abrir_pasta_processo
+    raise Exception(f"""
+    ...<6 lines>...
+    """)
+Exception: 
+            Falha ao acessar pasta de rede. Por favor:
+            1. Verifique se está conectado à rede corporativa
+            2. Tente acessar manualmente este caminho:
+               \\\\serverdell\\E\\ARQUIVO DIGITAL EXPORTAÇÃO\\NAKATA\\2024\\EM-000010-24 - TESTE
+            3. Contate o suporte técnico se o problema persistir
+            Detalhes: Servidor de rede não está acessível
+        
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 15:41:19] "[35m[1mPOST /busca/api/abrir_pasta HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 15:42:03] "POST /busca/api/abrir_pasta HTTP/1.1" 200 -
+ERROR:root:Erro ao verificar conexão: RawConfigParser.get() takes 3 positional arguments but 4 were given
+ERROR:root:Erro ao abrir pasta \\\\serverdell\\E\\ARQUIVO DIGITAL EXPORTAÇÃO\\NAKATA\\2025\\EM-008300-23 - EXT-88 + 5109-2023: Servidor de rede não está acessível
+Traceback (most recent call last):
+  File "C:\Users\ACEXCBN\meu_sistema_upload\logica.py", line 161, in abrir_pasta_processo
+    raise Exception("Servidor de rede não está acessível")
+Exception: Servidor de rede não está acessível
+ERROR:root:Erro ao abrir pasta: 
+            Falha ao acessar pasta de rede. Por favor:
+            1. Verifique se está conectado à rede corporativa
+            2. Tente acessar manualmente este caminho:
+               \\\\serverdell\\E\\ARQUIVO DIGITAL EXPORTAÇÃO\\NAKATA\\2025\\EM-008300-23 - EXT-88 + 5109-2023
+            3. Contate o suporte técnico se o problema persistir
+            Detalhes: Servidor de rede não está acessível
+        
+Traceback (most recent call last):
+  File "C:\Users\ACEXCBN\meu_sistema_upload\logica.py", line 161, in abrir_pasta_processo
+    raise Exception("Servidor de rede não está acessível")
+Exception: Servidor de rede não está acessível
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\ACEXCBN\meu_sistema_upload\busca.py", line 101, in api_abrir_pasta
+    if abrir_pasta_processo(caminho):
+       ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ACEXCBN\meu_sistema_upload\logica.py", line 195, in abrir_pasta_processo
+    raise Exception(f"""
+    ...<6 lines>...
+    """)
+Exception: 
+            Falha ao acessar pasta de rede. Por favor:
+            1. Verifique se está conectado à rede corporativa
+            2. Tente acessar manualmente este caminho:
+               \\\\serverdell\\E\\ARQUIVO DIGITAL EXPORTAÇÃO\\NAKATA\\2025\\EM-008300-23 - EXT-88 + 5109-2023
+            3. Contate o suporte técnico se o problema persistir
+            Detalhes: Servidor de rede não está acessível
+        
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 15:42:09] "[35m[1mPOST /busca/api/abrir_pasta HTTP/1.1[0m" 500 -
+ERROR:root:Erro ao verificar conexão: RawConfigParser.get() takes 3 positional arguments but 4 were given
+ERROR:root:Erro ao abrir pasta \\\\serverdell\\E\\ARQUIVO DIGITAL EXPORTAÇÃO\\NAKATA\\2025\\EM-008269-23 - EXT-69 + 5086-2023: Servidor de rede não está acessível
+Traceback (most recent call last):
+  File "C:\Users\ACEXCBN\meu_sistema_upload\logica.py", line 161, in abrir_pasta_processo
+    raise Exception("Servidor de rede não está acessível")
+Exception: Servidor de rede não está acessível
+ERROR:root:Erro ao abrir pasta: 
+            Falha ao acessar pasta de rede. Por favor:
+            1. Verifique se está conectado à rede corporativa
+            2. Tente acessar manualmente este caminho:
+               \\\\serverdell\\E\\ARQUIVO DIGITAL EXPORTAÇÃO\\NAKATA\\2025\\EM-008269-23 - EXT-69 + 5086-2023
+            3. Contate o suporte técnico se o problema persistir
+            Detalhes: Servidor de rede não está acessível
+        
+Traceback (most recent call last):
+  File "C:\Users\ACEXCBN\meu_sistema_upload\logica.py", line 161, in abrir_pasta_processo
+    raise Exception("Servidor de rede não está acessível")
+Exception: Servidor de rede não está acessível
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\ACEXCBN\meu_sistema_upload\busca.py", line 101, in api_abrir_pasta
+    if abrir_pasta_processo(caminho):
+       ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ACEXCBN\meu_sistema_upload\logica.py", line 195, in abrir_pasta_processo
+    raise Exception(f"""
+    ...<6 lines>...
+    """)
+Exception: 
+            Falha ao acessar pasta de rede. Por favor:
+            1. Verifique se está conectado à rede corporativa
+            2. Tente acessar manualmente este caminho:
+               \\\\serverdell\\E\\ARQUIVO DIGITAL EXPORTAÇÃO\\NAKATA\\2025\\EM-008269-23 - EXT-69 + 5086-2023
+            3. Contate o suporte técnico se o problema persistir
+            Detalhes: Servidor de rede não está acessível
+        
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 15:42:11] "[35m[1mPOST /busca/api/abrir_pasta HTTP/1.1[0m" 500 -
+ERROR:root:Erro ao verificar conexão: RawConfigParser.get() takes 3 positional arguments but 4 were given
+ERROR:root:Erro ao abrir pasta \\\\serverdell\\E\\ARQUIVO DIGITAL EXPORTAÇÃO\\NAKATA\\2025\\EM-008269-23 - EXT-69 + 5086-2023: Servidor de rede não está acessível
+Traceback (most recent call last):
+  File "C:\Users\ACEXCBN\meu_sistema_upload\logica.py", line 161, in abrir_pasta_processo
+    raise Exception("Servidor de rede não está acessível")
+Exception: Servidor de rede não está acessível
+ERROR:root:Erro ao abrir pasta: 
+            Falha ao acessar pasta de rede. Por favor:
+            1. Verifique se está conectado à rede corporativa
+            2. Tente acessar manualmente este caminho:
+               \\\\serverdell\\E\\ARQUIVO DIGITAL EXPORTAÇÃO\\NAKATA\\2025\\EM-008269-23 - EXT-69 + 5086-2023
+            3. Contate o suporte técnico se o problema persistir
+            Detalhes: Servidor de rede não está acessível
+        
+Traceback (most recent call last):
+  File "C:\Users\ACEXCBN\meu_sistema_upload\logica.py", line 161, in abrir_pasta_processo
+    raise Exception("Servidor de rede não está acessível")
+Exception: Servidor de rede não está acessível
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\ACEXCBN\meu_sistema_upload\busca.py", line 101, in api_abrir_pasta
+    if abrir_pasta_processo(caminho):
+       ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ACEXCBN\meu_sistema_upload\logica.py", line 195, in abrir_pasta_processo
+    raise Exception(f"""
+    ...<6 lines>...
+    """)
+Exception: 
+            Falha ao acessar pasta de rede. Por favor:
+            1. Verifique se está conectado à rede corporativa
+            2. Tente acessar manualmente este caminho:
+               \\\\serverdell\\E\\ARQUIVO DIGITAL EXPORTAÇÃO\\NAKATA\\2025\\EM-008269-23 - EXT-69 + 5086-2023
+            3. Contate o suporte técnico se o problema persistir
+            Detalhes: Servidor de rede não está acessível
+        
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 15:42:11] "[35m[1mPOST /busca/api/abrir_pasta HTTP/1.1[0m" 500 -
+ERROR:root:Erro ao verificar conexão: RawConfigParser.get() takes 3 positional arguments but 4 were given
+ERROR:root:Erro ao abrir pasta \\\\serverdell\\E\\ARQUIVO DIGITAL EXPORTAÇÃO\\NAKATA\\2025\\EM-008269-23 - EXT-69 + 5086-2023: Servidor de rede não está acessível
+Traceback (most recent call last):
+  File "C:\Users\ACEXCBN\meu_sistema_upload\logica.py", line 161, in abrir_pasta_processo
+    raise Exception("Servidor de rede não está acessível")
+Exception: Servidor de rede não está acessível
+ERROR:root:Erro ao abrir pasta: 
+            Falha ao acessar pasta de rede. Por favor:
+            1. Verifique se está conectado à rede corporativa
+            2. Tente acessar manualmente este caminho:
+               \\\\serverdell\\E\\ARQUIVO DIGITAL EXPORTAÇÃO\\NAKATA\\2025\\EM-008269-23 - EXT-69 + 5086-2023
+            3. Contate o suporte técnico se o problema persistir
+            Detalhes: Servidor de rede não está acessível
+        
+Traceback (most recent call last):
+  File "C:\Users\ACEXCBN\meu_sistema_upload\logica.py", line 161, in abrir_pasta_processo
+    raise Exception("Servidor de rede não está acessível")
+Exception: Servidor de rede não está acessível
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\ACEXCBN\meu_sistema_upload\busca.py", line 101, in api_abrir_pasta
+    if abrir_pasta_processo(caminho):
+       ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ACEXCBN\meu_sistema_upload\logica.py", line 195, in abrir_pasta_processo
+    raise Exception(f"""
+    ...<6 lines>...
+    """)
+Exception: 
+            Falha ao acessar pasta de rede. Por favor:
+            1. Verifique se está conectado à rede corporativa
+            2. Tente acessar manualmente este caminho:
+               \\\\serverdell\\E\\ARQUIVO DIGITAL EXPORTAÇÃO\\NAKATA\\2025\\EM-008269-23 - EXT-69 + 5086-2023
+            3. Contate o suporte técnico se o problema persistir
+            Detalhes: Servidor de rede não está acessível
+        
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 15:42:12] "[35m[1mPOST /busca/api/abrir_pasta HTTP/1.1[0m" 500 -
+ERROR:root:Erro ao verificar conexão: RawConfigParser.get() takes 3 positional arguments but 4 were given
+ERROR:root:Erro ao abrir pasta \\\\serverdell\\E\\ARQUIVO DIGITAL EXPORTAÇÃO\\NAKATA\\2025\\EA-000011-25 - EXP 25: Servidor de rede não está acessível
+Traceback (most recent call last):
+  File "C:\Users\ACEXCBN\meu_sistema_upload\logica.py", line 161, in abrir_pasta_processo
+    raise Exception("Servidor de rede não está acessível")
+Exception: Servidor de rede não está acessível
+ERROR:root:Erro ao abrir pasta: 
+            Falha ao acessar pasta de rede. Por favor:
+            1. Verifique se está conectado à rede corporativa
+            2. Tente acessar manualmente este caminho:
+               \\\\serverdell\\E\\ARQUIVO DIGITAL EXPORTAÇÃO\\NAKATA\\2025\\EA-000011-25 - EXP 25
+            3. Contate o suporte técnico se o problema persistir
+            Detalhes: Servidor de rede não está acessível
+        
+Traceback (most recent call last):
+  File "C:\Users\ACEXCBN\meu_sistema_upload\logica.py", line 161, in abrir_pasta_processo
+    raise Exception("Servidor de rede não está acessível")
+Exception: Servidor de rede não está acessível
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\ACEXCBN\meu_sistema_upload\busca.py", line 101, in api_abrir_pasta
+    if abrir_pasta_processo(caminho):
+       ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ACEXCBN\meu_sistema_upload\logica.py", line 195, in abrir_pasta_processo
+    raise Exception(f"""
+    ...<6 lines>...
+    """)
+Exception: 
+            Falha ao acessar pasta de rede. Por favor:
+            1. Verifique se está conectado à rede corporativa
+            2. Tente acessar manualmente este caminho:
+               \\\\serverdell\\E\\ARQUIVO DIGITAL EXPORTAÇÃO\\NAKATA\\2025\\EA-000011-25 - EXP 25
+            3. Contate o suporte técnico se o problema persistir
+            Detalhes: Servidor de rede não está acessível
+        
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 15:42:14] "[35m[1mPOST /busca/api/abrir_pasta HTTP/1.1[0m" 500 -
+ERROR:root:Erro ao verificar conexão: RawConfigParser.get() takes 3 positional arguments but 4 were given
+ERROR:root:Erro ao abrir pasta \\\\serverdell\\E\\ARQUIVO DIGITAL EXPORTAÇÃO\\NAKATA\\2025\\EM-000001-25 - TESTE: Servidor de rede não está acessível
+Traceback (most recent call last):
+  File "C:\Users\ACEXCBN\meu_sistema_upload\logica.py", line 161, in abrir_pasta_processo
+    raise Exception("Servidor de rede não está acessível")
+Exception: Servidor de rede não está acessível
+ERROR:root:Erro ao abrir pasta: 
+            Falha ao acessar pasta de rede. Por favor:
+            1. Verifique se está conectado à rede corporativa
+            2. Tente acessar manualmente este caminho:
+               \\\\serverdell\\E\\ARQUIVO DIGITAL EXPORTAÇÃO\\NAKATA\\2025\\EM-000001-25 - TESTE
+            3. Contate o suporte técnico se o problema persistir
+            Detalhes: Servidor de rede não está acessível
+        
+Traceback (most recent call last):
+  File "C:\Users\ACEXCBN\meu_sistema_upload\logica.py", line 161, in abrir_pasta_processo
+    raise Exception("Servidor de rede não está acessível")
+Exception: Servidor de rede não está acessível
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\ACEXCBN\meu_sistema_upload\busca.py", line 101, in api_abrir_pasta
+    if abrir_pasta_processo(caminho):
+       ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ACEXCBN\meu_sistema_upload\logica.py", line 195, in abrir_pasta_processo
+    raise Exception(f"""
+    ...<6 lines>...
+    """)
+Exception: 
+            Falha ao acessar pasta de rede. Por favor:
+            1. Verifique se está conectado à rede corporativa
+            2. Tente acessar manualmente este caminho:
+               \\\\serverdell\\E\\ARQUIVO DIGITAL EXPORTAÇÃO\\NAKATA\\2025\\EM-000001-25 - TESTE
+            3. Contate o suporte técnico se o problema persistir
+            Detalhes: Servidor de rede não está acessível
+        
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 15:42:24] "[35m[1mPOST /busca/api/abrir_pasta HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 15:42:27] "GET /busca HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 15:42:27] "[36mGET /static/js/busca.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 15:42:28] "GET /busca/api/clientes HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 15:42:32] "GET /busca/api/buscar_processos?cliente=&numero_inicio=&numero_fim=&ano=&area=&servico=&referencia= HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 15:42:38] "GET /busca/api/buscar_processos?cliente=NAKATA&numero_inicio=&numero_fim=&ano=&area=&servico=&referencia= HTTP/1.1" 200 -
+ERROR:root:Erro ao verificar conexão: RawConfigParser.get() takes 3 positional arguments but 4 were given
+ERROR:root:Erro ao abrir pasta \\\\serverdell\\E\\ARQUIVO DIGITAL EXPORTAÇÃO\\NAKATA\\2024\\EM-000010-24 - TESTE: Servidor de rede não está acessível
+Traceback (most recent call last):
+  File "C:\Users\ACEXCBN\meu_sistema_upload\logica.py", line 161, in abrir_pasta_processo
+    raise Exception("Servidor de rede não está acessível")
+Exception: Servidor de rede não está acessível
+ERROR:root:Erro ao abrir pasta: 
+            Falha ao acessar pasta de rede. Por favor:
+            1. Verifique se está conectado à rede corporativa
+            2. Tente acessar manualmente este caminho:
+               \\\\serverdell\\E\\ARQUIVO DIGITAL EXPORTAÇÃO\\NAKATA\\2024\\EM-000010-24 - TESTE
+            3. Contate o suporte técnico se o problema persistir
+            Detalhes: Servidor de rede não está acessível
+        
+Traceback (most recent call last):
+  File "C:\Users\ACEXCBN\meu_sistema_upload\logica.py", line 161, in abrir_pasta_processo
+    raise Exception("Servidor de rede não está acessível")
+Exception: Servidor de rede não está acessível
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\ACEXCBN\meu_sistema_upload\busca.py", line 101, in api_abrir_pasta
+    if abrir_pasta_processo(caminho):
+       ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ACEXCBN\meu_sistema_upload\logica.py", line 195, in abrir_pasta_processo
+    raise Exception(f"""
+    ...<6 lines>...
+    """)
+Exception: 
+            Falha ao acessar pasta de rede. Por favor:
+            1. Verifique se está conectado à rede corporativa
+            2. Tente acessar manualmente este caminho:
+               \\\\serverdell\\E\\ARQUIVO DIGITAL EXPORTAÇÃO\\NAKATA\\2024\\EM-000010-24 - TESTE
+            3. Contate o suporte técnico se o problema persistir
+            Detalhes: Servidor de rede não está acessível
+        
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 15:42:41] "[35m[1mPOST /busca/api/abrir_pasta HTTP/1.1[0m" 500 -
+INFO:werkzeug: * Detected change in 'C:\\Users\\ACEXCBN\\meu_sistema_upload\\logica.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug: * Detected change in 'C:\\Users\\ACEXCBN\\meu_sistema_upload\\network_utils.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5001
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 15:46:19] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 15:46:21] "GET /busca HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 15:46:21] "[36mGET /static/js/busca.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 15:46:22] "GET /busca/api/clientes HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 15:46:26] "GET /busca/api/buscar_processos?cliente=&numero_inicio=&numero_fim=&ano=&area=&servico=&referencia= HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 15:46:30] "GET /busca/api/buscar_processos?cliente=CESTARI&numero_inicio=&numero_fim=&ano=&area=&servico=&referencia= HTTP/1.1" 200 -
+ERROR:root:Erro ao verificar conexão: RawConfigParser.get() takes 3 positional arguments but 4 were given
+ERROR:root:Erro ao abrir \\?\UNC\\\serverdell\\E\\ARQUIVO DIGITAL EXPORTAÇÃO\\CESTARI\\2023\\EA-008486-23 -  INV-300021122023: Servidor não respondendo ao ping
+ERROR:root:Erro ao abrir pasta: 
+            Falha técnica ao abrir pasta. Soluções possíveis:
+            1. Execute o sistema como Administrador
+            2. Mapeie manualmente a rede como unidade Z:
+            3. Verifique o firewall/antivírus
+            4. Caminho testado: \\?\UNC\\\serverdell\\E\\ARQUIVO DIGITAL EXPORTAÇÃO\\CESTARI\\2023\\EA-008486-23 -  INV-300021122023
+            Erro original: Servidor não respondendo ao ping
+        
+Traceback (most recent call last):
+  File "C:\Users\ACEXCBN\meu_sistema_upload\logica.py", line 168, in abrir_pasta_processo
+    raise Exception("Servidor não respondendo ao ping")
+Exception: Servidor não respondendo ao ping
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\ACEXCBN\meu_sistema_upload\busca.py", line 101, in api_abrir_pasta
+    if abrir_pasta_processo(caminho):
+       ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ACEXCBN\meu_sistema_upload\logica.py", line 188, in abrir_pasta_processo
+    raise Exception(f"""
+    ...<6 lines>...
+    """)
+Exception: 
+            Falha técnica ao abrir pasta. Soluções possíveis:
+            1. Execute o sistema como Administrador
+            2. Mapeie manualmente a rede como unidade Z:
+            3. Verifique o firewall/antivírus
+            4. Caminho testado: \\?\UNC\\\serverdell\\E\\ARQUIVO DIGITAL EXPORTAÇÃO\\CESTARI\\2023\\EA-008486-23 -  INV-300021122023
+            Erro original: Servidor não respondendo ao ping
+        
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 15:46:31] "[35m[1mPOST /busca/api/abrir_pasta HTTP/1.1[0m" 500 -
+ERROR:root:Erro ao verificar conexão: RawConfigParser.get() takes 3 positional arguments but 4 were given
+ERROR:root:Erro ao abrir \\?\UNC\\\serverdell\\E\\ARQUIVO DIGITAL EXPORTAÇÃO\\CESTARI\\2023\\ER-000022-23 - TESTE: Servidor não respondendo ao ping
+ERROR:root:Erro ao abrir pasta: 
+            Falha técnica ao abrir pasta. Soluções possíveis:
+            1. Execute o sistema como Administrador
+            2. Mapeie manualmente a rede como unidade Z:
+            3. Verifique o firewall/antivírus
+            4. Caminho testado: \\?\UNC\\\serverdell\\E\\ARQUIVO DIGITAL EXPORTAÇÃO\\CESTARI\\2023\\ER-000022-23 - TESTE
+            Erro original: Servidor não respondendo ao ping
+        
+Traceback (most recent call last):
+  File "C:\Users\ACEXCBN\meu_sistema_upload\logica.py", line 168, in abrir_pasta_processo
+    raise Exception("Servidor não respondendo ao ping")
+Exception: Servidor não respondendo ao ping
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\ACEXCBN\meu_sistema_upload\busca.py", line 101, in api_abrir_pasta
+    if abrir_pasta_processo(caminho):
+       ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ACEXCBN\meu_sistema_upload\logica.py", line 188, in abrir_pasta_processo
+    raise Exception(f"""
+    ...<6 lines>...
+    """)
+Exception: 
+            Falha técnica ao abrir pasta. Soluções possíveis:
+            1. Execute o sistema como Administrador
+            2. Mapeie manualmente a rede como unidade Z:
+            3. Verifique o firewall/antivírus
+            4. Caminho testado: \\?\UNC\\\serverdell\\E\\ARQUIVO DIGITAL EXPORTAÇÃO\\CESTARI\\2023\\ER-000022-23 - TESTE
+            Erro original: Servidor não respondendo ao ping
+        
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 15:46:41] "[35m[1mPOST /busca/api/abrir_pasta HTTP/1.1[0m" 500 -
+ERROR:root:Erro ao verificar conexão: RawConfigParser.get() takes 3 positional arguments but 4 were given
+ERROR:root:Erro ao abrir \\?\UNC\\\serverdell\\E\\ARQUIVO DIGITAL EXPORTAÇÃO\\CESTARI\\2025\\EM-000005-25 - 123: Servidor não respondendo ao ping
+ERROR:root:Erro ao abrir pasta: 
+            Falha técnica ao abrir pasta. Soluções possíveis:
+            1. Execute o sistema como Administrador
+            2. Mapeie manualmente a rede como unidade Z:
+            3. Verifique o firewall/antivírus
+            4. Caminho testado: \\?\UNC\\\serverdell\\E\\ARQUIVO DIGITAL EXPORTAÇÃO\\CESTARI\\2025\\EM-000005-25 - 123
+            Erro original: Servidor não respondendo ao ping
+        
+Traceback (most recent call last):
+  File "C:\Users\ACEXCBN\meu_sistema_upload\logica.py", line 168, in abrir_pasta_processo
+    raise Exception("Servidor não respondendo ao ping")
+Exception: Servidor não respondendo ao ping
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\ACEXCBN\meu_sistema_upload\busca.py", line 101, in api_abrir_pasta
+    if abrir_pasta_processo(caminho):
+       ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ACEXCBN\meu_sistema_upload\logica.py", line 188, in abrir_pasta_processo
+    raise Exception(f"""
+    ...<6 lines>...
+    """)
+Exception: 
+            Falha técnica ao abrir pasta. Soluções possíveis:
+            1. Execute o sistema como Administrador
+            2. Mapeie manualmente a rede como unidade Z:
+            3. Verifique o firewall/antivírus
+            4. Caminho testado: \\?\UNC\\\serverdell\\E\\ARQUIVO DIGITAL EXPORTAÇÃO\\CESTARI\\2025\\EM-000005-25 - 123
+            Erro original: Servidor não respondendo ao ping
+        
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 15:47:02] "[35m[1mPOST /busca/api/abrir_pasta HTTP/1.1[0m" 500 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5001
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 15:57:24] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 15:57:52] "POST /upload HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 15:58:45] "GET /busca HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 15:58:45] "[36mGET /static/js/busca.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 15:58:45] "GET /busca/api/clientes HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 15:58:45] "GET /busca/api/buscar_processos?cliente=&numero_inicio=&numero_fim=&ano=&area=&servico=&referencia= HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 15:58:48] "GET /busca/api/buscar_processos?cliente=NAKATA&numero_inicio=&numero_fim=&ano=&area=&servico=&referencia= HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 15:59:11] "POST /busca/api/abrir_pasta HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Jul/2025 16:00:05] "POST /busca/api/abrir_pasta HTTP/1.1" 200 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5001
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
