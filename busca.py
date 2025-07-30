@@ -161,6 +161,19 @@ def api_enviar_lote():
         tipo = request.form.get('tipo')
         files = request.files.getlist('files')
 
+        #  Novos campos para renomear
+        renomear = request.form.get('renomear', 'false').lower() == 'true'
+        nome_despesa = request.form.get('nome_despesa', '').strip()
+        data_vencimento = request.form.get('data_vencimento', '').strip()
+
+        if data_vencimento:
+            try:
+                partes = data_vencimento.split('-')
+                if len(partes) == 3:
+                    data_vencimento = f"{partes[2]}-{partes[1]}-{partes[0]}"
+            except:
+                pass
+
         if not processo_num:
             return jsonify({"status": "error", "message": "Número do processo não informado"}), 400
 
@@ -181,7 +194,16 @@ def api_enviar_lote():
         force_rename = request.form.get('forceRename', 'false').lower() == 'true'
 
         for file in files:
-            filename = re.sub(r'[<>:"/\\|?*]', '', file.filename).strip()
+            if renomear:
+                cliente = processo['cliente']
+                numero_proc = processo_num
+                referencia = processo['referencia']
+                base, ext = os.path.splitext(file.filename)
+                novo_nome = f"{cliente} - {nome_despesa} - ER{numero_proc} - {referencia} - {data_vencimento}{ext}"
+                filename = re.sub(r'[<>:"/\\|?*]', '', novo_nome).strip()
+            else:
+                filename = re.sub(r'[<>:"/\\|?*]', '', file.filename).strip()
+
             destino_final = os.path.join(destino, filename)
 
             if os.path.exists(destino_final):

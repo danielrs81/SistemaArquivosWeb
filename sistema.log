@@ -3827,3 +3827,45 @@ INFO:werkzeug:[33mPress CTRL+C to quit[0m
 INFO:werkzeug: * Restarting with stat
 WARNING:werkzeug: * Debugger is active!
 INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 10:30:02] "GET /busca HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 10:30:02] "GET /static/js/busca.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 10:30:02] "GET /busca/api/clientes HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 10:30:06] "GET /busca/api/buscar_processos?cliente=&numero_inicio=&numero_fim=&ano=&area=&servico=&referencia= HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 10:30:16] "GET /busca/api/buscar_processos?cliente=NAKATA&numero_inicio=&numero_fim=&ano=&area=&servico=&referencia= HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 10:30:40] "POST /busca/api/enviar_lote HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 10:30:51] "POST /busca/api/enviar_lote HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 10:30:56] "POST /busca/api/enviar_lote HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 10:31:11] "POST /busca/api/enviar_lote HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 10:31:16] "POST /busca/api/enviar_lote HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 10:31:27] "POST /busca/api/enviar_lote HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 10:31:32] "POST /busca/api/enviar_lote HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 10:31:42] "POST /busca/api/enviar_lote HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 10:31:47] "POST /busca/api/enviar_lote HTTP/1.1" 200 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5001
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 10:56:33] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 10:56:35] "GET /busca HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 10:56:35] "GET /static/js/busca.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 10:56:35] "GET /busca/api/clientes HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 10:56:39] "GET /busca/api/buscar_processos?cliente=&numero_inicio=&numero_fim=&ano=&area=&servico=&referencia= HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 10:56:44] "GET /busca/api/buscar_processos?cliente=NAKATA&numero_inicio=&numero_fim=&ano=&area=&servico=&referencia= HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 10:57:53] "POST /busca/api/enviar_lote HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 10:58:42] "POST /busca/api/enviar_lote HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 10:59:21] "POST /busca/api/enviar_lote HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 11:00:14] "POST /busca/api/enviar_lote HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 11:01:49] "POST /busca/api/enviar_lote HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 11:02:29] "POST /busca/api/enviar_lote HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'C:\\Users\\ACEXCBN\\meu_sistema_upload\\busca.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5001
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205

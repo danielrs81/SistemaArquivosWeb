@@ -329,6 +329,14 @@ async function enviarLote() {
         arquivosLote.forEach(file => formData.append('files', file));
         formData.append('processo', processosSelecionados[0]);
         formData.append('tipo', tipo);
+
+        // ✅ Se a caixa "Renomear arquivos" estiver marcada, envia as infos extras
+    const renomear = document.getElementById('chkRenomear').checked;
+    if (renomear) {
+        formData.append('renomear', 'true');
+        formData.append('nome_despesa', document.getElementById('nomeDespesa').value);
+        formData.append('data_vencimento', document.getElementById('dataVencimento').value);
+}
         
         console.log("Enviando requisição para /busca/api/enviar_lote");
         console.log("Dados do formulário:", {
@@ -558,6 +566,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 this.value === 'despesas' ? 'block' : 'none';
         });
     });
+});
+
+document.getElementById('chkRenomear').addEventListener('change', function() {
+    document.getElementById('camposRenomear').style.display = this.checked ? 'block' : 'none';
 });
 
 
