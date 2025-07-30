@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import time
 from network_utils import verificar_conexao_servidor
 from flask import Flask, request, jsonify, render_template_string, redirect, url_for, send_from_directory
 import os
@@ -14,6 +15,9 @@ from flask import render_template
 from busca import busca_bp
 from flask import Blueprint
 import locale
+import datetime
+import json
+import sys
 locale.setlocale(locale.LC_ALL, 'pt_BR.UTF-8')
 
 app = Flask(__name__)
@@ -974,6 +978,95 @@ def init_network():
     if not verificar_conexao_servidor():
         logging.error("Servidor de exportação não está acessível")
         # Pode adicionar notificação por email aqui se necessário
+
+
+from logica import obter_processo_por_numero
+
+@app.route("/api/enviar_lote", methods=["POST"])
+def api_enviar_lote():
+    try:
+        # Debug: Verifica se a requisição chegou
+        print("\n--- Requisição recebida /api/enviar_lote ---")
+        print("Headers:", request.headers)
+        print("Form data:", request.form)
+        print("Files:", request.files)
+        
+        if 'files' not in request.files:
+            print("Nenhum arquivo encontrado na requisição")
+            return jsonify({"status": "error", "message": "Nenhum arquivo enviado"}), 400
+            
+        files = request.files.getlist('files')
+        if not files or files[0].filename == '':
+            print("Arquivos vazios ou inválidos")
+            return jsonify({"status": "error", "message": "Nenhum arquivo válido"}), 400
+        
+        # Obtém os dados do formulário
+        numero_processo = request.form.get('processo')
+        tipo = request.form.get('tipo', 'documentos')
+        
+        print(f"Processo: {numero_processo}, Tipo: {tipo}")
+        
+        if not numero_processo:
+            print("Número do processo não fornecido")
+            return jsonify({"status": "error", "message": "Nenhum processo selecionado"}), 400
+        
+        # Obtém informações do processo
+        processo = obter_processo_por_numero(numero_processo)
+        if not processo:
+            print(f"Processo {numero_processo} não encontrado")
+            return jsonify({"status": "error", "message": "Processo não encontrado"}), 404
+            
+        # Define o diretório de destino
+        destino = processo['caminho']
+        if tipo == 'despesas':
+            destino = os.path.join(destino, 'DESPESAS')
+            print(f"Criando pasta DESPESAS em: {destino}")
+            os.makedirs(destino, exist_ok=True)
+        
+        print(f"Destino final: {destino}")
+        
+        # Lista de arquivos enviados
+        arquivos_enviados = []
+        
+        # Salva cada arquivo
+        for file in files:
+            if file.filename == '':
+                continue
+                
+            filename = secure_filename(file.filename)
+            filepath = os.path.join(destino, filename)
+            
+            print(f"Processando arquivo: {filename} -> {filepath}")
+            
+            # Verifica se arquivo já existe
+            if os.path.exists(filepath):
+                base, ext = os.path.splitext(filename)
+                filename = f"{base}_{int(time.time())}{ext}"
+                filepath = os.path.join(destino, filename)
+                print(f"Arquivo existente, renomeando para: {filename}")
+            
+            try:
+                file.save(filepath)
+                arquivos_enviados.append(filename)
+                print(f"Arquivo {filename} salvo com sucesso")
+            except Exception as e:
+                print(f"Erro ao salvar {filename}: {str(e)}")
+                continue
+        
+        print(f"Upload concluído. {len(arquivos_enviados)} arquivos enviados")
+        return jsonify({
+            "status": "success",
+            "message": f"{len(arquivos_enviados)} arquivo(s) enviado(s) com sucesso!",
+            "arquivos": arquivos_enviados,
+            "destino": destino
+        })
+        
+    except Exception as e:
+        print(f"Erro no processamento: {str(e)}", file=sys.stderr)
+        return jsonify({
+            "status": "error",
+            "message": f"Erro interno no servidor: {str(e)}"
+        }), 500
 
 def verificar_acessos():
     from logica import get_path

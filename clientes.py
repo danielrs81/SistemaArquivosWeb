@@ -96,3 +96,32 @@ def remover_cliente(nome_cliente):
         logging.error(f"Erro ao remover cliente: {str(e)}")
         return False, f"Erro de banco de dados: {str(e)}"
     
+    # Tabela de tipos de despesa
+def criar_tabela_despesas():
+    with db_lock:
+        conn = sqlite3.connect(CLIENTES_DB)
+        cursor = conn.cursor()
+        cursor.execute('''CREATE TABLE IF NOT EXISTS tipos_despesa (
+                            id INTEGER PRIMARY KEY AUTOINCREMENT,
+                            nome TEXT UNIQUE
+                        )''')
+        # Inserir valores padrão
+        cursor.execute("INSERT OR IGNORE INTO tipos_despesa (nome) VALUES ('Fatura')")
+        cursor.execute("INSERT OR IGNORE INTO tipos_despesa (nome) VALUES ('Frete')")
+        conn.commit()
+
+def obter_tipos_despesa():
+    criar_tabela_despesas()
+    with db_lock:
+        conn = sqlite3.connect(CLIENTES_DB)
+        cursor = conn.cursor()
+        cursor.execute("SELECT nome FROM tipos_despesa ORDER BY nome")
+        return [row[0] for row in cursor.fetchall()]
+
+def adicionar_tipo_despesa(nome):
+    criar_tabela_despesas()
+    with db_lock:
+        conn = sqlite3.connect(CLIENTES_DB)
+        cursor = conn.cursor()
+        cursor.execute("INSERT INTO tipos_despesa (nome) VALUES (?)", (nome,))
+        conn.commit()

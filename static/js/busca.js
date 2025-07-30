@@ -4,6 +4,8 @@ let paginaAtual = 1;
 let itensPorPagina = 25;
 let ordenacaoColuna = 'numero';
 let ordenacaoReversa = false;
+let processosSelecionados = [];
+let arquivosLote = [];
 
 // Inicialização
 document.addEventListener('DOMContentLoaded', function() {
@@ -149,28 +151,38 @@ function atualizarTabela() {
     corpoTabela.innerHTML = '';
     
     if (processosPaginados.length === 0) {
-        corpoTabela.innerHTML = '<tr><td colspan="7" style="text-align: center;">Nenhum resultado encontrado</td></tr>';
+        corpoTabela.innerHTML = '<tr><td colspan="8" style="text-align: center;">Nenhum resultado encontrado</td></tr>';
         return;
     }
     
     processosPaginados.forEach(processo => {
+        const isSelected = processosSelecionados.includes(processo.numero);
         const row = document.createElement('tr');
         
+        if (isSelected) {
+            row.style.backgroundColor = '#e3f2fd';
+        }
+        
         row.innerHTML = `
+            <td><input type="checkbox" class="processo-checkbox" 
+                 ${isSelected ? 'checked' : ''}
+                 onchange="toggleSelecaoProcesso('${processo.numero}')"></td>
             <td>${processo.numero}</td>
             <td>${processo.cliente}</td>
             <td>${processo.area}</td>
             <td>${processo.servico}</td>
             <td>${processo.ano}</td>
             <td>${processo.referencia}</td>
-            <td><button class="btn-abrir" onclick="abrirPasta('${encodeURIComponent(processo.caminho)}')">Abrir Pasta</button></td>
+            <td><button class="btn-open" onclick="abrirPasta('${encodeURIComponent(processo.caminho)}')">
+                <i class="fas fa-folder-open"></i> Abrir
+            </button></td>
         `;
         
         corpoTabela.appendChild(row);
     });
     
     // Atualiza contador e paginação
-    document.getElementById('contador').textContent = `Total: ${processos.length} processos encontrados`;
+    document.getElementById('contador').textContent = processos.length;
     
     const totalPaginas = Math.max(1, Math.ceil(processos.length / itensPorPagina));
     document.getElementById('infoPaginacao').textContent = `Página ${paginaAtual} de ${totalPaginas}`;
@@ -178,6 +190,9 @@ function atualizarTabela() {
     // Habilita/desabilita botões de paginação
     document.querySelector('button[onclick="paginaAnterior()"]').disabled = paginaAtual <= 1;
     document.querySelector('button[onclick="proximaPagina()"]').disabled = paginaAtual >= totalPaginas;
+    
+    // Atualiza UI dos processos selecionados
+    atualizarUIProcessosSelecionados();
 }
 
 // Função para abrir pasta
@@ -276,6 +291,282 @@ function ultimaPagina() {
     paginaAtual = Math.ceil(processos.length / itensPorPagina);
     atualizarTabela();
 }
+
+// Mostrar/ocultar campos de despesa
+document.querySelectorAll('input[name="tipoInclusao"]').forEach(radio => {
+    radio.addEventListener('change', function() {
+        document.getElementById('despesaFields').style.display = 
+            this.value === 'despesas' ? 'block' : 'none';
+    });
+});
+
+// Função para enviar lote
+async function enviarLote() {
+    if (processosSelecionados.length === 0) {
+        mostrarResultadoLote({
+            status: "error",
+            message: "Selecione um processo antes de enviar"
+        });
+        return;
+    }
+    
+    if (arquivosLote.length === 0) {
+        mostrarResultadoLote({
+            status: "error",
+            message: "Adicione pelo menos um arquivo"
+        });
+        return;
+    }
+    
+    const tipo = document.querySelector('input[name="tipoInclusao"]:checked').value;
+    const btnEnviar = document.querySelector('#acoesEmLote .btn-primary');
+    
+    try {
+        btnEnviar.disabled = true;
+        btnEnviar.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
+        
+        const formData = new FormData();
+        arquivosLote.forEach(file => formData.append('files', file));
+        formData.append('processo', processosSelecionados[0]);
+        formData.append('tipo', tipo);
+        
+        console.log("Enviando requisição para /busca/api/enviar_lote");
+        console.log("Dados do formulário:", {
+            processo: processosSelecionados[0],
+            tipo: tipo,
+            arquivos: arquivosLote.map(f => f.name)
+        });
+
+        const response = await fetch('/busca/api/enviar_lote', {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'Accept': 'application/json'
+            }
+        });
+
+        console.log("Resposta recebida:", response);
+
+        if (!response.ok) {
+            const errorText = await response.text();
+            console.error("Erro na resposta:", errorText);
+            throw new Error(errorText || "Erro no servidor");
+        }
+
+        const result = await response.json();
+        console.log("Resultado do upload:", result);
+
+        // ✅ Agora verificamos se o arquivo já existe
+        if (result.status === "exists") {
+            let confirmar = confirm(
+                `Os seguintes arquivos já existem:\n\n${result.arquivos.join("\n")}\n\nDeseja enviar mesmo assim (eles serão renomeados com data e hora)?`
+            );
+            if (confirmar) {
+                const formData2 = new FormData();
+                arquivosLote.forEach(file => formData2.append('files', file));
+                formData2.append('processo', processosSelecionados[0]);
+                formData2.append('tipo', tipo);
+                formData2.append('forceRename', 'true');
+
+                const response2 = await fetch('/busca/api/enviar_lote', {
+                    method: 'POST',
+                    body: formData2,
+                    headers: {'Accept': 'application/json'}
+                });
+                const result2 = await response2.json();
+                mostrarResultadoLote(result2);
+
+                if (result2.status === "success") {
+                    arquivosLote = [];
+                    atualizarListaArquivos();
+                }
+
+                return;
+            } else {
+                mostrarResultadoLote({
+                    status: "warning",
+                    message: "Envio cancelado pelo usuário"
+                });
+                return;
+            }
+        }
+        
+        mostrarResultadoLote(result);
+        
+        if (result.status === "success") {
+            arquivosLote = [];
+            atualizarListaArquivos();
+        }
+    } catch (error) {
+        console.error("Erro no envio:", error);
+        mostrarResultadoLote({
+            status: "error",
+            message: "Erro no envio: " + (error.message || "Verifique o console para detalhes")
+        });
+    } finally {
+        btnEnviar.disabled = false;
+        btnEnviar.innerHTML = '<i class="fas fa-paper-plane"></i> Enviar Arquivos';
+    }
+}
+
+
+function mostrarResultadoLote(result) {
+    const resultDiv = document.getElementById('uploadResultLote');
+    resultDiv.style.display = 'block';
+    resultDiv.innerHTML = result.message;
+    
+    if (result.status === "success") {
+        resultDiv.style.backgroundColor = '#d4edda';
+        resultDiv.style.color = '#155724';
+        resultDiv.style.border = '1px solid #c3e6cb';
+    } else {
+        resultDiv.style.backgroundColor = '#f8d7da';
+        resultDiv.style.color = '#721c24';
+        resultDiv.style.border = '1px solid #f5c6cb';
+    }
+}
+
+// Adicione estas funções para gerenciar seleção de processos:
+function toggleSelecaoProcesso(numeroProcesso) {
+    // Se já está selecionado, desmarca
+    if (processosSelecionados.includes(numeroProcesso)) {
+        processosSelecionados = [];
+    } 
+    // Se não está selecionado, desmarca qualquer outro e seleciona este
+    else {
+        processosSelecionados = [numeroProcesso];
+    }
+    atualizarTabela();
+    atualizarUIProcessosSelecionados();
+}
+
+function limparSelecao() {
+    processosSelecionados = [];
+    atualizarTabela();
+    atualizarUIProcessosSelecionados();
+}
+
+function atualizarUIProcessosSelecionados() {
+    const acoesEmLote = document.getElementById('acoesEmLote');
+    const contadorSelecionados = document.getElementById('contadorSelecionados');
+    
+    if (processosSelecionados.length > 0) {
+        acoesEmLote.style.display = 'block';
+        contadorSelecionados.textContent = `${processosSelecionados.length} processo(s) selecionado(s)`;
+    } else {
+        acoesEmLote.style.display = 'none';
+    }
+}
+
+function configurarDragAndDrop() {
+    const dragArea = document.getElementById('dragAreaLote');
+    const fileInput = document.getElementById('fileInputLote');
+
+    // Clique na área para abrir o seletor de arquivos
+    dragArea.addEventListener('click', () => fileInput.click());
+
+    // Quando arquivos são escolhidos manualmente
+    fileInput.addEventListener('change', (e) => {
+        if (e.target.files.length > 0) {
+            Array.from(e.target.files).forEach(file => {
+                if (!arquivosLote.some(f => f.name === file.name && f.size === file.size && f.lastModified === file.lastModified)) {
+                    arquivosLote.push(file);
+                }
+            });
+            atualizarListaArquivos();
+            e.target.value = ''; // Permite escolher o mesmo arquivo novamente
+        }
+    });
+
+    // Previne o comportamento padrão do navegador nos eventos de drag
+    ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+        dragArea.addEventListener(eventName, preventDefaults, false);
+    });
+
+    function preventDefaults(e) {
+        e.preventDefault();
+        e.stopPropagation();
+    }
+
+    // Destaque visual quando o usuário arrasta um arquivo para dentro da área
+    ['dragenter', 'dragover'].forEach(eventName => {
+        dragArea.addEventListener(eventName, highlight, false);
+    });
+
+    // Remove destaque quando sai da área
+    ['dragleave', 'drop'].forEach(eventName => {
+        dragArea.addEventListener(eventName, unhighlight, false);
+    });
+
+    function highlight() {
+        dragArea.style.borderColor = '#2980b9';
+        dragArea.style.backgroundColor = '#ebf5fb';
+    }
+
+    function unhighlight() {
+        dragArea.style.borderColor = '#3498db';
+        dragArea.style.backgroundColor = '';
+    }
+
+    // Quando arquivos são soltos na área de drag-and-drop
+    dragArea.addEventListener('drop', handleDrop, false);
+
+    function handleDrop(e) {
+        const dt = e.dataTransfer;
+        const files = dt.files;
+
+        Array.from(files).forEach(file => {
+            if (!arquivosLote.some(f => f.name === file.name && f.size === file.size && f.lastModified === file.lastModified)) {
+                arquivosLote.push(file);
+            }
+        });
+
+        atualizarListaArquivos();
+    }
+}
+
+function atualizarListaArquivos() {
+    const fileList = document.getElementById('fileListLote');
+    fileList.innerHTML = '';
+    
+    arquivosLote.forEach((file, index) => {
+        const fileItem = document.createElement('div');
+        fileItem.className = 'file-item';
+        fileItem.innerHTML = `
+            <span>${file.name}</span>
+            <button onclick="removerArquivoLote(${index})">
+                <i class="fas fa-times"></i>
+            </button>
+        `;
+        fileList.appendChild(fileItem);
+    });
+}
+
+function removerArquivoLote(index) {
+    arquivosLote.splice(index, 1);
+    atualizarListaArquivos();
+}
+
+// Chame esta função no DOMContentLoaded
+document.addEventListener('DOMContentLoaded', function() {
+    configurarDragAndDrop();
+    
+    // Mostrar/ocultar campos de despesa
+    document.querySelectorAll('input[name="tipoInclusao"]').forEach(radio => {
+        radio.addEventListener('change', function() {
+            document.getElementById('despesaFields').style.display = 
+                this.value === 'despesas' ? 'block' : 'none';
+        });
+    });
+});
+
+
+document.getElementById('vencimento').addEventListener('blur', function() {
+    if (!/^\d{2}-\d{2}$/.test(this.value)) {
+        alert("Formato inválido. Use DD-MM (ex: 25-07)");
+        this.focus();
+    }
+});
 
 // Torna as funções disponíveis globalmente para os eventos HTML
 window.executarBusca = executarBusca;

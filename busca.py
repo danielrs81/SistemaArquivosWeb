@@ -1,11 +1,15 @@
 # -*- coding: utf-8 -*-
 from flask import Blueprint, jsonify, request, render_template
-from logica import obter_info_processos, abrir_pasta_processo
-from clientes import obter_clientes
+from logica import obter_info_processos, abrir_pasta_processo, obter_processo_por_numero
+from clientes import obter_clientes, obter_tipos_despesa
 import os
+import json
 import logging
 import subprocess
+import re
+import datetime
 from configparser import ConfigParser
+from werkzeug.utils import secure_filename
 
 # Carregar configurações
 config = ConfigParser()
@@ -18,10 +22,16 @@ busca_bp = Blueprint('busca', __name__)
 def busca():
     try:
         clientes = obter_clientes()
-        return render_template('busca.html', clientes=clientes)
+        tipos_despesa = obter_tipos_despesa()
+        return render_template('busca.html', 
+                            clientes=clientes,
+                            tipos_despesa=tipos_despesa)
     except Exception as e:
         logging.error(f"Erro na rota /busca: {str(e)}")
-        return render_template('busca.html', clientes=[], error=str(e))
+        return render_template('busca.html', 
+                            clientes=[], 
+                            tipos_despesa=[], 
+                            error=str(e))
 
 @busca_bp.route("/api/buscar_processos", methods=["GET"])
 def api_buscar_processos():
@@ -118,3 +128,90 @@ def api_clientes():
     except Exception as e:
         logging.error(f"Erro ao obter lista de clientes: {str(e)}")
         return jsonify({"error": str(e)}), 500
+    
+
+@busca_bp.route("/api/processos_selecionados", methods=["POST"])
+def obter_processos_selecionados():
+    try:
+        data = request.get_json()
+        numeros = data.get('numeros', [])
+        
+        processos = []
+        for numero in numeros:
+            processo = obter_processo_por_numero(numero)
+            if processo:
+                processos.append(processo)
+        
+        return jsonify(processos)
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+@busca_bp.route("/api/tipos_despesa", methods=["GET"])
+def api_tipos_despesa():
+    try:
+        tipos = obter_tipos_despesa()
+        return jsonify(tipos)
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+    
+@busca_bp.route("/api/enviar_lote", methods=["POST"])
+def api_enviar_lote():
+    try:
+        processo_num = request.form.get('processo')
+        tipo = request.form.get('tipo')
+        files = request.files.getlist('files')
+
+        if not processo_num:
+            return jsonify({"status": "error", "message": "Número do processo não informado"}), 400
+
+        from logica import obter_processo_por_numero
+        processo = obter_processo_por_numero(processo_num)
+        if not processo:
+            return jsonify({"status": "error", "message": "Processo não encontrado"}), 404
+
+        destino = processo['caminho']
+        if tipo == 'despesas':
+            destino = os.path.join(destino, "DESPESAS")
+            os.makedirs(destino, exist_ok=True)
+
+        enviados = []
+        arquivos_existentes = []
+
+        # Define force_rename from request form, defaulting to False
+        force_rename = request.form.get('forceRename', 'false').lower() == 'true'
+
+        for file in files:
+            filename = re.sub(r'[<>:"/\\|?*]', '', file.filename).strip()
+            destino_final = os.path.join(destino, filename)
+
+            if os.path.exists(destino_final):
+                if force_rename:
+                    base, ext = os.path.splitext(filename)
+                    timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+                    filename = f"{base}_{timestamp}{ext}"
+                    destino_final = os.path.join(destino, filename)
+                    file.save(destino_final)
+                    enviados.append(filename)
+                else:
+                    arquivos_existentes.append(filename)
+            else:
+                file.save(destino_final)
+                enviados.append(filename)
+
+        if arquivos_existentes and not force_rename:
+            return jsonify({
+                "status": "exists",
+                "message": "Alguns arquivos já existem",
+                "arquivos": arquivos_existentes
+            })
+
+        return jsonify({
+            "status": "success",
+            "message": f"{len(enviados)} arquivo(s) enviado(s) com sucesso",
+            "details": {"enviados": enviados}
+        })
+    
+    except Exception as e:
+        import logging
+        logging.error(f"Erro no envio em lote: {str(e)}", exc_info=True)
+        return jsonify({"status": "error", "message": str(e)}), 500

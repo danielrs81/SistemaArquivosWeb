@@ -215,3 +215,11 @@ def tentar_encontrar_pasta_alternativa(caminho_original):
         return None
     except:
         return None
+    
+def obter_processo_por_numero(numero_processo):
+    """Obtém um processo específico pelo número"""
+    processos = obter_info_processos()
+    for proc in processos.values():
+        if proc['numero'] == numero_processo:
+            return proc
+    return None
