@@ -204,8 +204,17 @@ def api_enviar_lote():
             else:
                 filename = re.sub(r'[<>:"/\\|?*]', '', file.filename).strip()
 
+            # ✅ Sempre define destino_final, independente do renomear
             destino_final = os.path.join(destino, filename)
 
+            # ✅ Se o arquivo já existe e estamos renomeando, adiciona hora
+            if renomear and os.path.exists(destino_final):
+                base, ext = os.path.splitext(filename)
+                hora = datetime.datetime.now().strftime("%H%M%S")
+                filename = f"{base} {hora}{ext}"
+                destino_final = os.path.join(destino, filename)
+
+            # ✅ Checagem de conflito normal (force_rename)
             if os.path.exists(destino_final):
                 if force_rename:
                     base, ext = os.path.splitext(filename)
