@@ -3955,3 +3955,285 @@ INFO:werkzeug:[33mPress CTRL+C to quit[0m
 INFO:werkzeug: * Restarting with stat
 WARNING:werkzeug: * Debugger is active!
 INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 11:37:37] "GET /busca HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 11:37:37] "[36mGET /static/js/busca.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 11:37:37] "GET /busca/api/clientes HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 11:37:42] "GET /busca/api/buscar_processos?cliente=&numero_inicio=&numero_fim=&ano=&area=&servico=&referencia= HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 11:37:47] "GET /busca/api/buscar_processos?cliente=NAKATA&numero_inicio=&numero_fim=&ano=&area=&servico=&referencia= HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 11:38:21] "POST /busca/api/enviar_lote HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 11:38:47] "POST /busca/api/enviar_lote HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 11:39:05] "POST /busca/api/enviar_lote HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 11:39:11] "POST /busca/api/enviar_lote HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 11:39:34] "POST /busca/api/enviar_lote HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 11:39:40] "POST /busca/api/enviar_lote HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 11:40:10] "POST /busca/api/enviar_lote HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 11:40:16] "POST /busca/api/enviar_lote HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 11:40:30] "POST /busca/api/enviar_lote HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 11:40:49] "POST /busca/api/abrir_pasta HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 11:42:38] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 11:43:02] "[32mPOST /cliente HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 11:43:02] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 11:43:10] "[32mPOST /cliente HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 11:43:10] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 12:02:48] "POST /upload HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 12:02:56] "GET /busca HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 12:02:56] "[36mGET /static/js/busca.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 12:02:56] "GET /busca/api/clientes HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 12:03:00] "GET /busca/api/buscar_processos?cliente=&numero_inicio=&numero_fim=&ano=&area=&servico=&referencia= HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 12:03:11] "GET /busca/api/buscar_processos?cliente=DANA+JUNDIAÍ&numero_inicio=&numero_fim=&ano=&area=&servico=&referencia= HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 12:03:31] "GET /busca/api/buscar_processos?cliente=DANA+JUNDIAÍ&numero_inicio=&numero_fim=&ano=&area=&servico=&referencia=1011 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 12:04:05] "POST /busca/api/enviar_lote HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 12:04:21] "POST /busca/api/enviar_lote HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 12:04:58] "POST /busca/api/enviar_lote HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 12:05:18] "POST /busca/api/enviar_lote HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'C:\\Users\\ACEXCBN\\meu_sistema_upload\\busca.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5001
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 12:11:05] "GET /busca HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 12:11:05] "[36mGET /static/js/busca.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 12:11:06] "GET /busca/api/clientes HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 12:11:10] "GET /busca/api/buscar_processos?cliente=&numero_inicio=&numero_fim=&ano=&area=&servico=&referencia= HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 12:11:14] "GET /busca/api/buscar_processos?cliente=NAKATA&numero_inicio=&numero_fim=&ano=&area=&servico=&referencia= HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 12:11:18] "GET /busca/api/buscar_processos?cliente=NAKATA&numero_inicio=&numero_fim=&ano=&area=&servico=&referencia= HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 12:11:19] "POST /busca/api/abrir_pasta HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 12:11:40] "POST /busca/api/enviar_lote HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 12:11:46] "POST /busca/api/enviar_lote HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 12:50:47] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 12:51:44] "POST /upload HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 12:51:46] "GET /busca HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 12:51:46] "[36mGET /static/js/busca.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 12:51:46] "GET /busca/api/clientes HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 12:51:50] "GET /busca/api/buscar_processos?cliente=&numero_inicio=&numero_fim=&ano=&area=&servico=&referencia= HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 12:51:57] "GET /busca/api/buscar_processos?cliente=DANA+JUNDIAÍ&numero_inicio=&numero_fim=&ano=&area=&servico=&referencia= HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 12:52:10] "GET /busca/api/buscar_processos?cliente=DANA+JUNDIAÍ&numero_inicio=&numero_fim=&ano=&area=&servico=&referencia=1012 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 12:52:12] "POST /busca/api/abrir_pasta HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'C:\\Users\\ACEXCBN\\meu_sistema_upload\\busca.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5001
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+ERROR:root:Erro no upload: module 'datetime' has no attribute 'now'
+Traceback (most recent call last):
+  File "C:\Users\ACEXCBN\meu_sistema_upload\backend_flask_integrado.py", line 873, in upload
+    resultado = processar_arquivo(file, pasta_destino, file_action)
+  File "C:\Users\ACEXCBN\meu_sistema_upload\backend_flask_integrado.py", line 771, in processar_arquivo
+    novo_nome = f"{base}_{datetime.now().strftime('%Y%m%d%H%M%S')}{ext}"
+                          ^^^^^^^^^^^^
+AttributeError: module 'datetime' has no attribute 'now'
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 12:53:35] "[35m[1mPOST /upload HTTP/1.1[0m" 500 -
+ERROR:root:Erro no upload: module 'datetime' has no attribute 'now'
+Traceback (most recent call last):
+  File "C:\Users\ACEXCBN\meu_sistema_upload\backend_flask_integrado.py", line 873, in upload
+    resultado = processar_arquivo(file, pasta_destino, file_action)
+  File "C:\Users\ACEXCBN\meu_sistema_upload\backend_flask_integrado.py", line 771, in processar_arquivo
+    novo_nome = f"{base}_{datetime.now().strftime('%Y%m%d%H%M%S')}{ext}"
+                          ^^^^^^^^^^^^
+AttributeError: module 'datetime' has no attribute 'now'
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 12:53:35] "[35m[1mPOST /upload HTTP/1.1[0m" 500 -
+ERROR:root:Erro no upload: module 'datetime' has no attribute 'now'
+Traceback (most recent call last):
+  File "C:\Users\ACEXCBN\meu_sistema_upload\backend_flask_integrado.py", line 873, in upload
+    resultado = processar_arquivo(file, pasta_destino, file_action)
+  File "C:\Users\ACEXCBN\meu_sistema_upload\backend_flask_integrado.py", line 771, in processar_arquivo
+    novo_nome = f"{base}_{datetime.now().strftime('%Y%m%d%H%M%S')}{ext}"
+                          ^^^^^^^^^^^^
+AttributeError: module 'datetime' has no attribute 'now'
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 12:53:40] "[35m[1mPOST /upload HTTP/1.1[0m" 500 -
+ERROR:root:Erro no upload: module 'datetime' has no attribute 'now'
+Traceback (most recent call last):
+  File "C:\Users\ACEXCBN\meu_sistema_upload\backend_flask_integrado.py", line 873, in upload
+    resultado = processar_arquivo(file, pasta_destino, file_action)
+  File "C:\Users\ACEXCBN\meu_sistema_upload\backend_flask_integrado.py", line 771, in processar_arquivo
+    novo_nome = f"{base}_{datetime.now().strftime('%Y%m%d%H%M%S')}{ext}"
+                          ^^^^^^^^^^^^
+AttributeError: module 'datetime' has no attribute 'now'
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 12:53:47] "[35m[1mPOST /upload HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 12:53:55] "GET / HTTP/1.1" 200 -
+ERROR:root:Erro no upload: module 'datetime' has no attribute 'now'
+Traceback (most recent call last):
+  File "C:\Users\ACEXCBN\meu_sistema_upload\backend_flask_integrado.py", line 873, in upload
+    resultado = processar_arquivo(file, pasta_destino, file_action)
+  File "C:\Users\ACEXCBN\meu_sistema_upload\backend_flask_integrado.py", line 771, in processar_arquivo
+    novo_nome = f"{base}_{datetime.now().strftime('%Y%m%d%H%M%S')}{ext}"
+                          ^^^^^^^^^^^^
+AttributeError: module 'datetime' has no attribute 'now'
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 12:54:33] "[35m[1mPOST /upload HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 12:54:57] "POST /upload HTTP/1.1" 200 -
+ERROR:root:Erro no upload: module 'datetime' has no attribute 'now'
+Traceback (most recent call last):
+  File "C:\Users\ACEXCBN\meu_sistema_upload\backend_flask_integrado.py", line 873, in upload
+    resultado = processar_arquivo(file, pasta_destino, file_action)
+  File "C:\Users\ACEXCBN\meu_sistema_upload\backend_flask_integrado.py", line 771, in processar_arquivo
+    novo_nome = f"{base}_{datetime.now().strftime('%Y%m%d%H%M%S')}{ext}"
+                          ^^^^^^^^^^^^
+AttributeError: module 'datetime' has no attribute 'now'
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 12:55:10] "[35m[1mPOST /upload HTTP/1.1[0m" 500 -
+ERROR:root:Erro no upload: module 'datetime' has no attribute 'now'
+Traceback (most recent call last):
+  File "C:\Users\ACEXCBN\meu_sistema_upload\backend_flask_integrado.py", line 873, in upload
+    resultado = processar_arquivo(file, pasta_destino, file_action)
+  File "C:\Users\ACEXCBN\meu_sistema_upload\backend_flask_integrado.py", line 771, in processar_arquivo
+    novo_nome = f"{base}_{datetime.now().strftime('%Y%m%d%H%M%S')}{ext}"
+                          ^^^^^^^^^^^^
+AttributeError: module 'datetime' has no attribute 'now'
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 12:55:34] "[35m[1mPOST /upload HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 12:55:46] "POST /upload HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 12:56:07] "POST /upload HTTP/1.1" 200 -
+ERROR:root:Erro no upload: module 'datetime' has no attribute 'now'
+Traceback (most recent call last):
+  File "C:\Users\ACEXCBN\meu_sistema_upload\backend_flask_integrado.py", line 873, in upload
+    resultado = processar_arquivo(file, pasta_destino, file_action)
+  File "C:\Users\ACEXCBN\meu_sistema_upload\backend_flask_integrado.py", line 771, in processar_arquivo
+    novo_nome = f"{base}_{datetime.now().strftime('%Y%m%d%H%M%S')}{ext}"
+                          ^^^^^^^^^^^^
+AttributeError: module 'datetime' has no attribute 'now'
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 12:56:30] "[35m[1mPOST /upload HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 12:58:58] "POST /upload HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 12:59:16] "POST /upload HTTP/1.1" 200 -
+ERROR:root:Erro no upload: module 'datetime' has no attribute 'now'
+Traceback (most recent call last):
+  File "C:\Users\ACEXCBN\meu_sistema_upload\backend_flask_integrado.py", line 873, in upload
+    resultado = processar_arquivo(file, pasta_destino, file_action)
+  File "C:\Users\ACEXCBN\meu_sistema_upload\backend_flask_integrado.py", line 771, in processar_arquivo
+    novo_nome = f"{base}_{datetime.now().strftime('%Y%m%d%H%M%S')}{ext}"
+                          ^^^^^^^^^^^^
+AttributeError: module 'datetime' has no attribute 'now'
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 12:59:32] "[35m[1mPOST /upload HTTP/1.1[0m" 500 -
+INFO:werkzeug: * Detected change in 'C:\\Users\\ACEXCBN\\meu_sistema_upload\\backend_flask_integrado.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5001
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 13:05:53] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 13:06:33] "POST /upload HTTP/1.1" 200 -
+ERROR:root:Erro no upload: module 'datetime' has no attribute 'now'
+Traceback (most recent call last):
+  File "C:\Users\ACEXCBN\meu_sistema_upload\backend_flask_integrado.py", line 873, in upload
+    resultado = processar_arquivo(file, pasta_destino, file_action)
+  File "C:\Users\ACEXCBN\meu_sistema_upload\backend_flask_integrado.py", line 771, in processar_arquivo
+    novo_nome = f"{base}_{datetime.now().strftime('%Y%m%d%H%M%S')}{ext}"
+                          ^^^^^^^^^^^^
+AttributeError: module 'datetime' has no attribute 'now'
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 13:07:07] "[35m[1mPOST /upload HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 13:07:43] "POST /upload HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 13:09:15] "POST /upload HTTP/1.1" 200 -
+ERROR:root:Erro no upload: module 'datetime' has no attribute 'now'
+Traceback (most recent call last):
+  File "C:\Users\ACEXCBN\meu_sistema_upload\backend_flask_integrado.py", line 873, in upload
+    resultado = processar_arquivo(file, pasta_destino, file_action)
+  File "C:\Users\ACEXCBN\meu_sistema_upload\backend_flask_integrado.py", line 771, in processar_arquivo
+    novo_nome = f"{base}_{datetime.now().strftime('%Y%m%d%H%M%S')}{ext}"
+                          ^^^^^^^^^^^^
+AttributeError: module 'datetime' has no attribute 'now'
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 13:09:44] "[35m[1mPOST /upload HTTP/1.1[0m" 500 -
+INFO:werkzeug: * Detected change in 'C:\\Users\\ACEXCBN\\meu_sistema_upload\\backend_flask_integrado.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5001
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 13:11:41] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 13:12:12] "POST /upload HTTP/1.1" 200 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5001
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 13:19:05] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 13:19:50] "POST /upload HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'C:\\Users\\ACEXCBN\\meu_sistema_upload\\backend_flask_integrado.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5001
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 13:20:35] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 13:21:01] "POST /upload HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 13:21:33] "POST /upload HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 13:21:53] "POST /upload HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 13:35:29] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 14:20:17] "POST /upload HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 14:38:12] "POST /upload HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 14:38:19] "GET /busca HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 14:38:19] "[36mGET /static/js/busca.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 14:38:19] "GET /busca/api/clientes HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 14:38:23] "GET /busca/api/buscar_processos?cliente=&numero_inicio=&numero_fim=&ano=&area=&servico=&referencia= HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 14:38:55] "GET /busca/api/buscar_processos?cliente=DANA+JUNDIAÍ&numero_inicio=&numero_fim=&ano=&area=&servico=&referencia=1014 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 14:39:28] "POST /busca/api/enviar_lote HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 14:40:38] "POST /busca/api/enviar_lote HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'C:\\Users\\ACEXCBN\\meu_sistema_upload\\busca.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5001
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 14:53:24] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 14:54:36] "POST /upload HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 14:54:39] "POST /upload HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 14:54:45] "GET /busca HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 14:54:45] "[36mGET /static/js/busca.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 14:54:45] "GET /busca/api/clientes HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 14:54:49] "GET /busca/api/buscar_processos?cliente=&numero_inicio=&numero_fim=&ano=&area=&servico=&referencia= HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 14:54:55] "GET /busca/api/buscar_processos?cliente=&numero_inicio=&numero_fim=&ano=&area=&servico=&referencia=1015 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 14:55:40] "POST /busca/api/enviar_lote HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 14:56:34] "POST /busca/api/enviar_lote HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 15:00:59] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+INFO:werkzeug: * Detected change in 'C:\\Users\\ACEXCBN\\meu_sistema_upload\\backend_flask_integrado.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5001
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 15:05:16] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 15:05:16] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 15:06:38] "[31m[1mPOST /upload HTTP/1.1[0m" 400 -
+INFO:werkzeug: * Detected change in 'C:\\Users\\ACEXCBN\\meu_sistema_upload\\backend_flask_integrado.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5001
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 15:12:43] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 15:12:43] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 15:13:28] "POST /upload HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 15:13:52] "[31m[1mPOST /upload HTTP/1.1[0m" 400 -
+INFO:werkzeug: * Detected change in 'C:\\Users\\ACEXCBN\\meu_sistema_upload\\logica.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205

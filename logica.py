@@ -61,7 +61,7 @@ def criar_pasta(cliente, area, servico, numero_processo, ano, referencia):
     """Cria a estrutura de pastas com tratamento de caracteres especiais"""
     try:
         # Normalização dos dados de entrada
-        referencia = re.sub(r'[^A-Za-z0-9. \-+]', '', referencia).strip()
+        referencia = re.sub(r'[^A-Za-z0-9._ \-+]', '', referencia).strip()
         sigla_area = "I" if area == "IMPORTAÇÃO" else "E"
         sigla_servico = servico[0].upper()
         ano_completo = f"20{ano}" if len(ano) == 2 else ano

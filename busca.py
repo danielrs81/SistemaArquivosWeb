@@ -199,7 +199,7 @@ def api_enviar_lote():
                 numero_proc = processo_num
                 referencia = processo['referencia']
                 base, ext = os.path.splitext(file.filename)
-                novo_nome = f"{cliente} - {nome_despesa} - ER{numero_proc} - {referencia} - {data_vencimento}{ext}"
+                novo_nome = f"{cliente} - ER{numero_proc} - {nome_despesa} - {referencia} - {data_vencimento}{ext}"
                 filename = re.sub(r'[<>:"/\\|?*]', '', novo_nome).strip()
             else:
                 filename = re.sub(r'[<>:"/\\|?*]', '', file.filename).strip()

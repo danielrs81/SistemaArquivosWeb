@@ -11,11 +11,11 @@ from clientes import obter_clientes, adicionar_cliente, remover_cliente
 from logica import criar_pasta, copiar_arquivos, obter_info_processos
 import logging
 from datetime import datetime
+import time
 from flask import render_template
 from busca import busca_bp
 from flask import Blueprint
 import locale
-import datetime
 import json
 import sys
 locale.setlocale(locale.LC_ALL, 'pt_BR.UTF-8')
@@ -422,9 +422,10 @@ HTML_TEMPLATE = r"""
                     
                     <div class="form-group">
                         <label for="referencia">Referência:</label>
-                        <input type="text" name="referencia" required pattern="^[A-Za-z0-9. \-+]+$" 
-                               title="Apenas letras, números, ponto(.), hífen(-), espaço e sinal de mais(+) são permitidos"
-                               placeholder="Descrição do processo">
+                        <input type="text" name="referencia" required 
+                            pattern="^[A-Za-z0-9._ \-+]+$" 
+                            title="Apenas letras, números, ponto(.), underline(_), hífen(-), espaço e sinal de mais(+) são permitidos"
+                            placeholder="Descrição do processo">
                     </div>
                     
                     <div class="form-group">
@@ -750,7 +751,7 @@ def cliente():
 
 def processar_arquivo(file, pasta_destino, file_action):
     """Processa um arquivo de acordo com a ação escolhida"""
-    filename = secure_filename(file.filename)
+    filename = file.filename.strip()
     temp_path = os.path.join(UPLOAD_FOLDER, filename)
     file.save(temp_path)
     
@@ -768,8 +769,11 @@ def processar_arquivo(file, pasta_destino, file_action):
             resultado['status'] = 'substituido'
         elif file_action == "renomear":
             base, ext = os.path.splitext(filename)
-            novo_nome = f"{base}_{datetime.now().strftime('%Y%m%d%H%M%S')}{ext}"
-            shutil.move(temp_path, os.path.join(pasta_destino, novo_nome))
+            # timestamp = datetime.now().strftime('%d%m%Y_%H%M%S')
+            timestamp = datetime.now().strftime('%d_%m_%Y_%Hh%M')  # Resultado: 30072025_13h12
+            novo_nome = f"{base}_{timestamp}{ext}"
+            novo_destino = os.path.join(pasta_destino, novo_nome)
+            shutil.move(temp_path, novo_destino)
             resultado['status'] = 'renomeado'
             resultado['novo_nome'] = novo_nome
         else:  # pular
@@ -793,10 +797,10 @@ def upload():
         
 
         # Validações
-        if not re.match(r'^[A-Za-z0-9. \-+]+$', referencia):
+        if not re.match(r'^[A-Za-z0-9._ \-+]+$', referencia):
             return jsonify({
                 "status": "error",
-                "message": "Referência inválida. Use apenas letras, números, ponto(.), hífen(-), espaço e sinal de mais(+)."
+                "message": "Referência inválida. Use apenas letras, números, ponto(.), underline(_), hífen(-), espaço e sinal de mais(+)."
             }), 400
 
         if not all([cliente, area, servico, numero_processo, ano, referencia]):
