@@ -580,6 +580,43 @@ document.getElementById('vencimento').addEventListener('blur', function() {
     }
 });
 
+function atualizarPreview() {
+    const renomear = document.getElementById('chkRenomear').checked;
+    const previewArea = document.getElementById('previewArea');
+    const previewList = document.getElementById('previewList');
+
+    if (!renomear || arquivosLote.length === 0) {
+        previewArea.style.display = 'none';
+        return;
+    }
+
+    const nomeDespesa = document.getElementById('nomeDespesa').value || 'Despesa';
+    const dataVencimento = document.getElementById('dataVencimento').value || 'Data';
+
+    // Aqui você pega info do processo selecionado
+    const processo = processosSelecionados[0];
+    const cliente = document.getElementById('clienteSelecionado').innerText || 'Cliente';
+    const referencia = document.getElementById('referenciaSelecionada').innerText || 'REF';
+
+    previewList.innerHTML = '';
+
+    arquivosLote.forEach(file => {
+        const ext = file.name.split('.').pop();
+        const nomeFinal = `${cliente} - ER${processo} - ${nomeDespesa} - ${referencia} - ${dataVencimento}.${ext}`;
+        const li = document.createElement('li');
+        li.textContent = nomeFinal;
+        previewList.appendChild(li);
+    });
+
+    previewArea.style.display = 'block';
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('chkRenomear').addEventListener('change', atualizarPreview);
+    document.getElementById('nomeDespesa').addEventListener('input', atualizarPreview);
+    document.getElementById('dataVencimento').addEventListener('input', atualizarPreview);
+});
+
 // Torna as funções disponíveis globalmente para os eventos HTML
 window.executarBusca = executarBusca;
 window.limparFiltros = limparFiltros;

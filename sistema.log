@@ -4237,3 +4237,76 @@ INFO:werkzeug: * Detected change in 'C:\\Users\\ACEXCBN\\meu_sistema_upload\\log
 INFO:werkzeug: * Restarting with stat
 WARNING:werkzeug: * Debugger is active!
 INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5001
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 15:18:07] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 15:18:07] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 15:18:47] "POST /upload HTTP/1.1" 200 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5001
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5001
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5001
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 15:42:18] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 15:42:20] "GET /busca HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 15:42:20] "GET /static/js/busca.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 15:42:21] "GET /busca/api/clientes HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 15:42:25] "GET /busca/api/buscar_processos?cliente=&numero_inicio=&numero_fim=&ano=&area=&servico=&referencia= HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 15:42:28] "GET /busca/api/buscar_processos?cliente=NAKATA&numero_inicio=&numero_fim=&ano=&area=&servico=&referencia= HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 15:42:33] "GET /busca/api/buscar_processos?cliente=NAKATA&numero_inicio=&numero_fim=&ano=&area=&servico=&referencia= HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 15:42:45] "POST /busca/api/abrir_pasta HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 15:43:23] "POST /busca/api/enviar_lote HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 15:43:49] "POST /busca/api/enviar_lote HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 15:44:05] "POST /busca/api/enviar_lote HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 15:44:30] "POST /busca/api/enviar_lote HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Jul/2025 17:24:20] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5001
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 119-258-205
+INFO:werkzeug:127.0.0.1 - - [04/Aug/2025 11:58:00] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Aug/2025 11:58:00] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [04/Aug/2025 11:59:19] "POST /upload HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Aug/2025 11:59:21] "POST /upload HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Aug/2025 11:59:21] "POST /upload HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Aug/2025 12:00:19] "POST /upload HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Aug/2025 12:01:25] "POST /upload HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Aug/2025 12:02:34] "POST /upload HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Aug/2025 12:03:05] "POST /upload HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Aug/2025 16:47:23] "[32mPOST /cliente HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [04/Aug/2025 16:47:23] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Aug/2025 16:48:22] "POST /upload HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Aug/2025 16:48:41] "POST /upload HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Aug/2025 16:50:10] "POST /upload HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Aug/2025 16:51:32] "POST /upload HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Aug/2025 16:51:43] "POST /upload HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Aug/2025 16:53:23] "POST /upload HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Aug/2025 16:53:28] "GET /busca HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Aug/2025 16:53:28] "[36mGET /static/js/busca.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [04/Aug/2025 16:53:28] "GET /busca/api/clientes HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Aug/2025 16:53:33] "GET /busca/api/buscar_processos?cliente=&numero_inicio=&numero_fim=&ano=&area=&servico=&referencia= HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Aug/2025 16:53:37] "GET /busca/api/buscar_processos?cliente=OETKER&numero_inicio=&numero_fim=&ano=&area=&servico=&referencia= HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Aug/2025 16:54:01] "GET /busca/api/buscar_processos?cliente=OETKER&numero_inicio=&numero_fim=&ano=&area=&servico=&referencia=196 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Aug/2025 16:54:22] "POST /busca/api/enviar_lote HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Aug/2025 16:54:32] "POST /busca/api/enviar_lote HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Aug/2025 16:54:40] "POST /busca/api/enviar_lote HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Aug/2025 16:54:49] "POST /busca/api/enviar_lote HTTP/1.1" 200 -
