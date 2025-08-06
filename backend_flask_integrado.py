@@ -974,7 +974,7 @@ def serve_static(filename):
     return send_from_directory(STATIC_FOLDER, filename)
 
 if __name__ == "__main__":
-    app.run(debug=True, port=5001)
+    app.run(debug=True, port=5002)
 
 @app.before_first_request
 def init_network():

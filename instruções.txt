@@ -1,0 +1,25 @@
+Instalação do sistema:
+
+cd caminho\da\pasta
+pip install pyinstaller
+
+
+PowerShell 
+
+pyinstaller --onefile --noconsole ^
+--add-data "templates;templates" ^
+--add-data "static;static" ^
+--add-data "config.ini;." ^
+backend_flask_integrado.py
+
+ou 
+
+pyinstaller --onefile --noconsole --add-data "templates;templates" --add-data "static;static" --add-data "config.ini;." backend_flask_integrado.py
+
+
+
+Win + R
+shell:startup
+
+
+config.ini precisa está na mesma pasta
